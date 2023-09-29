@@ -24,7 +24,7 @@ Stuff related to my Project
 - [x] ~~transition while changing cloths (character)~~
 - [x] ~~outline things if possible~~
 - [x] ~~Interaction system with raycasting~~
-- [x] ~~check between diff input devices ~~
+- [x] ~~check between diff input devices~~
 - [x] ~~Character movement (adjustments left, rewatch vid)~~
 - [x] ~~Face eye blinking animations~~
 - [x] ~~import 1st and 2nd floor of house~~
@@ -47,8 +47,9 @@ Stuff related to my Project
 ## Vroid  
 [Channel related to Vroid with unity shit](https://youtube.com/@ReForgeMode)  
 [Vroid Tutorial links](https://docs.google.com/document/d/1QqNhGyAEmmKGAf_x9WpfdSYcfBJ6BCEcU8CHdkIurQw/edit)  
-## Ai Voice  
-[Bark](https://github.com/suno-ai/bark#-usage-in-python)  
+## Ai  
+[Text to speech](https://fmhy.pages.dev/ai/#text-to-speech)
+[getimg.ai](https://getimg.ai/)
 ## Cinematic Cutscene Unity Tutorials  
 [Previsualization](https://resources.unity.com/media-entertainment-content/road-to-real-time-previsualization)  
 [Timeline for Animated Storytelling](https://resources.unity.com/media-entertainment-content/timeline-for-animated-storytelling)  
@@ -69,6 +70,5 @@ Stuff related to my Project
 [https://github.com/rafaskb/awesome-libgdx](https://github.com/rafaskb/awesome-libgdx)  
 [https://github.com/mbrukman/awesome-gamedev](https://github.com/mbrukman/awesome-gamedev)  
 [https://github.com/hyblocker/hekky-shaders#hekky-pbr](https://github.com/hyblocker/hekky-shaders#hekky-pbr)  
-[https://fmhy.pages.dev/devtools/#game-dev-tools](https://fmhy.pages.dev/devtools/#game-dev-tools)  
-[https://fmhy.pages.dev/ai/#text-to-speech](https://fmhy.pages.dev/ai/#text-to-speech)  
+[https://fmhy.pages.dev/devtools/#game-dev-tools](https://fmhy.pages.dev/devtools/#game-dev-tools)    
 
