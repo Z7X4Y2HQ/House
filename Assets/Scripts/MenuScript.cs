@@ -32,8 +32,9 @@ public class MenuScript : MonoBehaviour
     public void NewGame()
     {
         StartCoroutine(LoadAsynchronously("Dream"));
-        HandleTimeline.currentChapter = 1;
-        HandleTimeline.currentScene = "Chapter_one_first_dream";
+        HandleProgress.currentChapter = 1;
+        HandleProgress.currentScene = "Chapter_one_first_dream";
+        HandleProgress.firstPlaythrough = true;
     }
 
     public void Continue()
