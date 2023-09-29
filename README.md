@@ -16,23 +16,25 @@ Stuff related to my Project
 - [ ] Add texture and materials for testing
 - [ ] try blend tree for animations
 - [ ] change UI and Camera movement methods based on input device
-- [x] move character from one scene to another
-- [x] change cameras when in house like persona
-- [x] Door system
-- [x] changing cloths (check how to manage cinemachine vcam with scripts)
-- [x] add transitions between scenes
-- [x] transition while changing cloths (character)
-- [x] outline things if possible
-- [x] Interaction system with raycasting
-- [x] check between diff input devices 
-- [x] Character movement (adjustments left, rewatch vid)
-- [x] Face eye blinking animations
-- [x] import 1st and 2nd floor of house
+- [x] ~~move character from one scene to another~~
+- [x] ~~change cameras when in house like persona~~
+- [x] ~~Door system~~
+- [x] ~~changing cloths (check how to manage cinemachine vcam with scripts)~~
+- [x] ~~add transitions between scenes~~
+- [x] ~~transition while changing cloths (character)~~
+- [x] ~~outline things if possible~~
+- [x] ~~Interaction system with raycasting~~
+- [x] ~~check between diff input devices ~~
+- [x] ~~Character movement (adjustments left, rewatch vid)~~
+- [x] ~~Face eye blinking animations~~
+- [x] ~~import 1st and 2nd floor of house~~
 # Links
 
 ## For Blender:
 [1st - overview of tools and UI](https://www.youtube.com/playlist?list=PLa1F2ddGya_-UvuAqHAksYnB0qL9yWDO6)
+
 [2nd - Donut tutorial](https://www.youtube.com/playlist?list=PLjEaoINr3zgFX8ZsChQVQsuDSjEqdWMAD)
+
 [3rd - Chair Tutorial](https://www.youtube.com/playlist?list=PLjEaoINr3zgEL9UjPTLWQhLFAK7wVaRMR)
 ## For Unity:
 [Basic Tutorial](https://www.youtube.com/playlist?list=PLFt_AvWsXl0fnA91TcmkRyhhixX9CO3Lw)
