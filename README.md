@@ -48,8 +48,8 @@ Stuff related to my Project
 [Channel related to Vroid with unity shit](https://youtube.com/@ReForgeMode)  
 [Vroid Tutorial links](https://docs.google.com/document/d/1QqNhGyAEmmKGAf_x9WpfdSYcfBJ6BCEcU8CHdkIurQw/edit)  
 ## Ai  
-[Text to speech](https://fmhy.pages.dev/ai/#text-to-speech)
-[getimg.ai](https://getimg.ai/)
+[Text to speech](https://fmhy.pages.dev/ai/#text-to-speech)  
+[getimg.ai](https://getimg.ai/)  
 ## Cinematic Cutscene Unity Tutorials  
 [Previsualization](https://resources.unity.com/media-entertainment-content/road-to-real-time-previsualization)  
 [Timeline for Animated Storytelling](https://resources.unity.com/media-entertainment-content/timeline-for-animated-storytelling)  
