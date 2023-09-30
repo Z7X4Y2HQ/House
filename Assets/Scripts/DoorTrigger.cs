@@ -36,7 +36,7 @@ public class DoorTrigger : MonoBehaviour
         if (other.TryGetComponent<CharacterController>(out CharacterController controller))
         {
             playerInRange = true;
-            if (door.isRotatingDoor && !door.isOpen)
+            if (door.isRotatingDoor && !door.isOpen && HandleProgress.tutorialComplete)
             {
                 door.Open(other.transform.position);
             }

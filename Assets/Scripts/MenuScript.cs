@@ -33,6 +33,7 @@ public class MenuScript : MonoBehaviour
     {
         StartCoroutine(LoadAsynchronously("Dream"));
         HandleProgress.currentChapter = 1;
+        HandleProgress.currentChapterName = "Chapter One";
         HandleProgress.currentScene = "Chapter_one_first_dream";
         HandleProgress.firstPlaythrough = true;
     }
