@@ -18,9 +18,9 @@ Stuff related to my Project
 - [x] ~~check between diff input devices~~
 - [x] ~~import 1st and 2nd floor of house~~
 - [x] ~~Interaction system with raycasting~~
+- [x] ~~transition while changing cloths (character)~~
 - [x] ~~move character from one scene to another~~
 - [x] ~~change cameras when in house like persona~~
-- [x] ~~transition while changing cloths (character)~~
 - [x] ~~Character movement (adjustments left, rewatch vid)~~
 - [x] ~~Animation timeline cutscenes (first scene of the game)~~
 - [x] ~~get up from bed animation (hopefully it will work out fine)~~
