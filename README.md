@@ -50,6 +50,9 @@ Stuff related to my Project
 ## Ai  
 [Text to speech](https://fmhy.pages.dev/ai/#text-to-speech)  
 [getimg.ai](https://getimg.ai/)  
+## Animation
+[mixamo](https://www.mixamo.com/)
+[AccuRig](https://actorcore.reallusion.com/3d-motion) (haven't used it yet)
 ## Cinematic Cutscene Unity Tutorials  
 [Previsualization](https://resources.unity.com/media-entertainment-content/road-to-real-time-previsualization)  
 [Timeline for Animated Storytelling](https://resources.unity.com/media-entertainment-content/timeline-for-animated-storytelling)  
