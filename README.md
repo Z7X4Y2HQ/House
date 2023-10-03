@@ -1,33 +1,33 @@
 # Skipped a Beat / FYP
 Stuff related to my Project
 ## Todos
+- [ ] change UI and Camera movement methods based on input device
+- [ ] Add pause menu triggers for different backgrounds
+- [ ] Dialogue system (saves and progress and stuff)
 - [ ] Characters (make more and diff varients )
 - [ ] Character animations (a pain in the arse)
-- [ ] Dialogue system (saves and progress and stuff)
-- [ ] Dialogue system UI (not saste wala)
-- [ ] Animation timeline cutscenes (first scene of the game)
-- [ ] get up from bed animation (hopefully it will work out fine)
-- [ ] functional mobile
-- [ ] try animations with disabling character controllers capsule collider
-- [ ] fade in or something better when switching between vcams
-- [ ] Adjust character animation speed and character movement speed
-- [ ] Add pause menu triggers for different backgrounds
-- [ ] Add first scene with ink
 - [ ] Add texture and materials for testing
+- [ ] Dialogue system UI (not saste wala)
 - [ ] try blend tree for animations
-- [ ] change UI and Camera movement methods based on input device
+- [ ] Add first scene with ink
+- [ ] functional mobile
+- [x] ~~Door system~~
+- [x] ~~outline things if possible~~
+- [x] ~~Face eye blinking animations~~
+- [x] ~~add transitions between scenes~~
+- [x] ~~check between diff input devices~~
+- [x] ~~import 1st and 2nd floor of house~~
+- [x] ~~Interaction system with raycasting~~
 - [x] ~~move character from one scene to another~~
 - [x] ~~change cameras when in house like persona~~
-- [x] ~~Door system~~
-- [x] ~~changing cloths (check how to manage cinemachine vcam with scripts)~~
-- [x] ~~add transitions between scenes~~
 - [x] ~~transition while changing cloths (character)~~
-- [x] ~~outline things if possible~~
-- [x] ~~Interaction system with raycasting~~
-- [x] ~~check between diff input devices~~
 - [x] ~~Character movement (adjustments left, rewatch vid)~~
-- [x] ~~Face eye blinking animations~~
-- [x] ~~import 1st and 2nd floor of house~~
+- [x] ~~Animation timeline cutscenes (first scene of the game)~~
+- [x] ~~get up from bed animation (hopefully it will work out fine)~~
+- [x] ~~changing cloths (check how to manage cinemachine vcam with scripts)~~
+- [ ] ~~try animations with disabling character controllers capsule collider~~
+- [ ] ~~Adjust character animation speed and character movement speed~~
+- [ ] ~~fade in or something better when switching between vcams~~
 # Links
 
 ## For Blender:
@@ -51,7 +51,7 @@ Stuff related to my Project
 [Text to speech](https://fmhy.pages.dev/ai/#text-to-speech)  
 [getimg.ai](https://getimg.ai/)  
 ## Animation
-[mixamo](https://www.mixamo.com/)  
+[Mixamo](https://www.mixamo.com/)  
 [AccuRig](https://actorcore.reallusion.com/3d-motion) (haven't used it yet)  
 ## Cinematic Cutscene Unity Tutorials  
 [Previsualization](https://resources.unity.com/media-entertainment-content/road-to-real-time-previsualization)  
