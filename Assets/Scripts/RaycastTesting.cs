@@ -5,16 +5,23 @@ using UnityEngine;
 public class RaycastTesting : MonoBehaviour
 {
     private Camera cam;
+    PlayerInput PlayerInput;
     private int layerMask;
     public GameObject lastHitObject;
     private int InteractableLayer;
     public float radius = 0.5f;
     public bool isInteracting = false;
+    private HandleProgress handleProgress;
 
+    void Awake()
+    {
+        PlayerInput = new PlayerInput();
+    }
     void Start()
     {
         cam = Camera.main;
         InteractableLayer = LayerMask.NameToLayer("Interactable");
+        handleProgress = GameObject.Find("HandleHUD").GetComponent<HandleProgress>();
         layerMask = 1 << InteractableLayer;
     }
 
@@ -38,6 +45,18 @@ public class RaycastTesting : MonoBehaviour
                 lastHitObject = hit.collider.gameObject;
                 setOutline(true);
                 isInteracting = true;
+                if (hit.collider.gameObject.name == "Phone")
+                {
+                    if (handleProgress.objectives[0].isCompleted)
+                    {
+                        if (PlayerInput.Interact.InteractObject.triggered)
+                        {
+                            Destroy(hit.collider.gameObject);
+                            handleProgress.pickedUpPhone = true;
+                        }
+
+                    }
+                }
 
             }
             else if (lastHitObject != null)
@@ -58,5 +77,14 @@ public class RaycastTesting : MonoBehaviour
     private void setOutline(bool outlineBool)
     {
         lastHitObject.GetComponent<Outline>().enabled = outlineBool;
+    }
+
+    void OnEnable()
+    {
+        PlayerInput.Interact.Enable();
+    }
+    void OnDisable()
+    {
+        PlayerInput.Interact.Disable();
     }
 }

@@ -14,8 +14,9 @@ public class HandleProgress : MonoBehaviour
 
     public Objective[] objectives = new Objective[]
     {
-        new Objective { description = "Press W, A, S, D to move around", isCompleted = false },
-        new Objective { description = "Pick up your phone from the table", isCompleted = false },
+        new Objective { description = "Press W, A, S, D to move around", isCompleted = false},
+        new Objective { description = "Pick up your phone from the table", isCompleted = false},
+        new Objective { description = "Press TAB to take out phone", isCompleted = false },
     };
 
     public static bool firstPlaythrough;
@@ -24,10 +25,13 @@ public class HandleProgress : MonoBehaviour
     public static string currentScene;
     public static bool tutorialComplete = false;
     private int currentObjectiveIndex = 0;
+    private bool completion = false;
     private bool pressW = false;
     private bool pressA = false;
     private bool pressS = false;
     private bool pressD = false;
+    public bool pickedUpPhone = false;
+
 
     public static TextMeshProUGUI objective;
     public static TextMeshProUGUI dateTime;
@@ -74,11 +78,14 @@ public class HandleProgress : MonoBehaviour
                     objectives[currentObjectiveIndex].isCompleted = true;
                 }
                 break;
-            case 1: // Objective: Press W, A, S, D to move around
-                if (Input.GetKeyDown(KeyCode.Space))
+            case 1: // Objective: Pick up your phone from the table
+                if (pickedUpPhone)
                 {
                     objectives[currentObjectiveIndex].isCompleted = true;
                 }
+                break;
+            case 2: // Objective: Press TAB to take out phone
+                Debug.Log("Case 2");
                 break;
         }
 
@@ -88,6 +95,7 @@ public class HandleProgress : MonoBehaviour
             currentObjectiveIndex++;
             StartCoroutine(UpdateObjective());
         }
+        Debug.Log("currentObjectiveIndex" + currentObjectiveIndex);
     }
 
     private IEnumerator UpdateObjective()

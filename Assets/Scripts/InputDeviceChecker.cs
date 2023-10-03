@@ -50,11 +50,11 @@ public class InputDeviceChecker : MonoBehaviour
 
         if (device is Keyboard || device is Mouse)
         {
-            Debug.Log("Keyboard or Mouse used");
+            // Debug.Log("Keyboard or Mouse used");
         }
         else if (device is Gamepad)
         {
-            Debug.Log("Gamepad used");
+            // Debug.Log("Gamepad used");
         }
     }
 }
