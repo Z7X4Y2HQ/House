@@ -25,7 +25,7 @@ public class HandleProgress : MonoBehaviour
     public static string currentScene;
     public static bool tutorialComplete = false;
     private int currentObjectiveIndex = 0;
-    private bool completion = false;
+    // private bool completion = false;
     private bool pressW = false;
     private bool pressA = false;
     private bool pressS = false;

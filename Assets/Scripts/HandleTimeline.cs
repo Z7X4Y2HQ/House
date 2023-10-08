@@ -7,6 +7,10 @@ using UnityEngine.Playables;
 public class HandleTimeline : MonoBehaviour
 {
     private PlayableDirector timeline;
+    public GameObject phone;
+    public GameObject objectiveContainer;
+    public GameObject objectiveText;
+
 
     private void Update()
     {
@@ -19,7 +23,24 @@ public class HandleTimeline : MonoBehaviour
         {
             timeline = GameObject.Find("Waking up from first Dream TImeline").GetComponent<PlayableDirector>();
             timeline.Play();
-            gameObject.SetActive(false);
+            HandleProgress.currentScene = "Chapter_one_getting_up_from_bed";
+        }
+        timeline = GameObject.Find("Waking up from first Dream TImeline").GetComponent<PlayableDirector>();
+
+
+        if (timeline.state == PlayState.Playing)
+        {
+            Debug.Log("Timeline is playing");
+            phone.layer = LayerMask.NameToLayer("Default");
+            objectiveContainer.SetActive(false);
+            objectiveText.SetActive(false);
+        }
+        else
+        {
+            Debug.Log("Timeline is not playing");
+            phone.layer = LayerMask.NameToLayer("Interactable");
+            objectiveContainer.SetActive(true);
+            objectiveText.SetActive(true);
         }
     }
 
