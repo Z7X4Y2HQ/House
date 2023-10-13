@@ -10,6 +10,7 @@ public class PauseMenuScript : MonoBehaviour
     public GameObject HUD;
     private GameObject player;
     PlayerInput PlayerInput;
+    private PhoneManager phoneManager;
 
     void Awake()
     {
@@ -19,21 +20,30 @@ public class PauseMenuScript : MonoBehaviour
         {
             playerInWardrobeRange.currentCloths = PlayerPrefs.GetString("currentCharacter");
         }
+        phoneManager = GameObject.Find("PhoneManager").GetComponent<PhoneManager>();
     }
     void Update()
     {
-        if (PlayerInput.UI.Pause.triggered)
+        if (PlayerInput.UI.Pause.triggered && !DialogueManager.dialogueIsPlaying)
         {
-            if (gameIsPaused)
+            if (phoneManager.phoneOut)
             {
-                Resume();
-                HUD.SetActive(true);
+                phoneManager.putBackPhone();
             }
             else
             {
-                Pause();
-                HUD.SetActive(false);
+                if (gameIsPaused)
+                {
+                    Resume();
+                    HUD.SetActive(true);
+                }
+                else
+                {
+                    Pause();
+                    HUD.SetActive(false);
+                }
             }
+
         }
     }
 

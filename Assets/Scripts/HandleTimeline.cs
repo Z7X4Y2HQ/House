@@ -10,8 +10,6 @@ public class HandleTimeline : MonoBehaviour
     public GameObject phone;
     public GameObject objectiveContainer;
     public GameObject objectiveText;
-
-
     private void Update()
     {
         if (HandleProgress.currentChapter == 1 && HandleProgress.currentScene == "Chapter_one_first_dream")
@@ -27,7 +25,6 @@ public class HandleTimeline : MonoBehaviour
         }
         timeline = GameObject.Find("Waking up from first Dream TImeline").GetComponent<PlayableDirector>();
 
-
         if (timeline.state == PlayState.Playing)
         {
             Debug.Log("Timeline is playing");
@@ -39,9 +36,12 @@ public class HandleTimeline : MonoBehaviour
         {
             Debug.Log("Timeline is not playing");
             phone.layer = LayerMask.NameToLayer("Interactable");
-            objectiveContainer.SetActive(true);
-            objectiveText.SetActive(true);
-            // this.gameObject.SetActive(false);
+            if (!DialogueManager.dialogueIsPlaying)
+            {
+                objectiveContainer.SetActive(true);
+                objectiveText.SetActive(true);
+            }
+            this.gameObject.SetActive(false);
         }
     }
 

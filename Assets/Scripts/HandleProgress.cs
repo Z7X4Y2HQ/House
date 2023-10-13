@@ -19,6 +19,7 @@ public class HandleProgress : MonoBehaviour
         new Objective { description = "Pick up your phone from the table", isCompleted = false},
         new Objective { description = "Press TAB to take out phone", isCompleted = false },
         new Objective { description = "", isCompleted = false },
+        new Objective { description = "Find a Knife", isCompleted = false },
     };
 
     public static bool firstPlaythrough;
@@ -26,7 +27,7 @@ public class HandleProgress : MonoBehaviour
     public static string currentChapterName;
     public static string currentScene;
     public static bool tutorialComplete = false;
-    private int currentObjectiveIndex = 0;
+    public static int currentObjectiveIndex = 0;
     private bool pressW = false;
     private bool pressA = false;
     private bool pressS = false;
@@ -40,10 +41,14 @@ public class HandleProgress : MonoBehaviour
     public Animator ContainerAnimator;
     public Animator TextAnimator;
 
+    [Header("Dialogue Files")]
+    private DialogueManager dialogueManager;
+
     private void Awake()
     {
         objective = GameObject.Find("Objective Text").GetComponent<TextMeshProUGUI>();
         phoneManager = GameObject.Find("PhoneManager").GetComponent<PhoneManager>();
+        dialogueManager = GameObject.Find("DialogueManager").GetComponent<DialogueManager>();
     }
 
     private void Start()
@@ -89,11 +94,20 @@ public class HandleProgress : MonoBehaviour
             case 2: // Objective: Press TAB to take out phone
                 if (phoneManager.phoneOutFirstTime)
                 {
+                    HandleProgress.currentScene = "Chapter_one_getting_up_from_bed"; //TEMPPPPP
                     objectives[currentObjectiveIndex].isCompleted = true;
                 }
                 break;
             case 3:
-                Debug.Log("Case 3");
+                bool objectiveComplete = ((Ink.Runtime.BoolValue)dialogueManager.GetVariableState("objectiveComplete")).value;
+                if (objectiveComplete)
+                {
+                    tutorialComplete = true;
+                    objectives[currentObjectiveIndex].isCompleted = true;
+                }
+                break;
+            case 4:
+                Debug.Log("Case 4");
                 break;
         }
 
@@ -103,7 +117,6 @@ public class HandleProgress : MonoBehaviour
             currentObjectiveIndex++;
             StartCoroutine(UpdateObjective());
         }
-        Debug.Log("currentObjectiveIndex" + currentObjectiveIndex);
     }
 
     private IEnumerator UpdateObjective()

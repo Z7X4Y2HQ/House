@@ -7,7 +7,7 @@ public class PhoneManager : MonoBehaviour
     private HandleProgress handleProgress;
     public Animator phoneUI;
     private Animator Player;
-    private bool phoneOut = false;
+    public bool phoneOut = false;
     public bool phoneOutFirstTime = false;
 
     private void Awake()
@@ -29,21 +29,31 @@ public class PhoneManager : MonoBehaviour
                 {
                     Player = GameObject.FindWithTag("Takahashi_Summer_school").GetComponent<Animator>();
                 }
-                phoneOut = true;
-                Debug.Log("phone out =  true");
-                Player.Play("Taking out phone");
-                phoneUI.Play("Phone slide up");
-                StartCoroutine(phoneAnimation());
+                takeOutPhone();
             }
             else if (phoneOut && Input.GetKeyDown(KeyCode.Tab))
             {
-                phoneOut = false;
-                phoneOutFirstTime = true;
-                Debug.Log("phone out =  false");
-                Player.Play("Putting phone back");
-                phoneUI.Play("Phone slide down");
+                putBackPhone();
             }
         }
+    }
+
+    public void takeOutPhone()
+    {
+        phoneOut = true;
+        Debug.Log("phone out =  true");
+        Player.Play("Taking out phone");
+        phoneUI.Play("Phone slide up");
+        StartCoroutine(phoneAnimation());
+    }
+
+    public void putBackPhone()
+    {
+        phoneOut = false;
+        phoneOutFirstTime = true;
+        Debug.Log("phone out =  false");
+        Player.Play("Putting phone back");
+        phoneUI.Play("Phone slide down");
     }
 
     private IEnumerator phoneAnimation()

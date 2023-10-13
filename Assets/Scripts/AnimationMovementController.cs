@@ -19,6 +19,7 @@ public class AnimationMovementController : MonoBehaviour
     Vector3 moveDirection;
     public float gravity = 9.8f;
     private float verticalVelocity = 0.0f;
+    private PhoneManager phoneManager;
 
 
 
@@ -26,6 +27,7 @@ public class AnimationMovementController : MonoBehaviour
     {
         PlayerInput = new PlayerInput();
         characterController = GetComponent<CharacterController>();
+        phoneManager = GameObject.Find("PhoneManager").GetComponent<PhoneManager>();
         animator = GetComponent<Animator>();
 
         isWalkHash = Animator.StringToHash("isWalk");
@@ -50,11 +52,14 @@ public class AnimationMovementController : MonoBehaviour
         }
 
         handleGravity();
-        handleAnimation();
-        handleRotation();
+        if (!DialogueManager.dialogueIsPlaying && !phoneManager.phoneOut)
+        {
+            handleAnimation();
+            handleRotation();
+        }
 
 
-        if (isMovementPressed)
+        if (isMovementPressed && !DialogueManager.dialogueIsPlaying && !phoneManager.phoneOut)
         {
             characterController.Move(moveDirection * Time.deltaTime * 1.5f);
         }

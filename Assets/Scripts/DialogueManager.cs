@@ -23,12 +23,18 @@ public class DialogueManager : MonoBehaviour
 
     [Header("Load Globals JSON")]
     [SerializeField] private TextAsset loadGlobalsJSON;
+
+    [Header("Hide UI")]
+    public GameObject objectiveText;
+    public GameObject objectiveContainer;
+
     private Story currentStory;
     public static bool dialogueIsPlaying { get; private set; }
     private bool canContinueToNextLine = false;
     private bool canSkip = false;
     private bool submitSkip = false;
     public static DialogueManager instance;
+
 
 
     private const string SPEAKER_TAG = "speaker";
@@ -104,6 +110,8 @@ public class DialogueManager : MonoBehaviour
         dialogueVariables.StartListening(currentStory);
 
         displayNameText.text = "???";
+        objectiveText.SetActive(false);
+        objectiveContainer.SetActive(false);
 
         ContinueStory();
     }
@@ -116,6 +124,8 @@ public class DialogueManager : MonoBehaviour
         dialoguePanel.SetActive(false);
         hideChoices();
         dialogueText.text = "";
+        objectiveText.SetActive(true);
+        objectiveContainer.SetActive(true);
     }
 
     private void hideChoices()
