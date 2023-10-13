@@ -3,15 +3,14 @@ Stuff related to my Project
 ## Todos
 - [ ] change UI and Camera movement methods based on input device
 - [ ] Add pause menu triggers for different backgrounds
-- [ ] Dialogue system (saves and progress and stuff)
 - [ ] Characters (make more and diff varients )
 - [ ] Character animations (a pain in the arse)
 - [ ] Add texture and materials for testing
 - [ ] Dialogue system UI (not saste wala)
 - [ ] try blend tree for animations
-- [ ] Add first scene with ink
 - [ ] functional mobile
 - [x] ~~Door system~~
+- [x] ~~Add first scene with ink~~
 - [x] ~~outline things if possible~~
 - [x] ~~Face eye blinking animations~~
 - [x] ~~add transitions between scenes~~
@@ -28,6 +27,7 @@ Stuff related to my Project
 - [ ] ~~try animations with disabling character controllers capsule collider~~
 - [ ] ~~Adjust character animation speed and character movement speed~~
 - [ ] ~~fade in or something better when switching between vcams~~
+- [ ] ~~Dialogue system (saves and progress and stuff)~~
 # Links
 
 ## For Blender:
