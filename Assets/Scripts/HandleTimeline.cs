@@ -41,6 +41,7 @@ public class HandleTimeline : MonoBehaviour
             phone.layer = LayerMask.NameToLayer("Interactable");
             objectiveContainer.SetActive(true);
             objectiveText.SetActive(true);
+            // this.gameObject.SetActive(false);
         }
     }
 

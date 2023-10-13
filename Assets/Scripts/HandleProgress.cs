@@ -5,6 +5,7 @@ using TMPro;
 
 public class HandleProgress : MonoBehaviour
 {
+    private PhoneManager phoneManager;
 
     public class Objective
     {
@@ -17,6 +18,7 @@ public class HandleProgress : MonoBehaviour
         new Objective { description = "Press W, A, S, D to move around", isCompleted = false},
         new Objective { description = "Pick up your phone from the table", isCompleted = false},
         new Objective { description = "Press TAB to take out phone", isCompleted = false },
+        new Objective { description = "", isCompleted = false },
     };
 
     public static bool firstPlaythrough;
@@ -25,7 +27,6 @@ public class HandleProgress : MonoBehaviour
     public static string currentScene;
     public static bool tutorialComplete = false;
     private int currentObjectiveIndex = 0;
-    // private bool completion = false;
     private bool pressW = false;
     private bool pressA = false;
     private bool pressS = false;
@@ -42,7 +43,7 @@ public class HandleProgress : MonoBehaviour
     private void Awake()
     {
         objective = GameObject.Find("Objective Text").GetComponent<TextMeshProUGUI>();
-        firstPlaythrough = true;
+        phoneManager = GameObject.Find("PhoneManager").GetComponent<PhoneManager>();
     }
 
     private void Start()
@@ -73,6 +74,7 @@ public class HandleProgress : MonoBehaviour
         switch (currentObjectiveIndex)
         {
             case 0: // Objective: Press W, A, S, D to move around
+                firstPlaythrough = true;
                 if (pressW && pressA && pressS && pressD)
                 {
                     objectives[currentObjectiveIndex].isCompleted = true;
@@ -85,7 +87,13 @@ public class HandleProgress : MonoBehaviour
                 }
                 break;
             case 2: // Objective: Press TAB to take out phone
-                Debug.Log("Case 2");
+                if (phoneManager.phoneOutFirstTime)
+                {
+                    objectives[currentObjectiveIndex].isCompleted = true;
+                }
+                break;
+            case 3:
+                Debug.Log("Case 3");
                 break;
         }
 
