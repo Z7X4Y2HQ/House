@@ -17,3 +17,5 @@ so that Sachi doesn’t come in my life ever again.
 I need something I can kill myself with but I can’t get a handgun in this body…
 A knife!
 ~ objectiveComplete = true
+~ location = "Home"
+~ time = "2nd April, 2018"
