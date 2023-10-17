@@ -2000,8 +2000,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pickedUpPhone: 0
-  ContainerAnimator: {fileID: 42871254}
-  TextAnimator: {fileID: 1059946262}
+  objectiveContainerAnimator: {fileID: 42871254}
+  objectiveTextAnimator: {fileID: 1059946262}
+  locationContainerAnimator: {fileID: 1811191437}
+  locationTextAnimator: {fileID: 980050242}
+  dateTimeContainerAnimator: {fileID: 984926974}
+  dateTimeTextAnimator: {fileID: 1352236161}
 --- !u!4 &441812744
 Transform:
   m_ObjectHideFlags: 0
@@ -4073,6 +4077,16 @@ RectTransform:
   m_AnchoredPosition: {x: 738, y: -167}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &980050240 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6270319833533639110, guid: 45bbd7dcfbd6944e09b7058c089a173d, type: 3}
+  m_PrefabInstance: {fileID: 6270319832865026170}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &980050242 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 980050242, guid: 45bbd7dcfbd6944e09b7058c089a173d, type: 3}
+  m_PrefabInstance: {fileID: 6270319832865026170}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &980112899
 GameObject:
   m_ObjectHideFlags: 0
@@ -4170,6 +4184,16 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 980112899}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &984926972 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6270319834401973707, guid: 45bbd7dcfbd6944e09b7058c089a173d, type: 3}
+  m_PrefabInstance: {fileID: 6270319832865026170}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &984926974 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 984926974, guid: 45bbd7dcfbd6944e09b7058c089a173d, type: 3}
+  m_PrefabInstance: {fileID: 6270319832865026170}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &988859548
 GameObject:
   m_ObjectHideFlags: 1
@@ -5666,6 +5690,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1352236159 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6270319832632329510, guid: 45bbd7dcfbd6944e09b7058c089a173d, type: 3}
+  m_PrefabInstance: {fileID: 6270319832865026170}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1352236161 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1352236161, guid: 45bbd7dcfbd6944e09b7058c089a173d, type: 3}
+  m_PrefabInstance: {fileID: 6270319832865026170}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1376124426
 GameObject:
   m_ObjectHideFlags: 0
@@ -7329,6 +7363,16 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 35.29297, y: 700, z: 40.135376}
   m_Center: {x: 34429.15, y: 4673, z: 1068.7097}
+--- !u!1 &1811191435 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6270319834369999523, guid: 45bbd7dcfbd6944e09b7058c089a173d, type: 3}
+  m_PrefabInstance: {fileID: 6270319832865026170}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1811191437 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1811191437, guid: 45bbd7dcfbd6944e09b7058c089a173d, type: 3}
+  m_PrefabInstance: {fileID: 6270319832865026170}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1856894624
 GameObject:
   m_ObjectHideFlags: 0
@@ -7927,6 +7971,10 @@ MonoBehaviour:
   loadGlobalsJSON: {fileID: 4900000, guid: d13c14fab75224e709394d6913b29fa0, type: 3}
   objectiveText: {fileID: 1059946258}
   objectiveContainer: {fileID: 42871250}
+  locationText: {fileID: 980050240}
+  locationContainer: {fileID: 1811191435}
+  dateTimeText: {fileID: 1352236159}
+  dateTimeContainer: {fileID: 984926972}
 --- !u!4 &2076490181
 Transform:
   m_ObjectHideFlags: 0

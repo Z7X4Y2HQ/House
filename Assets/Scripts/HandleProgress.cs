@@ -20,6 +20,7 @@ public class HandleProgress : MonoBehaviour
         new Objective { description = "Press TAB to take out phone", isCompleted = false },
         new Objective { description = "", isCompleted = false },
         new Objective { description = "Find a Knife", isCompleted = false },
+        new Objective { description = "Kill Yourself!", isCompleted = false },
     };
 
     public static bool firstPlaythrough;
@@ -32,14 +33,23 @@ public class HandleProgress : MonoBehaviour
     private bool pressA = false;
     private bool pressS = false;
     private bool pressD = false;
-    public bool pickedUpPhone = false;
+    public static bool pickedUpPhone = false;
+    public static bool pickedUpKnife = false;
 
-
+    [Header("Objective")]
     public static TextMeshProUGUI objective;
-    public static TextMeshProUGUI dateTime;
+    public Animator objectiveContainerAnimator;
+    public Animator objectiveTextAnimator;
+    [Header("Location")]
     public static TextMeshProUGUI location;
-    public Animator ContainerAnimator;
-    public Animator TextAnimator;
+    public Animator locationContainerAnimator;
+    public Animator locationTextAnimator;
+
+    [Header("Date Time")]
+    public static TextMeshProUGUI dateTime;
+    public Animator dateTimeContainerAnimator;
+    public Animator dateTimeTextAnimator;
+
 
     [Header("Dialogue Files")]
     private DialogueManager dialogueManager;
@@ -47,34 +57,59 @@ public class HandleProgress : MonoBehaviour
     private void Awake()
     {
         objective = GameObject.Find("Objective Text").GetComponent<TextMeshProUGUI>();
+        location = GameObject.Find("Location Text").GetComponent<TextMeshProUGUI>();
+        dateTime = GameObject.Find("Date TIme Text").GetComponent<TextMeshProUGUI>();
         phoneManager = GameObject.Find("PhoneManager").GetComponent<PhoneManager>();
         dialogueManager = GameObject.Find("DialogueManager").GetComponent<DialogueManager>();
     }
 
     private void Start()
     {
-        ContainerAnimator.Play("SlideInFromRightContainer");
-        TextAnimator.Play("SlideInFromRightText");
+        objectiveContainerAnimator.Play("SlideInFromRightContainer");
+        objectiveTextAnimator.Play("SlideInFromRightText");
+        if (tutorialComplete)
+        {
+            location.text = PlayerPrefs.GetString("currentLocation");
+            dateTime.text = PlayerPrefs.GetString("currentDateTime");
+            locationContainerAnimator.gameObject.SetActive(true);
+            locationTextAnimator.gameObject.SetActive(true);
+            dateTimeContainerAnimator.gameObject.SetActive(true);
+            dateTimeTextAnimator.gameObject.SetActive(true);
+            locationContainerAnimator.Play("SlideInFromRightContainer");
+            locationTextAnimator.Play("SlideInFromRightText");
+            dateTimeContainerAnimator.Play("SlideInFromLeftContainer");
+            dateTimeTextAnimator.Play("SlideInFromLeftText");
+        }
+        else
+        {
+            locationContainerAnimator.gameObject.SetActive(false);
+            locationTextAnimator.gameObject.SetActive(false);
+            dateTimeContainerAnimator.gameObject.SetActive(false);
+            dateTimeTextAnimator.gameObject.SetActive(false);
+        }
         StartCoroutine(UpdateObjective());
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W))
+        if (!PauseMenuScript.gameIsPaused)
         {
-            pressW = true;
-        }
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            pressA = true;
-        }
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            pressS = true;
-        }
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            pressD = true;
+            if (Input.GetKeyDown(KeyCode.W))
+            {
+                pressW = true;
+            }
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                pressA = true;
+            }
+            if (Input.GetKeyDown(KeyCode.S))
+            {
+                pressS = true;
+            }
+            if (Input.GetKeyDown(KeyCode.D))
+            {
+                pressD = true;
+            }
         }
         switch (currentObjectiveIndex)
         {
@@ -98,16 +133,35 @@ public class HandleProgress : MonoBehaviour
                     objectives[currentObjectiveIndex].isCompleted = true;
                 }
                 break;
-            case 3:
+            case 3: //
                 bool objectiveComplete = ((Ink.Runtime.BoolValue)dialogueManager.GetVariableState("objectiveComplete")).value;
+                string locationText = ((Ink.Runtime.StringValue)dialogueManager.GetVariableState("location")).value;
+                string time = ((Ink.Runtime.StringValue)dialogueManager.GetVariableState("time")).value;
                 if (objectiveComplete)
                 {
+                    location.text = locationText;
+                    dateTime.text = time;
+                    PlayerPrefs.SetString("currentLocation", locationText);
+                    PlayerPrefs.SetString("currentDateTime", time);
+                    locationContainerAnimator.gameObject.SetActive(true);
+                    locationTextAnimator.gameObject.SetActive(true);
+                    dateTimeContainerAnimator.gameObject.SetActive(true);
+                    dateTimeTextAnimator.gameObject.SetActive(true);
                     tutorialComplete = true;
                     objectives[currentObjectiveIndex].isCompleted = true;
                 }
                 break;
-            case 4:
+            case 4: // Find a Knife
                 Debug.Log("Case 4");
+                if (pickedUpKnife)
+                {
+                    objectives[currentObjectiveIndex].isCompleted = true;
+                }
+                break;
+            case 5:
+                location.text = "Kill Yourself!";
+                dateTime.text = "Kill Yourself!";
+                Debug.Log("Case 5");
                 break;
         }
 
@@ -121,9 +175,17 @@ public class HandleProgress : MonoBehaviour
 
     private IEnumerator UpdateObjective()
     {
-        TextAnimator.Play("SlideOutFromRightText");
-        yield return new WaitForSeconds(1.1f);
-        objective.text = objectives[currentObjectiveIndex].description;
-        TextAnimator.Play("SlideInFromRightText");
+        if (currentObjectiveIndex != 5)
+        {
+            objectiveTextAnimator.Play("SlideOutFromRightText");
+            yield return new WaitForSeconds(1.1f);
+            objective.text = objectives[currentObjectiveIndex].description;
+            objectiveTextAnimator.Play("SlideInFromRightText");
+        }
+        else
+        {
+            objective.text = objectives[currentObjectiveIndex].description;
+        }
+
     }
 }

@@ -36,6 +36,7 @@ public class MenuScript : MonoBehaviour
         HandleProgress.currentChapterName = "Chapter One";
         HandleProgress.currentScene = "Chapter_one_first_dream";
         HandleProgress.firstPlaythrough = true;
+        PlayerPrefs.SetString("currentCharacter", "Takahashi_Summer_home");
     }
 
     public void Continue()

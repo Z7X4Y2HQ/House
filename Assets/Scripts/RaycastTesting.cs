@@ -45,16 +45,23 @@ public class RaycastTesting : MonoBehaviour
                 lastHitObject = hit.collider.gameObject;
                 setOutline(true);
                 isInteracting = true;
-                if (hit.collider.gameObject.name == "Phone")
+                if (PlayerInput.Interact.InteractObject.triggered)
                 {
-                    if (handleProgress.objectives[0].isCompleted)
+                    if (hit.collider.gameObject.name == "Phone")
                     {
-                        if (PlayerInput.Interact.InteractObject.triggered)
+                        if (handleProgress.objectives[0].isCompleted)
                         {
                             Destroy(hit.collider.gameObject);
-                            handleProgress.pickedUpPhone = true;
+                            HandleProgress.pickedUpPhone = true;
                         }
-
+                    }
+                    else if (hit.collider.gameObject.name == "Knife")
+                    {
+                        if (HandleProgress.currentObjectiveIndex == 4)
+                        {
+                            Destroy(hit.collider.gameObject);
+                            HandleProgress.pickedUpKnife = true;
+                        }
                     }
                 }
 

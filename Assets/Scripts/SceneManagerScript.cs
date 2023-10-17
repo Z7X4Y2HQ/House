@@ -20,7 +20,7 @@ public class SceneManagerScript : MonoBehaviour
         PlayerInput = new PlayerInput();
         if (currentCharacter == null)
         {
-            currentCharacter = "Takahashi_Summer_home";
+            currentCharacter = PlayerPrefs.GetString("currentCharacter");
         }
         animator = GameObject.Find("LevelLoader").GetComponentInChildren<Animator>();
         currentCharacterInHierarchy = FindObjectOfType<CharacterController>().gameObject.tag;

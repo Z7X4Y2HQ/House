@@ -27,6 +27,10 @@ public class DialogueManager : MonoBehaviour
     [Header("Hide UI")]
     public GameObject objectiveText;
     public GameObject objectiveContainer;
+    public GameObject locationText;
+    public GameObject locationContainer;
+    public GameObject dateTimeText;
+    public GameObject dateTimeContainer;
 
     private Story currentStory;
     public static bool dialogueIsPlaying { get; private set; }
@@ -112,6 +116,10 @@ public class DialogueManager : MonoBehaviour
         displayNameText.text = "???";
         objectiveText.SetActive(false);
         objectiveContainer.SetActive(false);
+        locationText.SetActive(false);
+        locationContainer.SetActive(false);
+        dateTimeText.SetActive(false);
+        dateTimeContainer.SetActive(false);
 
         ContinueStory();
     }
@@ -126,6 +134,10 @@ public class DialogueManager : MonoBehaviour
         dialogueText.text = "";
         objectiveText.SetActive(true);
         objectiveContainer.SetActive(true);
+        locationText.SetActive(true);
+        locationContainer.SetActive(true);
+        dateTimeText.SetActive(true);
+        dateTimeContainer.SetActive(true);
     }
 
     private void hideChoices()

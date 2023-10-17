@@ -4,22 +4,16 @@ using UnityEngine;
 
 public class PhoneManager : MonoBehaviour
 {
-    private HandleProgress handleProgress;
     public Animator phoneUI;
     private Animator Player;
     public bool phoneOut = false;
     public bool phoneOutFirstTime = false;
 
-    private void Awake()
-    {
-        handleProgress = GameObject.Find("HandleHUD").GetComponent<HandleProgress>();
-    }
-
     private void Update()
     {
-        if (handleProgress.pickedUpPhone)
+        if (HandleProgress.pickedUpPhone)
         {
-            if (!phoneOut && Input.GetKeyDown(KeyCode.Tab))
+            if (!phoneOut && Input.GetKeyDown(KeyCode.Tab) && !PauseMenuScript.gameIsPaused)
             {
                 if (GameObject.FindWithTag("Takahashi_Summer_home") != null)
                 {
