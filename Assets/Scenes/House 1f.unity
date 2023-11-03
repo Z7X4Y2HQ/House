@@ -874,7 +874,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 28
+  m_RootOrder: 29
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &565629726
 GameObject:
@@ -922,6 +922,59 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &619442872
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 619442874}
+  - component: {fileID: 619442873}
+  m_Layer: 0
+  m_Name: Mom's Walk from near Sofa to Kitchen
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!320 &619442873
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 619442872}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 11400000, guid: 9bdaeacba0d5541d4835d564ca658d09, type: 2}
+  m_InitialState: 0
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings:
+  - key: {fileID: 2790756829492502527, guid: ea5cc7e507a88462ebb3a7ce48ec7fea, type: 2}
+    value: {fileID: 7465250061648363261}
+  - key: {fileID: 3649634825142354546, guid: 9bdaeacba0d5541d4835d564ca658d09, type: 2}
+    value: {fileID: 7465250061648363261}
+  m_ExposedReferences:
+    m_References: []
+--- !u!4 &619442874
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 619442872}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 115.3854, y: 3.121, z: -2.755}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &636758659
 GameObject:
@@ -1561,7 +1614,7 @@ GameObject:
   - component: {fileID: 886837261}
   - component: {fileID: 886837260}
   m_Layer: 0
-  m_Name: moms animation
+  m_Name: Mom's Walk from Kitchen to near Sofa
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2087,7 +2140,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 24
+  m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1327940018
 GameObject:
@@ -2669,7 +2722,7 @@ Transform:
   - {fileID: 2140645973844517301}
   - {fileID: 884524848}
   m_Father: {fileID: 0}
-  m_RootOrder: 27
+  m_RootOrder: 28
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!114 &1806885178
 MonoBehaviour:
@@ -6422,7 +6475,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 26
+  m_RootOrder: 27
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!23 &1180969559057693999
 MeshRenderer:
@@ -9567,7 +9620,7 @@ Transform:
   m_Children:
   - {fileID: 2300839833394691044}
   m_Father: {fileID: 0}
-  m_RootOrder: 29
+  m_RootOrder: 30
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2300839833229960193
 GameObject:
@@ -16844,8 +16897,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8014726333024874764}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 115.97, y: 2.1537504, z: -1.699}
+  m_LocalRotation: {x: 0, y: -0.70553774, z: 0, w: 0.70867234}
+  m_LocalPosition: {x: 114.172806, y: 2.1436498, z: -3.4606915}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -16856,7 +16909,7 @@ Transform:
   - {fileID: 4378980823242532192}
   m_Father: {fileID: 0}
   m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -89.746, z: 0}
 --- !u!23 &4241321121397521998
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -18377,7 +18430,7 @@ Transform:
   - {fileID: 102325663958554281}
   - {fileID: 5708591415229790827}
   m_Father: {fileID: 0}
-  m_RootOrder: 25
+  m_RootOrder: 26
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4468317217481607854
 Transform:

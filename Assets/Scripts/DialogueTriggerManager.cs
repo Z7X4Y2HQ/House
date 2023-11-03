@@ -35,7 +35,9 @@ public class DialogueTriggerManager : MonoBehaviour
             }
             if (HandleProgress.currentScene == "Chapter_one_walking_down_the_stairs" && HandleProgress.currentObjectiveIndex == 4 && gameObject.name == "DialogueChapter_one_talking_to_mom")
             {
+                GameObject.Find(SceneManagerScript.currentCharacter).GetComponent<Animator>().SetBool("isWalk", false);
                 StartCoroutine(playAnimationBeforeDialogue());
+                HandleProgress.currentScene = "Chapter_one_talking_to_mom";
             }
         }
         Debug.Log("currentScene " + HandleProgress.currentScene);
@@ -47,9 +49,10 @@ public class DialogueTriggerManager : MonoBehaviour
     {
         DialogueManager.dialogueIsPlaying = true;
         momsWalkingFromKitchenAnimation.Play();
+        Debug.Log("starts here xD should be 4.9");
         yield return new WaitForSeconds(4.9f);
+        Debug.Log("should have finished by now");
         dialogueManager.EnterDialogueMode(Chapter_one_talking_to_mom);
-        HandleProgress.currentScene = "Chapter_one_talking_to_mom";
     }
     private IEnumerator waitBeforeStartingDialogue()
     {
