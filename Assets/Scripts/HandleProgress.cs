@@ -92,7 +92,8 @@ public class HandleProgress : MonoBehaviour
 
     private void Update()
     {
-        if (!PauseMenuScript.gameIsPaused)
+        Debug.Log(currentScene);
+        if (!PauseMenuScript.gameIsPaused || currentObjectiveIndex != 0)
         {
             if (Input.GetKeyDown(KeyCode.W))
             {
@@ -129,7 +130,7 @@ public class HandleProgress : MonoBehaviour
             case 2: // Objective: Press TAB to take out phone
                 if (phoneManager.phoneOutFirstTime)
                 {
-                    HandleProgress.currentScene = "Chapter_one_getting_up_from_bed"; //TEMPPPPP
+                    currentScene = "Chapter_one_getting_up_from_bed"; //TEMPPPPP
                     objectives[currentObjectiveIndex].isCompleted = true;
                 }
                 break;
@@ -157,11 +158,6 @@ public class HandleProgress : MonoBehaviour
                 {
                     objectives[currentObjectiveIndex].isCompleted = true;
                 }
-                break;
-            case 5:
-                location.text = "Kill Yourself!";
-                dateTime.text = "Kill Yourself!";
-                Debug.Log("Case 5");
                 break;
         }
 

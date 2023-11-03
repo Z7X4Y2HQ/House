@@ -33,7 +33,7 @@ public class DialogueManager : MonoBehaviour
     public GameObject dateTimeContainer;
 
     private Story currentStory;
-    public static bool dialogueIsPlaying { get; private set; }
+    public static bool dialogueIsPlaying;
     private bool canContinueToNextLine = false;
     private bool canSkip = false;
     private bool submitSkip = false;
@@ -42,6 +42,10 @@ public class DialogueManager : MonoBehaviour
 
 
     private const string SPEAKER_TAG = "speaker";
+    private const string ANIMATION_BOOL_TAG = "animationBool";
+    private const string ANIMATION_TAG = "animation";
+    private string currentSpeaker;
+    private string currentPlayerAnimator;
 
     private Coroutine displayLineCoroutine;
     private DialogueVariables dialogueVariables;
@@ -181,7 +185,28 @@ public class DialogueManager : MonoBehaviour
             switch (tagKey)
             {
                 case SPEAKER_TAG:
+                    currentSpeaker = tagValue;
                     displayNameText.text = tagValue;
+                    break;
+                case ANIMATION_BOOL_TAG:
+                    if (currentSpeaker == "Takahashi Tanjiro")
+                    {
+                        if (tagValue == "isWalk")
+                        {
+                            GameObject.Find(SceneManagerScript.currentCharacter).GetComponent<Animator>().SetBool(tagValue, false);
+                        }
+                        else
+                        {
+                            GameObject.Find(SceneManagerScript.currentCharacter).GetComponent<Animator>().SetBool(tagValue, true);
+                            StartCoroutine(waitForAnimation(tagValue));
+                        }
+                    }
+                    break;
+                case ANIMATION_TAG:
+                    if (currentSpeaker == "Takahashi Tanjiro")
+                    {
+                        GameObject.Find(SceneManagerScript.currentCharacter).GetComponent<Animator>().Play(tagValue);
+                    }
                     break;
                 default:
                     Debug.LogWarning("The tag came in and isn't being handled currently" + tag);
@@ -194,6 +219,12 @@ public class DialogueManager : MonoBehaviour
         canSkip = false; //Making sure the variable is false.
         yield return new WaitForSeconds(0.05f);
         canSkip = true;
+    }
+
+    private IEnumerator waitForAnimation(string tagValue)
+    {
+        yield return new WaitForSeconds(0.1f);
+        GameObject.Find(SceneManagerScript.currentCharacter).GetComponent<Animator>().SetBool(tagValue, false);
     }
 
     private IEnumerator DisplayLine(string line)

@@ -8,7 +8,7 @@ public class AnimationMovementController : MonoBehaviour
 {
     PlayerInput PlayerInput;
     CharacterController characterController;
-    Animator animator;
+    public static Animator animator;
     Vector2 currentMovementInput;
     Vector3 currentMovement;
     bool isMovementPressed;

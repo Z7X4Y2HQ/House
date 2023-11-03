@@ -6,7 +6,7 @@ using UnityEngine.Playables;
 
 public class HandleTimeline : MonoBehaviour
 {
-    private PlayableDirector timeline;
+    private static PlayableDirector timeline;
     public GameObject phone;
     public GameObject objectiveContainer;
     public GameObject objectiveText;

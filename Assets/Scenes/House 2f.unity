@@ -1448,7 +1448,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 276015678}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2076490180}
+        m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
+        m_MethodName: MakeChoice
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &276015678
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1999,7 +2011,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d2134a82754c44e885deb2237b68cbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickedUpPhone: 0
   objectiveContainerAnimator: {fileID: 42871254}
   objectiveTextAnimator: {fileID: 1059946262}
   locationContainerAnimator: {fileID: 1811191437}
@@ -3235,7 +3246,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 680831328}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2076490180}
+        m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
+        m_MethodName: MakeChoice
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &680831328
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4592,7 +4615,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1077029785}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2076490180}
+        m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
+        m_MethodName: MakeChoice
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1077029785
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6950,7 +6985,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1693481692}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2076490180}
+        m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
+        m_MethodName: MakeChoice
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1693481692
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8002,7 +8049,7 @@ GameObject:
   - component: {fileID: 2087028467}
   - component: {fileID: 2087028466}
   m_Layer: 0
-  m_Name: DialogueTrigger
+  m_Name: DialogueChapter_one_getting_up_from_bed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8021,6 +8068,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Chapter_one_getting_up_from_bed: {fileID: 4900000, guid: 773cc65c9f4274e9ea3d8b412799e1bf, type: 3}
+  Chapter_one_walking_down_the_stairs: {fileID: 4900000, guid: 902dad3af7f0546e19230126f79a6892, type: 3}
+  Chapter_one_talking_to_mom: {fileID: 0}
 --- !u!65 &2087028467
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9801,9 +9850,6 @@ GameObject:
   - component: {fileID: 4273942215315436854}
   - component: {fileID: 4322253719390642969}
   - component: {fileID: 270216622}
-  - component: {fileID: 7838539486410421131}
-  - component: {fileID: 7838539486410421130}
-  - component: {fileID: 7838539486410421132}
   m_Layer: 3
   m_Name: "\u30AA\u30D6\u30B8\u30A7\u30AF\u30C8_270"
   m_TagString: Untagged
@@ -19430,6 +19476,9 @@ GameObject:
   - component: {fileID: 3714807863273413672}
   - component: {fileID: 3507841470951292793}
   - component: {fileID: 7540866739350822348}
+  - component: {fileID: 7540866739350822351}
+  - component: {fileID: 7540866739350822350}
+  - component: {fileID: 7540866739350822349}
   m_Layer: 0
   m_Name: "\u30AA\u30D6\u30B8\u30A7\u30AF\u30C8_238"
   m_TagString: Untagged
@@ -24084,6 +24133,46 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 45.207035, y: 2176.3953, z: 287.18192}
   m_Center: {x: 28249.834, y: 5411.1978, z: 1561.5819}
+--- !u!114 &7540866739350822349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5622727117436078827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b7e07d9dd16f6447ba15e942b3745d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InteractPanel: {fileID: 2106330022}
+  locationName: Open Wardrobe
+  locationText: {fileID: 2008007412}
+--- !u!114 &7540866739350822350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5622727117436078827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ade241ddfb4077b43b419e4ffd962c62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &7540866739350822351
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5622727117436078827}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 319.74484, y: 2176.3953, z: 880.15967}
+  m_Center: {x: 28387.102, y: 5411.1978, z: 1716.2692}
 --- !u!23 &7544810943633895602
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -24914,46 +25003,6 @@ Transform:
   m_Father: {fileID: 2885253955594437467}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7838539486410421130
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 769850167408043565}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ade241ddfb4077b43b419e4ffd962c62, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!65 &7838539486410421131
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 769850167408043565}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1281.8816, y: 2176.3953, z: 398.57672}
-  m_Center: {x: 33081.16, y: 5411.1978, z: -710.4295}
---- !u!114 &7838539486410421132
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 769850167408043565}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b7e07d9dd16f6447ba15e942b3745d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  InteractPanel: {fileID: 2106330022}
-  locationName: Open Wardrobe
-  locationText: {fileID: 2008007412}
 --- !u!23 &7856463145193505177
 MeshRenderer:
   m_ObjectHideFlags: 0
