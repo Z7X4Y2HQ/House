@@ -4,6 +4,8 @@ using UnityEngine;
 using TMPro;
 using Ink.Runtime;
 using UnityEngine.EventSystems;
+using UnityEngine.Playables;
+
 
 public class DialogueManager : MonoBehaviour
 {
@@ -23,6 +25,8 @@ public class DialogueManager : MonoBehaviour
 
     [Header("Load Globals JSON")]
     [SerializeField] private TextAsset loadGlobalsJSON;
+    [Header("Timelines")]
+    private PlayableDirector timeline;
 
     [Header("Hide UI")]
     public GameObject objectiveText;
@@ -44,6 +48,7 @@ public class DialogueManager : MonoBehaviour
     private const string SPEAKER_TAG = "speaker";
     private const string ANIMATION_BOOL_TAG = "animationBool";
     private const string ANIMATION_TAG = "animation";
+    private const string TIMELINE_TAG = "timeline";
     private string currentSpeaker;
     private string currentPlayerAnimator;
 
@@ -206,6 +211,18 @@ public class DialogueManager : MonoBehaviour
                     if (currentSpeaker == "Takahashi Tanjiro")
                     {
                         GameObject.Find(SceneManagerScript.currentCharacter).GetComponent<Animator>().Play(tagValue);
+                    }
+                    break;
+                case TIMELINE_TAG:
+                    if (currentSpeaker == "Takahashi's Mom")
+                    {
+                        Debug.Log("This true");
+                        if (tagValue == "Mom's Walk from near Sofa to Kitchen")
+                        {
+                            Debug.Log("This true too");
+                            timeline = GameObject.Find("Mom's Walk from near Sofa to Kitchen").GetComponent<PlayableDirector>();
+                            timeline.Play();
+                        }
                     }
                     break;
                 default:
