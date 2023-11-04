@@ -130,7 +130,7 @@ public class HandleProgress : MonoBehaviour
             case 2: // Objective: Press TAB to take out phone
                 if (phoneManager.phoneOutFirstTime)
                 {
-                    currentScene = "Chapter_one_getting_up_from_bed"; //TEMPPPPP
+                    // currentScene = "Chapter_one_getting_up_from_bed"; //TEMPPPPP
                     objectives[currentObjectiveIndex].isCompleted = true;
                 }
                 break;
