@@ -23,7 +23,7 @@ public class HandleTimeline : MonoBehaviour
             timeline.Play();
             HandleProgress.currentScene = "Chapter_one_getting_up_from_bed";
         }
-        timeline = GameObject.Find("Waking up from first Dream TImeline").GetComponent<PlayableDirector>();
+        // timeline = GameObject.Find("Waking up from first Dream TImeline").GetComponent<PlayableDirector>();
 
         if (timeline.state == PlayState.Playing)
         {

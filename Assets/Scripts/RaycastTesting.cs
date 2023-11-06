@@ -11,11 +11,15 @@ public class RaycastTesting : MonoBehaviour
     private int InteractableLayer;
     public float radius = 0.5f;
     public bool isInteracting = false;
+    [SerializeField] private Transform handIKTarget;
+    private GameObject arm;
+    private Animator animator;
     private HandleProgress handleProgress;
 
     void Awake()
     {
         PlayerInput = new PlayerInput();
+        animator = GameObject.Find(SceneManagerScript.currentCharacter).GetComponent<Animator>();
     }
     void Start()
     {
@@ -32,7 +36,6 @@ public class RaycastTesting : MonoBehaviour
         Ray ray = cam.ScreenPointToRay(screenCenter);
 
         RaycastHit hit;
-
         if (Physics.SphereCast(ray, radius, out hit, 2f, layerMask))
         {
             if (hit.collider.gameObject.layer == InteractableLayer)
@@ -51,8 +54,10 @@ public class RaycastTesting : MonoBehaviour
                     {
                         if (handleProgress.objectives[0].isCompleted)
                         {
-                            Destroy(hit.collider.gameObject);
-                            HandleProgress.pickedUpPhone = true;
+                            handIKTarget.position = hit.collider.gameObject.transform.position;
+                            animator.SetTrigger("grabItem");
+                            // Destroy(hit.collider.gameObject);
+                            // HandleProgress.pickedUpPhone = true;
                         }
                     }
                     else if (hit.collider.gameObject.name == "Knife")
