@@ -8,6 +8,7 @@ Stuff related to my Project
 - [ ] Add texture and materials for testing
 - [ ] Dialogue system UI (not saste wala)
 - [ ] try blend tree for animations
+- [ ] Pickup animation timeline
 - [ ] functional mobile
 - [x] ~~Door system~~
 - [x] ~~Add first scene with ink~~
