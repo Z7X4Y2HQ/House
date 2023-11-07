@@ -13,7 +13,7 @@ public class PhoneManager : MonoBehaviour
     {
         if (HandleProgress.pickedUpPhone)
         {
-            if (!phoneOut && Input.GetKeyDown(KeyCode.Tab) && !PauseMenuScript.gameIsPaused)
+            if (!phoneOut && Input.GetKeyDown(KeyCode.Tab) && !PauseMenuScript.gameIsPaused && !DialogueManager.dialogueIsPlaying)
             {
                 if (GameObject.FindWithTag("Takahashi_Summer_home") != null)
                 {

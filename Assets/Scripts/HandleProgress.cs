@@ -36,6 +36,8 @@ public class HandleProgress : MonoBehaviour
     public static bool pickedUpPhone = false;
     public static bool pickedUpKnife = false;
 
+    private float duration = 0.8f;
+
     [Header("Objective")]
     public static TextMeshProUGUI objective;
     public Animator objectiveContainerAnimator;
@@ -49,6 +51,7 @@ public class HandleProgress : MonoBehaviour
     public static TextMeshProUGUI dateTime;
     public Animator dateTimeContainerAnimator;
     public Animator dateTimeTextAnimator;
+    public GameObject knifeInHand;
 
 
     [Header("Dialogue Files")]
@@ -130,7 +133,7 @@ public class HandleProgress : MonoBehaviour
             case 2: // Objective: Press TAB to take out phone
                 if (phoneManager.phoneOutFirstTime)
                 {
-                    // currentScene = "Chapter_one_getting_up_from_bed"; //TEMPPPPP
+                    currentScene = "Chapter_one_getting_up_from_bed"; //TEMPPPPP
                     objectives[currentObjectiveIndex].isCompleted = true;
                 }
                 break;
@@ -156,7 +159,11 @@ public class HandleProgress : MonoBehaviour
                 Debug.Log("Case 4");
                 if (pickedUpKnife)
                 {
-                    objectives[currentObjectiveIndex].isCompleted = true;
+                    // objectives[currentObjectiveIndex].isCompleted = true;
+                    location.text = "Kill Yourself!";
+                    dateTime.text = "Kill Yourself!";
+                    Animator playerAnim = GameObject.Find(SceneManagerScript.currentCharacter).GetComponent<Animator>();
+                    StartCoroutine(ChangeWeightOverTime(playerAnim));
                 }
                 break;
         }
@@ -167,6 +174,23 @@ public class HandleProgress : MonoBehaviour
             currentObjectiveIndex++;
             StartCoroutine(UpdateObjective());
         }
+    }
+
+    IEnumerator ChangeWeightOverTime(Animator playerAnim)
+    {
+        knifeInHand.SetActive(true);
+        float elapsedTime = 0.0f;
+        float currentWeight = playerAnim.GetLayerWeight(2);
+
+        while (elapsedTime < duration)
+        {
+            float newWeight = Mathf.Lerp(currentWeight, 1.0f, (elapsedTime / duration));
+            playerAnim.SetLayerWeight(2, newWeight);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        playerAnim.SetLayerWeight(2, 1.0f);
     }
 
     private IEnumerator UpdateObjective()
