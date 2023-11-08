@@ -50,17 +50,22 @@ public class RaycastTesting : MonoBehaviour
                     {
                         if (handleProgress.objectives[0].isCompleted)
                         {
-                            Destroy(hit.collider.gameObject);
+                            // Destroy(hit.collider.gameObject);
+                            hit.collider.gameObject.SetActive(false);
                             HandleProgress.pickedUpPhone = true;
                         }
                     }
                     else if (hit.collider.gameObject.name == "Knife")
                     {
-                        if (HandleProgress.currentObjectiveIndex == 4)
-                        {
-                            Destroy(hit.collider.gameObject);
-                            HandleProgress.pickedUpKnife = true;
-                        }
+                        hit.collider.gameObject.SetActive(false);
+                        HandleProgress.pickedUpKnife = true;
+                        HandleProgress.currentObjectiveIndex = 4; //Tempppp
+                        HandleProgress.currentScene = "Chapter_one_talking_to_mom"; //Tempppp
+
+                        // if (HandleProgress.currentObjectiveIndex == 4)
+                        // {
+
+                        // }
                     }
                 }
 

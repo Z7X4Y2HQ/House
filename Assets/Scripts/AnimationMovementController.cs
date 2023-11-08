@@ -52,14 +52,14 @@ public class AnimationMovementController : MonoBehaviour
         }
 
         handleGravity();
-        if (!DialogueManager.dialogueIsPlaying && !phoneManager.phoneOut)
+        if (!DialogueManager.dialogueIsPlaying && !phoneManager.phoneOut && !HandleTimeline.timelineIsPlaying)
         {
             handleAnimation();
             handleRotation();
         }
 
 
-        if (isMovementPressed && !DialogueManager.dialogueIsPlaying && !phoneManager.phoneOut)
+        if (isMovementPressed && !DialogueManager.dialogueIsPlaying && !phoneManager.phoneOut && !HandleTimeline.timelineIsPlaying)
         {
             characterController.Move(moveDirection * Time.deltaTime * 1.5f);
         }

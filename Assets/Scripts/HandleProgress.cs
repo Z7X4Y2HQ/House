@@ -24,7 +24,7 @@ public class HandleProgress : MonoBehaviour
     };
 
     public static bool firstPlaythrough;
-    public static int currentChapter;
+    public static int currentChapter = 1;
     public static string currentChapterName;
     public static string currentScene;
     public static bool tutorialComplete = false;
