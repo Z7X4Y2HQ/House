@@ -10,6 +10,7 @@ public class DialogueTriggerManager : MonoBehaviour
     public TextAsset Chapter_one_getting_up_from_bed;
     public TextAsset Chapter_one_walking_down_the_stairs;
     public TextAsset Chapter_one_talking_to_mom;
+    public TextAsset Chapter_one_dream_after_killing_yourself;
     private DialogueManager dialogueManager;
     public PlayableDirector momsWalkingFromKitchenAnimation;
 
@@ -39,10 +40,15 @@ public class DialogueTriggerManager : MonoBehaviour
                 StartCoroutine(playAnimationBeforeDialogue());
                 HandleProgress.currentScene = "Chapter_one_talking_to_mom";
             }
+            if (HandleProgress.currentScene == "Chapter_one_second_dream" && HandleProgress.currentObjectiveIndex == 5 && gameObject.name == "DialogueChapter_one_dream_after_killing_youself")
+            {
+                GameObject.Find(SceneManagerScript.currentCharacter).GetComponent<Animator>().SetBool("isWalk", false);
+                dialogueManager.EnterDialogueMode(Chapter_one_dream_after_killing_yourself);
+                HandleProgress.currentScene = "Chapter_one_follow_the_voice";
+            }
         }
         Debug.Log("currentScene " + HandleProgress.currentScene);
         Debug.Log("currentObjectiveIndex " + HandleProgress.currentObjectiveIndex);
-        Debug.Log("gameObject Name" + gameObject.name);
     }
 
     private IEnumerator playAnimationBeforeDialogue()

@@ -57,7 +57,7 @@ public class AnimationMovementController : MonoBehaviour
             handleAnimation();
             handleRotation();
         }
-
+        Debug.Log("Time is playing or not " + HandleTimeline.timelineIsPlaying);
 
         if (isMovementPressed && !DialogueManager.dialogueIsPlaying && !phoneManager.phoneOut && !HandleTimeline.timelineIsPlaying)
         {

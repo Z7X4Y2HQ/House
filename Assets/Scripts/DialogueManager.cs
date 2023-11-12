@@ -206,11 +206,19 @@ public class DialogueManager : MonoBehaviour
                             StartCoroutine(waitForAnimation(tagValue));
                         }
                     }
+                    else if (currentSpeaker == "Sachi")
+                    {
+                        GameObject.Find("Sachi - NOT FINAL").GetComponent<Animator>().SetBool(tagValue, true);
+                    }
                     break;
                 case ANIMATION_TAG:
                     if (currentSpeaker == "Takahashi Tanjiro")
                     {
                         GameObject.Find(SceneManagerScript.currentCharacter).GetComponent<Animator>().Play(tagValue);
+                    }
+                    else if (currentSpeaker == "Sachi")
+                    {
+                        GameObject.Find("Sachi - NOT FINAL").GetComponent<Animator>().Play(tagValue);
                     }
                     break;
                 case TIMELINE_TAG:

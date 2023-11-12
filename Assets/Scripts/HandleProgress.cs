@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 using TMPro;
 
 public class HandleProgress : MonoBehaviour
@@ -20,7 +21,8 @@ public class HandleProgress : MonoBehaviour
         new Objective { description = "Press TAB to take out phone", isCompleted = false },
         new Objective { description = "", isCompleted = false },
         new Objective { description = "Find a Knife", isCompleted = false },
-        new Objective { description = "Kill Yourself!", isCompleted = false },
+        new Objective { description = "Find out what place this is", isCompleted = false },
+        new Objective { description = "Find the source of that voice", isCompleted = false },
     };
 
     public static bool firstPlaythrough;
@@ -51,7 +53,6 @@ public class HandleProgress : MonoBehaviour
     public static TextMeshProUGUI dateTime;
     public Animator dateTimeContainerAnimator;
     public Animator dateTimeTextAnimator;
-    public GameObject knifeInHand;
 
 
     [Header("Dialogue Files")]
@@ -68,20 +69,30 @@ public class HandleProgress : MonoBehaviour
 
     private void Start()
     {
+        if (currentObjectiveIndex != 6)
+        {
+            currentChapter = 1;
+            currentScene = "Chapter_one_dream_after_killing_yourself";
+            currentObjectiveIndex = 4;
+        }
+
         objectiveContainerAnimator.Play("SlideInFromRightContainer");
         objectiveTextAnimator.Play("SlideInFromRightText");
         if (tutorialComplete)
         {
             location.text = PlayerPrefs.GetString("currentLocation");
             dateTime.text = PlayerPrefs.GetString("currentDateTime");
-            locationContainerAnimator.gameObject.SetActive(true);
-            locationTextAnimator.gameObject.SetActive(true);
-            dateTimeContainerAnimator.gameObject.SetActive(true);
-            dateTimeTextAnimator.gameObject.SetActive(true);
-            locationContainerAnimator.Play("SlideInFromRightContainer");
-            locationTextAnimator.Play("SlideInFromRightText");
-            dateTimeContainerAnimator.Play("SlideInFromLeftContainer");
-            dateTimeTextAnimator.Play("SlideInFromLeftText");
+            if (HandleTimeline.timeline.state != PlayState.Playing)
+            {
+                locationContainerAnimator.gameObject.SetActive(true);
+                locationTextAnimator.gameObject.SetActive(true);
+                dateTimeContainerAnimator.gameObject.SetActive(true);
+                dateTimeTextAnimator.gameObject.SetActive(true);
+                locationContainerAnimator.Play("SlideInFromRightContainer");
+                locationTextAnimator.Play("SlideInFromRightText");
+                dateTimeContainerAnimator.Play("SlideInFromLeftContainer");
+                dateTimeTextAnimator.Play("SlideInFromLeftText");
+            }
         }
         else
         {
@@ -132,15 +143,14 @@ public class HandleProgress : MonoBehaviour
             case 2: // Objective: Press TAB to take out phone
                 if (phoneManager.phoneOutFirstTime)
                 {
-                    currentScene = "Chapter_one_getting_up_from_bed"; //TEMPPPPP
                     objectives[currentObjectiveIndex].isCompleted = true;
                 }
                 break;
             case 3: //
-                bool objectiveComplete = ((Ink.Runtime.BoolValue)dialogueManager.GetVariableState("objectiveComplete")).value;
+                bool objective3Complete = ((Ink.Runtime.BoolValue)dialogueManager.GetVariableState("objective3Complete")).value;
                 string locationText = ((Ink.Runtime.StringValue)dialogueManager.GetVariableState("location")).value;
                 string time = ((Ink.Runtime.StringValue)dialogueManager.GetVariableState("time")).value;
-                if (objectiveComplete)
+                if (objective3Complete)
                 {
                     location.text = locationText;
                     dateTime.text = time;
@@ -156,41 +166,77 @@ public class HandleProgress : MonoBehaviour
                 break;
             case 4: // Find a Knife
                 Debug.Log("Case 4");
-                if (pickedUpKnife)
+                if (HandleTimeline.killedYourself)
                 {
-                    // objectives[currentObjectiveIndex].isCompleted = true;
-                    location.text = "Kill Yourself!";
-                    dateTime.text = "Kill Yourself!";
-                    // Animator playerAnim = GameObject.Find(SceneManagerScript.currentCharacter).GetComponent<Animator>();
-                    // StartCoroutine(ChangeWeightOverTime(playerAnim));
+                    objectives[currentObjectiveIndex].isCompleted = true;
                 }
                 break;
+            case 5: // Find out what place this is
+                Debug.Log("Case 5");
+                location.text = "?????";
+                dateTime.text = "??-??-????";
+                bool objective5Complete = ((Ink.Runtime.BoolValue)dialogueManager.GetVariableState("objective5Complete")).value;
+                locationText = ((Ink.Runtime.StringValue)dialogueManager.GetVariableState("location")).value;
+                Debug.Log("Objective 5 Complete" + objective5Complete);
+                if (objective5Complete)
+                {
+                    location.text = locationText;
+                    objectives[currentObjectiveIndex].isCompleted = true;
+                    Transform sachi = GameObject.Find("Sachi - NOT FINAL").transform;
+                    sachi.position = new Vector3(0, 0, -18.06f);
+                }
+                break;
+            case 6:
+                Debug.Log("Case 6");
+                break;
         }
-
+        if (HandleTimeline.timeline.state != PlayState.Playing && !DialogueManager.dialogueIsPlaying)
+        {
+            locationContainerAnimator.gameObject.SetActive(true);
+            locationTextAnimator.gameObject.SetActive(true);
+            dateTimeContainerAnimator.gameObject.SetActive(true);
+            dateTimeTextAnimator.gameObject.SetActive(true);
+            locationContainerAnimator.Play("SlideInFromRightContainer");
+            locationTextAnimator.Play("SlideInFromRightText");
+            dateTimeContainerAnimator.Play("SlideInFromLeftContainer");
+            dateTimeTextAnimator.Play("SlideInFromLeftText");
+        }
+        else
+        {
+            objectiveContainerAnimator.gameObject.SetActive(false);
+            objectiveTextAnimator.gameObject.SetActive(false);
+            locationContainerAnimator.gameObject.SetActive(false);
+            locationTextAnimator.gameObject.SetActive(false);
+            dateTimeContainerAnimator.gameObject.SetActive(false);
+            dateTimeTextAnimator.gameObject.SetActive(false);
+        }
 
         if (objectives[currentObjectiveIndex].isCompleted)
         {
             currentObjectiveIndex++;
             StartCoroutine(UpdateObjective());
         }
+
+        Debug.Log("currentScene " + HandleProgress.currentScene);
+        Debug.Log("currentObjectiveIndex " + HandleProgress.currentObjectiveIndex);
     }
 
-    IEnumerator ChangeWeightOverTime(Animator playerAnim)
-    {
-        knifeInHand.SetActive(true);
-        float elapsedTime = 0.0f;
-        float currentWeight = playerAnim.GetLayerWeight(2);
+    // IEnumerator ChangeWeightOverTime(Animator playerAnim)
+    // {
+    //     knifeInHand.SetActive(true);
+    //     float elapsedTime = 0.0f;
+    //     float currentWeight = playerAnim.GetLayerWeight(2);
 
-        while (elapsedTime < duration)
-        {
-            float newWeight = Mathf.Lerp(currentWeight, 1.0f, (elapsedTime / duration));
-            playerAnim.SetLayerWeight(2, newWeight);
-            elapsedTime += Time.deltaTime;
-            yield return null;
-        }
+    //     while (elapsedTime < duration)
+    //     {
+    //         float newWeight = Mathf.Lerp(currentWeight, 1.0f, (elapsedTime / duration));
+    //         playerAnim.SetLayerWeight(2, newWeight);
+    //         elapsedTime += Time.deltaTime;
+    //         yield return null;
+    //     }
 
-        playerAnim.SetLayerWeight(2, 1.0f);
-    }
+    //     playerAnim.SetLayerWeight(2, 1.0f);
+    // }
 
     private IEnumerator UpdateObjective()
     {

@@ -1,7 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.Playables;
 
 public class HandleTimeline : MonoBehaviour
@@ -14,6 +12,7 @@ public class HandleTimeline : MonoBehaviour
     public Animator playIcon;
     public Animator pauseIcon;
     private bool timelinePaused = true;
+    public static bool killedYourself = false;
     private void Update()
     {
         if (HandleProgress.currentChapter == 1 && HandleProgress.currentScene == "Chapter_one_first_dream")
@@ -33,7 +32,16 @@ public class HandleTimeline : MonoBehaviour
             timeline.Play();
             HandleProgress.currentScene = "Chapter_one_kill_yourself";
         }
-        // timeline = GameObject.Find("Waking up from first Dream TImeline").GetComponent<PlayableDirector>();
+        else if (HandleProgress.currentChapter == 1 && HandleProgress.currentScene == "Chapter_one_dream_after_killing_yourself" && HandleProgress.currentObjectiveIndex == 4)
+        {
+            PlayerPrefs.SetString("currentCharacter", "Takahashi_Summer_school");
+            SceneManagerScript.currentCharacter = PlayerPrefs.GetString("currentCharacter");
+            timeline = GameObject.Find("Dream after killing youself Timeline").GetComponent<PlayableDirector>();
+            timeline.Play();
+            killedYourself = true;
+            HandleProgress.currentScene = "Chapter_one_second_dream";
+        }
+        // timeline = GameObject.Find("Dream after killing youself Timeline").GetComponent<PlayableDirector>();
 
         if (timeline != null)
         {

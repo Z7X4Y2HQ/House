@@ -4,10 +4,10 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class MenuScript : MonoBehaviour
 {
-    [SerializeField] private GameObject newGameButton;
     [SerializeField] private GameObject continueButton;
     private SwapCharacter SwapCharacter;
     public static int isFirstSave = 0;
@@ -19,14 +19,13 @@ public class MenuScript : MonoBehaviour
     private void Awake()
     {
         isFirstSave = PlayerPrefs.GetInt("isFirstSave");
-        if (isFirstSave == 1)
+        if (isFirstSave == 0)
         {
-            continueButton.SetActive(true);
-            newGameButton.SetActive(false);
+            continueButton.GetComponentInChildren<TextMeshProUGUI>().text = "How can you continue when you haven't even played yet?";
         }
         else
         {
-            continueButton.SetActive(false);
+            continueButton.GetComponentInChildren<TextMeshProUGUI>().text = "Continue";
         }
     }
     public void NewGame()

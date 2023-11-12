@@ -17,43 +17,12 @@ public class OnMouseHoverMenu : MonoBehaviour, IPointerEnterHandler, IPointerExi
         onHover = true;
         lastHoverButton = gameObject.name;
         StartCoroutine(ScaleUp());
-        animator = GetComponentInChildren<Animator>();
-
-        // if (gameObject.name == "BookBtn")
-        // {
-        //     animator.SetBool("isHover", true);
-
-        // }
-
-        // else if (gameObject.name == "ExitBtn")
-        // {
-        //     animator.SetBool("isHover", true);
-        // }
-        animator.SetBool("isHover", true);
-
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         onHover = false;
         StartCoroutine(ScaleDown());
-
-        animator = GetComponentInChildren<Animator>();
-
-        // if (gameObject.name == "BookBtn")
-        // {
-        //     animator.SetBool("isHover", false);
-
-        // }
-
-        // else if (gameObject.name == "ExitBtn")
-        // {
-
-        // }
-        animator.SetBool("isHover", false);
-
-
-
     }
 
     IEnumerator ScaleUp()
