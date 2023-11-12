@@ -95,7 +95,6 @@ public class HandleProgress : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(currentScene);
         if (!PauseMenuScript.gameIsPaused || currentObjectiveIndex != 0)
         {
             if (Input.GetKeyDown(KeyCode.W))
@@ -162,8 +161,8 @@ public class HandleProgress : MonoBehaviour
                     // objectives[currentObjectiveIndex].isCompleted = true;
                     location.text = "Kill Yourself!";
                     dateTime.text = "Kill Yourself!";
-                    Animator playerAnim = GameObject.Find(SceneManagerScript.currentCharacter).GetComponent<Animator>();
-                    StartCoroutine(ChangeWeightOverTime(playerAnim));
+                    // Animator playerAnim = GameObject.Find(SceneManagerScript.currentCharacter).GetComponent<Animator>();
+                    // StartCoroutine(ChangeWeightOverTime(playerAnim));
                 }
                 break;
         }

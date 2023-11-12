@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class RaycastTesting : MonoBehaviour
@@ -57,14 +58,12 @@ public class RaycastTesting : MonoBehaviour
                     }
                     else if (hit.collider.gameObject.name == "Knife")
                     {
+                        // if (HandleProgress.currentObjectiveIndex == 4)
+                        // {
                         hit.collider.gameObject.SetActive(false);
                         HandleProgress.pickedUpKnife = true;
                         HandleProgress.currentObjectiveIndex = 4; //Tempppp
                         HandleProgress.currentScene = "Chapter_one_talking_to_mom"; //Tempppp
-
-                        // if (HandleProgress.currentObjectiveIndex == 4)
-                        // {
-
                         // }
                     }
                 }

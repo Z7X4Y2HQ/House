@@ -5,30 +5,31 @@ using UnityEngine.EventSystems;
 public class OnMouseHoverMenu : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
 
-    private float duration = 0.7f;
+    private float duration = 0.15f;
     private float targetScaleUp = 1.2f;
     private float targetScaleDown = 1f;
     private Animator animator;
     public static bool onHover = false;
+    public static string lastHoverButton;
 
     public void OnPointerEnter(PointerEventData eventData)
     {
         onHover = true;
+        lastHoverButton = gameObject.name;
         StartCoroutine(ScaleUp());
         animator = GetComponentInChildren<Animator>();
 
-        if(gameObject.name == "BookBtn")
-        {
-            animator.SetBool("isHover", true);
+        // if (gameObject.name == "BookBtn")
+        // {
+        //     animator.SetBool("isHover", true);
 
-        }
+        // }
 
-        else if(gameObject.name == "ExitBtn")
-        {
-            animator.SetBool("isHover", true);
-        }
-
-        
+        // else if (gameObject.name == "ExitBtn")
+        // {
+        //     animator.SetBool("isHover", true);
+        // }
+        animator.SetBool("isHover", true);
 
     }
 
@@ -39,17 +40,17 @@ public class OnMouseHoverMenu : MonoBehaviour, IPointerEnterHandler, IPointerExi
 
         animator = GetComponentInChildren<Animator>();
 
-        if (gameObject.name == "BookBtn")
-        {
-            animator.SetBool("isHover", false);
+        // if (gameObject.name == "BookBtn")
+        // {
+        //     animator.SetBool("isHover", false);
 
-        }
+        // }
 
-        else if(gameObject.name == "ExitBtn")
-        {
-            animator.SetBool("isHover", false);
+        // else if (gameObject.name == "ExitBtn")
+        // {
 
-        }
+        // }
+        animator.SetBool("isHover", false);
 
 
 

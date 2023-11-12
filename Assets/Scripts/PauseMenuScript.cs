@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Playables;
 
 public class PauseMenuScript : MonoBehaviour
 {
@@ -24,7 +25,7 @@ public class PauseMenuScript : MonoBehaviour
     }
     void Update()
     {
-        if (PlayerInput.UI.Pause.triggered && !DialogueManager.dialogueIsPlaying)
+        if (PlayerInput.UI.Pause.triggered && !DialogueManager.dialogueIsPlaying && HandleTimeline.timeline.state != PlayState.Playing)
         {
             if (phoneManager.phoneOut)
             {

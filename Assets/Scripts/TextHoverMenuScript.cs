@@ -4,57 +4,73 @@ using UnityEngine;
 
 public class TextHoverMenuScript : MonoBehaviour
 {
-    private Animator animator;
-    
-
     private void Update()
     {
-        if (OnMouseHoverMenu.onHover)
+        Debug.Log(OnMouseHoverMenu.onHover);
+        if (OnMouseHoverMenu.lastHoverButton == "PlayBtn")
         {
-            animator = GetComponent<Animator>();
-        
-
-            if(gameObject.name == "PlayText")
+            Animator animator = GameObject.Find("PlayText").GetComponent<Animator>();
+            if (OnMouseHoverMenu.onHover)
             {
-                
                 animator.SetBool("isHoverPlay", true);
             }
-
-          else if (gameObject.name == "ContinueText")
+            else
             {
-
+                Debug.Log("koi b false chl jae");
+                animator.SetBool("isHoverPlay", false);
+            }
+        }
+        else if (OnMouseHoverMenu.lastHoverButton == "ContinueBtn")
+        {
+            Animator animator = GameObject.Find("ContinueText").GetComponent<Animator>();
+            if (OnMouseHoverMenu.onHover)
+            {
                 animator.SetBool("isHoverContinue", true);
             }
-
-            else if(gameObject.name == "SettingText")
+            else
             {
-
+                Debug.Log("koi b false chl jae");
+                animator.SetBool("isHoverContinue", false);
+            }
+        }
+        else if (OnMouseHoverMenu.lastHoverButton == "SettingBtn")
+        {
+            Animator animator = GameObject.Find("SettingText").GetComponent<Animator>();
+            if (OnMouseHoverMenu.onHover)
+            {
                 animator.SetBool("isHoverSetting", true);
             }
-
-            else if (gameObject.name == "BookText")
+            else
             {
-
+                Debug.Log("koi b false chl jae");
+                animator.SetBool("isHoverSetting", false);
+            }
+        }
+        else if (OnMouseHoverMenu.lastHoverButton == "BookBtn")
+        {
+            Animator animator = GameObject.Find("BookText").GetComponent<Animator>();
+            if (OnMouseHoverMenu.onHover)
+            {
                 animator.SetBool("isHoverBook", true);
             }
-
-            else if(gameObject.name == "ExitText")
+            else
             {
-
+                Debug.Log("koi b false chl jae");
+                animator.SetBool("isHoverBook", false);
+            }
+        }
+        else if (OnMouseHoverMenu.lastHoverButton == "ExitBtn")
+        {
+            Animator animator = GameObject.Find("ExitText").GetComponent<Animator>();
+            if (OnMouseHoverMenu.onHover)
+            {
                 animator.SetBool("isHoverExit", true);
             }
-
-
-        }
-        else
-        {
-            animator = GetComponent<Animator>();
-            animator.SetBool("isHoverPlay", false);
-            animator.SetBool("isHoverContinue", false);
-            animator.SetBool("isHoverSetting", false);
-            animator.SetBool("isHoverBook", false);
-            animator.SetBool("isHoverExit", false);
-
+            else
+            {
+                Debug.Log("koi b false chl jae");
+                animator.SetBool("isHoverExit", false);
+            }
         }
     }
 }
