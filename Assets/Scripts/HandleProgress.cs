@@ -23,6 +23,8 @@ public class HandleProgress : MonoBehaviour
         new Objective { description = "Find a Knife", isCompleted = false },
         new Objective { description = "Find out what place this is", isCompleted = false },
         new Objective { description = "Find the source of that voice", isCompleted = false },
+        new Objective { description = "Pick up your phone and change for school", isCompleted = false },
+        new Objective { description = "Go to School", isCompleted = false },
     };
 
     public static bool firstPlaythrough;
@@ -37,6 +39,7 @@ public class HandleProgress : MonoBehaviour
     private bool pressD = false;
     public static bool pickedUpPhone = false;
     public static bool pickedUpKnife = false;
+    public static bool readyForSchool = false;
 
     private float duration = 0.8f;
 
@@ -69,11 +72,11 @@ public class HandleProgress : MonoBehaviour
 
     private void Start()
     {
-        if (currentObjectiveIndex != 6)
+        if (currentObjectiveIndex == 0)
         {
             currentChapter = 1;
-            currentScene = "Chapter_one_dream_after_killing_yourself";
-            currentObjectiveIndex = 4;
+            currentScene = "Chapter_one_going_to_school_after_the_second_dream";
+            currentObjectiveIndex = 6;
         }
 
         objectiveContainerAnimator.Play("SlideInFromRightContainer");
@@ -188,8 +191,28 @@ public class HandleProgress : MonoBehaviour
                 break;
             case 6:
                 Debug.Log("Case 6");
+                if (HandleTimeline.objective6Complete)
+                {
+                    pickedUpKnife = false;
+                    pickedUpPhone = false;
+                    objectives[currentObjectiveIndex].isCompleted = true;
+                }
+                break;
+            case 7:
+                Debug.Log("Case 7");
+                Debug.Log(currentObjectiveIndex);
+                Debug.Log(SceneManagerScript.currentCharacter);
+                if (pickedUpPhone && SceneManagerScript.currentCharacter == "Takahashi_Summer_school")
+                {
+                    readyForSchool = true;
+                    objectives[currentObjectiveIndex].isCompleted = true;
+                }
+                break;
+            case 8:
+                Debug.Log("Case 8");
                 break;
         }
+
         if (HandleTimeline.timeline.state != PlayState.Playing && !DialogueManager.dialogueIsPlaying)
         {
             locationContainerAnimator.gameObject.SetActive(true);

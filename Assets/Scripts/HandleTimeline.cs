@@ -13,6 +13,7 @@ public class HandleTimeline : MonoBehaviour
     public Animator pauseIcon;
     private bool timelinePaused = true;
     public static bool killedYourself = false;
+    public static bool objective6Complete = false;
     private void Update()
     {
         if (HandleProgress.currentChapter == 1 && HandleProgress.currentScene == "Chapter_one_first_dream")
@@ -40,6 +41,13 @@ public class HandleTimeline : MonoBehaviour
             timeline.Play();
             killedYourself = true;
             HandleProgress.currentScene = "Chapter_one_second_dream";
+        }
+        else if (HandleProgress.currentChapter == 1 && HandleProgress.currentScene == "Chapter_one_going_to_school_after_the_second_dream" && HandleProgress.currentObjectiveIndex == 6)
+        {
+            timeline = GameObject.Find("Waking up from second Dream TImeline").GetComponent<PlayableDirector>();
+            timeline.Play();
+            HandleProgress.currentScene = "Chapter_one_first_time_in_school";
+            objective6Complete = true;
         }
         // timeline = GameObject.Find("Dream after killing youself Timeline").GetComponent<PlayableDirector>();
 
@@ -81,7 +89,6 @@ public class HandleTimeline : MonoBehaviour
 
     void PauseTimeline()
     {
-        Debug.Log("why it didn't work here, it should have");
         timeline.playableGraph.GetRootPlayable(0).SetSpeed(0.0f);
         timelinePaused = false;
         StartCoroutine(setPauseFalse());

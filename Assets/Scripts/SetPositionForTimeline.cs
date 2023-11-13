@@ -31,8 +31,8 @@ public class SetPositionForTimeline : MonoBehaviour
         }
 
         Debug.Log("Chapter number " + HandleProgress.currentChapter);
-        Debug.Log("Chapter number " + HandleProgress.currentScene);
-        Debug.Log("Chapter number " + HandleProgress.currentObjectiveIndex);
-        Debug.Log("Chapter number " + TimelineTriggerManager.timelineIsPlaying);
+        Debug.Log("Current Scene " + HandleProgress.currentScene);
+        Debug.Log("Objective Index " + HandleProgress.currentObjectiveIndex);
+        Debug.Log("Is Timeline Playing " + TimelineTriggerManager.timelineIsPlaying);
     }
 }
