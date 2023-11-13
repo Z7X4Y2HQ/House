@@ -72,12 +72,12 @@ public class HandleProgress : MonoBehaviour
 
     private void Start()
     {
-        if (currentObjectiveIndex == 0)
-        {
-            currentChapter = 1;
-            currentScene = "Chapter_one_going_to_school_after_the_second_dream";
-            currentObjectiveIndex = 6;
-        }
+        // if (currentObjectiveIndex == 0)
+        // {
+        //     currentChapter = 1;
+        //     currentScene = "Chapter_one_going_to_school_after_the_second_dream";
+        //     currentObjectiveIndex = 6;
+        // }
 
         objectiveContainerAnimator.Play("SlideInFromRightContainer");
         objectiveTextAnimator.Play("SlideInFromRightText");
