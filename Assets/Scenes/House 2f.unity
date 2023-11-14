@@ -2419,7 +2419,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 36
+  m_RootOrder: 37
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &442767610
 GameObject:
@@ -2541,7 +2541,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 39
+  m_RootOrder: 40
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &477713463
 GameObject:
@@ -3752,7 +3752,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1148065759615270828, guid: 88d010f4f90f94d56a21d9b2abbd2f1e, type: 3}
       propertyPath: m_RootOrder
-      value: 41
+      value: 42
       objectReference: {fileID: 0}
     - target: {fileID: 1148065759615270828, guid: 88d010f4f90f94d56a21d9b2abbd2f1e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5245,7 +5245,7 @@ Transform:
   m_Children:
   - {fileID: 972612397}
   m_Father: {fileID: 0}
-  m_RootOrder: 43
+  m_RootOrder: 44
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &868908234
 BoxCollider:
@@ -6689,7 +6689,7 @@ Transform:
   m_Children:
   - {fileID: 463297866}
   m_Father: {fileID: 0}
-  m_RootOrder: 42
+  m_RootOrder: 43
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1099992875
 MonoBehaviour:
@@ -6911,7 +6911,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3801713368185350897, guid: 3ea821d1ed57a47b496477db7f7b39ef, type: 3}
       propertyPath: m_RootOrder
-      value: 33
+      value: 34
       objectReference: {fileID: 0}
     - target: {fileID: 3801713368185350897, guid: 3ea821d1ed57a47b496477db7f7b39ef, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9179,6 +9179,70 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 9088648421651871245, guid: d68f124edb0634676954763e039e76fc, type: 3}
   m_PrefabInstance: {fileID: 1596768854}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1601734452
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1601734455}
+  - component: {fileID: 1601734454}
+  - component: {fileID: 1601734453}
+  m_Layer: 0
+  m_Name: DialogueChapter_one_waking_up_from_second_dream
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &1601734453
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1601734452}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.4692917, y: 0.47318077, z: 1}
+  m_Center: {x: -0.041324615, y: -0.2634096, z: 0}
+--- !u!114 &1601734454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1601734452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85a95ff184a6d4f0da82707636058018, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Chapter_one_getting_up_from_bed: {fileID: 0}
+  Chapter_one_walking_down_the_stairs: {fileID: 0}
+  Chapter_one_talking_to_mom: {fileID: 0}
+  Chapter_one_dream_after_killing_yourself: {fileID: 0}
+  Chapter_one_waking_up_from_second_dream: {fileID: 4900000, guid: 1e779a9e900e74945a4ead0503c03002, type: 3}
+  momsWalkingFromKitchenAnimation: {fileID: 0}
+--- !u!4 &1601734455
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1601734452}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 72.376, y: 6.467, z: -13.059}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 33
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1605815217
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9833,7 +9897,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 38
+  m_RootOrder: 39
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1723947423
 BoxCollider:
@@ -10969,7 +11033,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 40
+  m_RootOrder: 41
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2087028465
 GameObject:
@@ -11005,6 +11069,7 @@ MonoBehaviour:
   Chapter_one_walking_down_the_stairs: {fileID: 4900000, guid: 902dad3af7f0546e19230126f79a6892, type: 3}
   Chapter_one_talking_to_mom: {fileID: 0}
   Chapter_one_dream_after_killing_yourself: {fileID: 0}
+  Chapter_one_waking_up_from_second_dream: {fileID: 0}
   momsWalkingFromKitchenAnimation: {fileID: 0}
 --- !u!65 &2087028467
 BoxCollider:
@@ -12902,7 +12967,7 @@ Transform:
   m_Children:
   - {fileID: 96504058043609945}
   m_Father: {fileID: 0}
-  m_RootOrder: 34
+  m_RootOrder: 35
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1328199579004088073
 GameObject:
@@ -16265,7 +16330,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 35
+  m_RootOrder: 36
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3867328333779518849
 MonoBehaviour:
@@ -16282,6 +16347,10 @@ MonoBehaviour:
   phone: {fileID: 1964698695794861763}
   objectiveContainer: {fileID: 42871250}
   objectiveText: {fileID: 1059946258}
+  locationContainer: {fileID: 1811191435}
+  locationText: {fileID: 980050240}
+  dateTimeContainer: {fileID: 984926972}
+  dateTimeText: {fileID: 1352236159}
   playIcon: {fileID: 1596768856}
   pauseIcon: {fileID: 1909189383}
 --- !u!1 &3867328333779518854
@@ -23305,7 +23374,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 37
+  m_RootOrder: 38
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7689928186996381311
 GameObject:

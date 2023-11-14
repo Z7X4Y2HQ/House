@@ -15,6 +15,8 @@ public class ChangeSceneInTimeline : MonoBehaviour
         else if (HandleProgress.currentChapter == 1 && HandleProgress.currentScene == "Chapter_one_kill_yourself")
         {
             HandleProgress.currentScene = "Chapter_one_dream_after_killing_yourself";
+            PlayerPrefs.SetString("currentCharacter", "Takahashi_Summer_school");
+            SceneManagerScript.currentCharacter = PlayerPrefs.GetString("currentCharacter");
             SceneManager.LoadScene("Dream");
         }
         else if (HandleProgress.currentChapter == 1 && HandleProgress.currentScene == "Chapter_one_waking_up_from_the_second_dream")

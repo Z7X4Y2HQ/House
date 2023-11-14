@@ -71,7 +71,10 @@ public class MenuScript : MonoBehaviour
         }
         else if (savedPlayer == "Takahashi_Summer_school")
         {
-            SwapCharacter.Swap(SwapCharacter.Takahashi_Summer_school);
+            if (SwapCharacter.gameObject.tag != "Takahashi_Summer_school")
+            {
+                SwapCharacter.Swap(SwapCharacter.Takahashi_Summer_school);
+            }
             currentPlayer = GameObject.FindWithTag("Takahashi_Summer_school");
         }
 
@@ -81,6 +84,16 @@ public class MenuScript : MonoBehaviour
         currentPlayer.transform.position = newPlayerPosition;
         currentPlayer.transform.eulerAngles = newPlayerRotation.eulerAngles;
 
+        HandleProgress.currentChapter = PlayerPrefs.GetInt("currentChapter");
+        HandleProgress.currentScene = PlayerPrefs.GetString("currentScene");
+        HandleProgress.currentObjectiveIndex = PlayerPrefs.GetInt("currentObjectiveIndex");
+        HandleProgress.tutorialComplete = intToBool(PlayerPrefs.GetInt("tutorialComplete"));
+        HandleProgress.pickedUpPhone = intToBool(PlayerPrefs.GetInt("pickedUpPhone"));
+        HandleProgress.pickedUpKnife = intToBool(PlayerPrefs.GetInt("pickedUpKnife"));
+        HandleProgress.readyForSchool = intToBool(PlayerPrefs.GetInt("readyForSchool"));
+
+
+
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
@@ -88,5 +101,13 @@ public class MenuScript : MonoBehaviour
     {
         Application.Quit();
         Debug.Log("Exit");
+    }
+
+    bool intToBool(int val)
+    {
+        if (val != 0)
+            return true;
+        else
+            return false;
     }
 }

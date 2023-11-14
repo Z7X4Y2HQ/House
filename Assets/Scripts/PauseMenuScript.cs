@@ -25,7 +25,7 @@ public class PauseMenuScript : MonoBehaviour
     }
     void Update()
     {
-        if (PlayerInput.UI.Pause.triggered && !DialogueManager.dialogueIsPlaying && HandleTimeline.timeline.state != PlayState.Playing)
+        if (PlayerInput.UI.Pause.triggered && !DialogueManager.dialogueIsPlaying && !HandleTimeline.timelineIsPlaying)
         {
             if (phoneManager.phoneOut)
             {
@@ -64,7 +64,7 @@ public class PauseMenuScript : MonoBehaviour
     }
     public void Save()
     {
-        player = GameObject.FindWithTag(playerInWardrobeRange.currentCloths);
+        player = GameObject.FindWithTag(SceneManagerScript.currentCharacter);
         PlayerPrefs.SetInt("isFirstSave", 1);
         PlayerPrefs.SetString("lastActiveScene", SceneManager.GetActiveScene().name);
         PlayerPrefs.SetString("currentCharacter", player.tag);
@@ -72,6 +72,13 @@ public class PauseMenuScript : MonoBehaviour
         PlayerPrefs.SetFloat("playerPositionY", player.transform.position.y);
         PlayerPrefs.SetFloat("playerPositionZ", player.transform.position.z);
         PlayerPrefs.SetFloat("playerRotationY", player.transform.eulerAngles.y);
+        PlayerPrefs.SetInt("currentChapter", HandleProgress.currentChapter);
+        PlayerPrefs.SetString("currentScene", HandleProgress.currentScene);
+        PlayerPrefs.SetInt("currentObjectiveIndex", HandleProgress.currentObjectiveIndex);
+        PlayerPrefs.SetInt("tutorialComplete", boolToInt(HandleProgress.tutorialComplete));
+        PlayerPrefs.SetInt("pickedUpPhone", boolToInt(HandleProgress.pickedUpPhone));
+        PlayerPrefs.SetInt("pickedUpKnife", boolToInt(HandleProgress.pickedUpKnife));
+        PlayerPrefs.SetInt("readyForSchool", boolToInt(HandleProgress.readyForSchool));
     }
 
     public void ExitToMenu()
@@ -83,6 +90,14 @@ public class PauseMenuScript : MonoBehaviour
     {
         Application.Quit();
         Debug.Log("Exit");
+    }
+
+    int boolToInt(bool val)
+    {
+        if (val)
+            return 1;
+        else
+            return 0;
     }
 
     void OnEnable()

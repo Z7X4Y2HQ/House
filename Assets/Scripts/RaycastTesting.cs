@@ -49,7 +49,7 @@ public class RaycastTesting : MonoBehaviour
                 {
                     if (hit.collider.gameObject.name == "Phone")
                     {
-                        if (handleProgress.objectives[0].isCompleted || handleProgress.objectives[6].isCompleted)
+                        if (HandleProgress.currentObjectiveIndex == 1 || HandleProgress.currentObjectiveIndex == 7)
                         {
                             // Destroy(hit.collider.gameObject);
                             hit.collider.gameObject.SetActive(false);

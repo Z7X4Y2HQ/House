@@ -9,6 +9,10 @@ public class HandleTimeline : MonoBehaviour
     public GameObject phone;
     public GameObject objectiveContainer;
     public GameObject objectiveText;
+    public GameObject locationContainer;
+    public GameObject locationText;
+    public GameObject dateTimeContainer;
+    public GameObject dateTimeText;
     public Animator playIcon;
     public Animator pauseIcon;
     private bool timelinePaused = true;
@@ -35,8 +39,8 @@ public class HandleTimeline : MonoBehaviour
         }
         else if (HandleProgress.currentChapter == 1 && HandleProgress.currentScene == "Chapter_one_dream_after_killing_yourself" && HandleProgress.currentObjectiveIndex == 4)
         {
-            PlayerPrefs.SetString("currentCharacter", "Takahashi_Summer_school");
-            SceneManagerScript.currentCharacter = PlayerPrefs.GetString("currentCharacter");
+            // PlayerPrefs.SetString("currentCharacter", "Takahashi_Summer_school");
+            // SceneManagerScript.currentCharacter = PlayerPrefs.GetString("currentCharacter");
             timeline = GameObject.Find("Dream after killing youself Timeline").GetComponent<PlayableDirector>();
             timeline.Play();
             killedYourself = true;
@@ -46,7 +50,7 @@ public class HandleTimeline : MonoBehaviour
         {
             timeline = GameObject.Find("Waking up from second Dream TImeline").GetComponent<PlayableDirector>();
             timeline.Play();
-            HandleProgress.currentScene = "Chapter_one_first_time_in_school";
+            HandleProgress.currentScene = "Chapter_one_second_dream_after_effects";
             objective6Complete = true;
         }
         // timeline = GameObject.Find("Dream after killing youself Timeline").GetComponent<PlayableDirector>();
@@ -71,6 +75,10 @@ public class HandleTimeline : MonoBehaviour
                 phone.layer = LayerMask.NameToLayer("Default");
                 objectiveContainer.SetActive(false);
                 objectiveText.SetActive(false);
+                locationContainer.SetActive(false);
+                locationText.SetActive(false);
+                dateTimeContainer.SetActive(false);
+                dateTimeText.SetActive(false);
             }
             else
             {
@@ -81,6 +89,13 @@ public class HandleTimeline : MonoBehaviour
                 {
                     objectiveContainer.SetActive(true);
                     objectiveText.SetActive(true);
+                    if (HandleProgress.tutorialComplete)
+                    {
+                        locationContainer.SetActive(true);
+                        locationText.SetActive(true);
+                        dateTimeContainer.SetActive(true);
+                        dateTimeText.SetActive(true);
+                    }
                 }
                 // this.gameObject.SetActive(false);
             }

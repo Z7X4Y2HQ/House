@@ -12,16 +12,23 @@ public class OnMouseHoverMenu : MonoBehaviour, IPointerEnterHandler, IPointerExi
     public static bool onHover = false;
     public static string lastHoverButton;
 
+    private void Start()
+    {
+        animator = GetComponentInChildren<Animator>();
+    }
+
     public void OnPointerEnter(PointerEventData eventData)
     {
         onHover = true;
         lastHoverButton = gameObject.name;
+        animator.SetBool("isHover", true);
         StartCoroutine(ScaleUp());
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         onHover = false;
+        animator.SetBool("isHover", false);
         StartCoroutine(ScaleDown());
     }
 

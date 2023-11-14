@@ -32,7 +32,7 @@ public class HandleProgress : MonoBehaviour
     public static string currentChapterName;
     public static string currentScene;
     public static bool tutorialComplete = false;
-    public static int currentObjectiveIndex = 0;
+    public static int currentObjectiveIndex;
     private bool pressW = false;
     private bool pressA = false;
     private bool pressS = false;
@@ -75,8 +75,11 @@ public class HandleProgress : MonoBehaviour
         // if (currentObjectiveIndex == 0)
         // {
         //     currentChapter = 1;
-        //     currentScene = "Chapter_one_going_to_school_after_the_second_dream";
-        //     currentObjectiveIndex = 6;
+        //     currentScene = "Chapter_one_second_dream_after_effects";
+        //     currentObjectiveIndex = 7;
+        //     StartCoroutine(UpdateObjective());
+        //     tutorialComplete = true;
+        //     SceneManagerScript.currentCharacter = "Takahashi_Summer_home";
         // }
 
         objectiveContainerAnimator.Play("SlideInFromRightContainer");
@@ -85,24 +88,14 @@ public class HandleProgress : MonoBehaviour
         {
             location.text = PlayerPrefs.GetString("currentLocation");
             dateTime.text = PlayerPrefs.GetString("currentDateTime");
-            if (HandleTimeline.timeline.state != PlayState.Playing)
-            {
-                locationContainerAnimator.gameObject.SetActive(true);
-                locationTextAnimator.gameObject.SetActive(true);
-                dateTimeContainerAnimator.gameObject.SetActive(true);
-                dateTimeTextAnimator.gameObject.SetActive(true);
-                locationContainerAnimator.Play("SlideInFromRightContainer");
-                locationTextAnimator.Play("SlideInFromRightText");
-                dateTimeContainerAnimator.Play("SlideInFromLeftContainer");
-                dateTimeTextAnimator.Play("SlideInFromLeftText");
-            }
-        }
-        else
-        {
-            locationContainerAnimator.gameObject.SetActive(false);
-            locationTextAnimator.gameObject.SetActive(false);
-            dateTimeContainerAnimator.gameObject.SetActive(false);
-            dateTimeTextAnimator.gameObject.SetActive(false);
+            locationContainerAnimator.gameObject.SetActive(true);
+            locationContainerAnimator.Play("SlideInFromRightContainer");
+            locationTextAnimator.gameObject.SetActive(true);
+            locationTextAnimator.Play("SlideInFromRightText");
+            dateTimeContainerAnimator.gameObject.SetActive(true);
+            dateTimeContainerAnimator.Play("SlideInFromLeftContainer");
+            dateTimeTextAnimator.gameObject.SetActive(true);
+            dateTimeTextAnimator.Play("SlideInFromLeftText");
         }
         StartCoroutine(UpdateObjective());
     }
@@ -161,8 +154,12 @@ public class HandleProgress : MonoBehaviour
                     PlayerPrefs.SetString("currentDateTime", time);
                     locationContainerAnimator.gameObject.SetActive(true);
                     locationTextAnimator.gameObject.SetActive(true);
+                    locationContainerAnimator.Play("SlideInFromRightContainer");
+                    locationTextAnimator.Play("SlideInFromRightText");
                     dateTimeContainerAnimator.gameObject.SetActive(true);
                     dateTimeTextAnimator.gameObject.SetActive(true);
+                    dateTimeContainerAnimator.Play("SlideInFromLeftContainer");
+                    dateTimeTextAnimator.Play("SlideInFromLeftText");
                     tutorialComplete = true;
                     objectives[currentObjectiveIndex].isCompleted = true;
                 }
@@ -213,27 +210,6 @@ public class HandleProgress : MonoBehaviour
                 break;
         }
 
-        if (HandleTimeline.timeline.state != PlayState.Playing && !DialogueManager.dialogueIsPlaying)
-        {
-            locationContainerAnimator.gameObject.SetActive(true);
-            locationTextAnimator.gameObject.SetActive(true);
-            dateTimeContainerAnimator.gameObject.SetActive(true);
-            dateTimeTextAnimator.gameObject.SetActive(true);
-            locationContainerAnimator.Play("SlideInFromRightContainer");
-            locationTextAnimator.Play("SlideInFromRightText");
-            dateTimeContainerAnimator.Play("SlideInFromLeftContainer");
-            dateTimeTextAnimator.Play("SlideInFromLeftText");
-        }
-        else
-        {
-            objectiveContainerAnimator.gameObject.SetActive(false);
-            objectiveTextAnimator.gameObject.SetActive(false);
-            locationContainerAnimator.gameObject.SetActive(false);
-            locationTextAnimator.gameObject.SetActive(false);
-            dateTimeContainerAnimator.gameObject.SetActive(false);
-            dateTimeTextAnimator.gameObject.SetActive(false);
-        }
-
         if (objectives[currentObjectiveIndex].isCompleted)
         {
             currentObjectiveIndex++;
@@ -244,36 +220,11 @@ public class HandleProgress : MonoBehaviour
         Debug.Log("currentObjectiveIndex " + HandleProgress.currentObjectiveIndex);
     }
 
-    // IEnumerator ChangeWeightOverTime(Animator playerAnim)
-    // {
-    //     knifeInHand.SetActive(true);
-    //     float elapsedTime = 0.0f;
-    //     float currentWeight = playerAnim.GetLayerWeight(2);
-
-    //     while (elapsedTime < duration)
-    //     {
-    //         float newWeight = Mathf.Lerp(currentWeight, 1.0f, (elapsedTime / duration));
-    //         playerAnim.SetLayerWeight(2, newWeight);
-    //         elapsedTime += Time.deltaTime;
-    //         yield return null;
-    //     }
-
-    //     playerAnim.SetLayerWeight(2, 1.0f);
-    // }
-
     private IEnumerator UpdateObjective()
     {
-        if (currentObjectiveIndex != 5)
-        {
-            objectiveTextAnimator.Play("SlideOutFromRightText");
-            yield return new WaitForSeconds(1.1f);
-            objective.text = objectives[currentObjectiveIndex].description;
-            objectiveTextAnimator.Play("SlideInFromRightText");
-        }
-        else
-        {
-            objective.text = objectives[currentObjectiveIndex].description;
-        }
-
+        objectiveTextAnimator.Play("SlideOutFromRightText");
+        yield return new WaitForSeconds(1.1f);
+        objective.text = objectives[currentObjectiveIndex].description;
+        objectiveTextAnimator.Play("SlideInFromRightText");
     }
 }

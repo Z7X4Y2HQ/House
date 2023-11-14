@@ -2889,9 +2889,25 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1202939106}
     - target: {fileID: 4548010500917140381, guid: cac7f4bad83984fdeb348cb5d03edee2, type: 3}
+      propertyPath: dateTimeText
+      value: 
+      objectReference: {fileID: 302951408}
+    - target: {fileID: 4548010500917140381, guid: cac7f4bad83984fdeb348cb5d03edee2, type: 3}
+      propertyPath: locationText
+      value: 
+      objectReference: {fileID: 302951410}
+    - target: {fileID: 4548010500917140381, guid: cac7f4bad83984fdeb348cb5d03edee2, type: 3}
       propertyPath: objectiveText
       value: 
       objectReference: {fileID: 537382566}
+    - target: {fileID: 4548010500917140381, guid: cac7f4bad83984fdeb348cb5d03edee2, type: 3}
+      propertyPath: dateTimeContainer
+      value: 
+      objectReference: {fileID: 302951409}
+    - target: {fileID: 4548010500917140381, guid: cac7f4bad83984fdeb348cb5d03edee2, type: 3}
+      propertyPath: locationContainer
+      value: 
+      objectReference: {fileID: 302951411}
     - target: {fileID: 4548010500917140381, guid: cac7f4bad83984fdeb348cb5d03edee2, type: 3}
       propertyPath: objectiveContainer
       value: 
@@ -5010,6 +5026,7 @@ MonoBehaviour:
   Chapter_one_walking_down_the_stairs: {fileID: 4900000, guid: 902dad3af7f0546e19230126f79a6892, type: 3}
   Chapter_one_talking_to_mom: {fileID: 4900000, guid: ea063d6a5023143c99c82c9931a634b4, type: 3}
   Chapter_one_dream_after_killing_yourself: {fileID: 0}
+  Chapter_one_waking_up_from_second_dream: {fileID: 0}
   momsWalkingFromKitchenAnimation: {fileID: 886837260}
 --- !u!4 &1036044245
 Transform:
@@ -9429,6 +9446,7 @@ MonoBehaviour:
   Chapter_one_walking_down_the_stairs: {fileID: 4900000, guid: 902dad3af7f0546e19230126f79a6892, type: 3}
   Chapter_one_talking_to_mom: {fileID: 0}
   Chapter_one_dream_after_killing_yourself: {fileID: 0}
+  Chapter_one_waking_up_from_second_dream: {fileID: 0}
   momsWalkingFromKitchenAnimation: {fileID: 0}
 --- !u!4 &2124055389
 Transform:

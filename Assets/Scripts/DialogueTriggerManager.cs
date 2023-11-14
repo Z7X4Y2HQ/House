@@ -11,6 +11,7 @@ public class DialogueTriggerManager : MonoBehaviour
     public TextAsset Chapter_one_walking_down_the_stairs;
     public TextAsset Chapter_one_talking_to_mom;
     public TextAsset Chapter_one_dream_after_killing_yourself;
+    public TextAsset Chapter_one_waking_up_from_second_dream;
     private DialogueManager dialogueManager;
     public PlayableDirector momsWalkingFromKitchenAnimation;
 
@@ -42,12 +43,19 @@ public class DialogueTriggerManager : MonoBehaviour
             }
             if (HandleProgress.currentScene == "Chapter_one_second_dream" && HandleProgress.currentObjectiveIndex == 5 && gameObject.name == "DialogueChapter_one_dream_after_killing_youself")
             {
+                PlayerPrefs.SetString("currentCharacter", "Takahashi_Summer_school");
+                SceneManagerScript.currentCharacter = PlayerPrefs.GetString("currentCharacter");
                 GameObject.Find(SceneManagerScript.currentCharacter).GetComponent<Animator>().SetBool("isWalk", false);
                 dialogueManager.EnterDialogueMode(Chapter_one_dream_after_killing_yourself);
                 HandleProgress.currentScene = "Chapter_one_follow_the_voice";
             }
+            if (HandleProgress.currentScene == "Chapter_one_second_dream_after_effects" && HandleProgress.currentObjectiveIndex == 7 && gameObject.name == "DialogueChapter_one_waking_up_from_second_dream")
+            {
+                GameObject.Find(SceneManagerScript.currentCharacter).GetComponent<Animator>().SetBool("isWalk", false);
+                dialogueManager.EnterDialogueMode(Chapter_one_waking_up_from_second_dream);
+                HandleProgress.currentScene = "Chapter_one_first_time_in_school";
+            }
         }
-        Debug.Log("currentScene " + HandleProgress.currentScene);
         Debug.Log("currentObjectiveIndex " + HandleProgress.currentObjectiveIndex);
     }
 
