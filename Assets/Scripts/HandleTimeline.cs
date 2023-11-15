@@ -33,9 +33,7 @@ public class HandleTimeline : MonoBehaviour
         }
         else if (HandleProgress.currentChapter == 1 && HandleProgress.currentScene == "Chapter_one_talking_to_mom" && HandleProgress.pickedUpKnife && HandleProgress.currentObjectiveIndex == 4)
         {
-            timeline = GameObject.Find("Kill Yourself TIimeline").GetComponent<PlayableDirector>();
-            timeline.Play();
-            HandleProgress.currentScene = "Chapter_one_kill_yourself";
+            StartCoroutine(setPositionForTimeline());
         }
         else if (HandleProgress.currentChapter == 1 && HandleProgress.currentScene == "Chapter_one_dream_after_killing_yourself" && HandleProgress.currentObjectiveIndex == 4)
         {
@@ -100,6 +98,22 @@ public class HandleTimeline : MonoBehaviour
                 // this.gameObject.SetActive(false);
             }
         }
+    }
+
+    IEnumerator setPositionForTimeline()
+    {
+        CharacterController characterController = FindObjectOfType<CharacterController>();
+        Transform TakahashisMom = GameObject.Find("Takahashi's Mom").transform;
+        TakahashisMom.position = new Vector3(115.903999f, 2.16299963f, -1.47899997f);
+        TakahashisMom.rotation = Quaternion.Euler(0, 0, 0);
+        characterController.enabled = false;
+        characterController.gameObject.transform.position = new Vector3(115.4143f, 2.131f, -3.513328f);
+        characterController.gameObject.transform.rotation = Quaternion.Euler(0, -0.776f, 0);
+        characterController.enabled = true;
+        yield return new WaitForSeconds(0.2f);
+        timeline = GameObject.Find("Kill Yourself TIimeline").GetComponent<PlayableDirector>();
+        timeline.Play();
+        HandleProgress.currentScene = "Chapter_one_kill_yourself";
     }
 
     void PauseTimeline()

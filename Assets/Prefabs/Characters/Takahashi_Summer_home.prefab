@@ -555,7 +555,6 @@ GameObject:
   - component: {fileID: 8239372960071078258}
   - component: {fileID: 8239372960071078250}
   - component: {fileID: 6237246780350056868}
-  - component: {fileID: 3039168961402511853}
   m_Layer: 6
   m_Name: Takahashi_Summer_home
   m_TagString: Takahashi_Summer_home
@@ -899,18 +898,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Takahashi_Summer_home: {fileID: 1490012028298540880}
   Takahashi_Summer_school: {fileID: 6922077795668383986, guid: 4b8f3e456bf3a4ffe9b3f8f394e506a0, type: 3}
---- !u!114 &3039168961402511853
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1490012028298540880}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb113eafe3c31453c907e03809a66011, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1770541947514369825
 GameObject:
   m_ObjectHideFlags: 0
