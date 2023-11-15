@@ -41,7 +41,6 @@ public class HandleProgress : MonoBehaviour
     public static bool pickedUpKnife = false;
     public static bool readyForSchool = false;
 
-    private float duration = 0.8f;
 
     [Header("Objective")]
     public static TextMeshProUGUI objective;
@@ -78,7 +77,7 @@ public class HandleProgress : MonoBehaviour
         //     currentScene = "Chapter_one_second_dream_after_effects";
         //     currentObjectiveIndex = 7;
         //     StartCoroutine(UpdateObjective());
-        //     tutorialComplete = true;
+        tutorialComplete = true;
         //     SceneManagerScript.currentCharacter = "Takahashi_Summer_home";
         // }
 
