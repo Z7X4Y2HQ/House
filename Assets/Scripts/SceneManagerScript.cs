@@ -9,8 +9,8 @@ public class SceneManagerScript : MonoBehaviour
     private bool playerInRange = false;
     private Animator animator;
     public string sceneToLoad;
-    public static GameObject player;
-    public static Transform spawnPoint;
+    private GameObject player;
+    private Transform spawnPoint;
     private static string playerPosition;
     public static string currentCharacter;
     private string currentCharacterInHierarchy;
@@ -60,9 +60,17 @@ public class SceneManagerScript : MonoBehaviour
         SwapCharacter = FindObjectOfType<CharacterController>().GetComponent<SwapCharacter>();
         if (scene.name == sceneToLoad)
         {
-            if (playerPosition == "StairsToF2")
+            if (playerPosition == "BalconyToRoom")
+            {
+                spawnPoint = GameObject.Find("RoomToBalcony").transform.GetChild(0).gameObject.transform;
+            }
+            else if (playerPosition == "StairsToF2")
             {
                 spawnPoint = GameObject.Find("StairsToF1").transform.GetChild(0).gameObject.transform;
+            }
+            else if (playerPosition == "RoomToBalcony")
+            {
+                spawnPoint = GameObject.Find("BalconyToRoom").transform.GetChild(0).gameObject.transform;
             }
             else if (playerPosition == "StairsToF1")
             {
@@ -105,9 +113,6 @@ public class SceneManagerScript : MonoBehaviour
                     player = GameObject.Find("Takahashi_Summer_school(Clone)");
                 }
             }
-
-            Debug.Log("Player = " + player);
-            Debug.Log("spawnPoint = " + spawnPoint.parent.name);
 
             player.transform.position = spawnPoint.position;
             player.transform.eulerAngles = spawnPoint.eulerAngles;
