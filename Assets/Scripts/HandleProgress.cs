@@ -25,6 +25,8 @@ public class HandleProgress : MonoBehaviour
         new Objective { description = "Find the source of that voice", isCompleted = false },
         new Objective { description = "Pick up your phone and change for school", isCompleted = false },
         new Objective { description = "Go to School", isCompleted = false },
+        new Objective { description = "Check out the crowd", isCompleted = false },
+        new Objective { description = "Find your name in the class list", isCompleted = false },
     };
 
     public static bool firstPlaythrough;
@@ -72,15 +74,16 @@ public class HandleProgress : MonoBehaviour
 
     private void Start()
     {
-        // if (currentObjectiveIndex == 0)
-        // {
-        //     currentChapter = 1;
-        //     currentScene = "Chapter_one_second_dream_after_effects";
-        //     currentObjectiveIndex = 7;
-        //     StartCoroutine(UpdateObjective());
-        //     tutorialComplete = true;
-        //     SceneManagerScript.currentCharacter = "Takahashi_Summer_home";
-        // }
+        if (currentObjectiveIndex == 0)
+        {
+            currentChapter = 1;
+            currentScene = "Chapter_one_first_time_in_school";
+            currentObjectiveIndex = 8;
+            StartCoroutine(UpdateObjective());
+            tutorialComplete = true;
+            pickedUpPhone = true;
+            SceneManagerScript.currentCharacter = "Takahashi_Summer_school";
+        }
 
         objectiveContainerAnimator.Play("SlideInFromRightContainer");
         objectiveTextAnimator.Play("SlideInFromRightText");
@@ -207,6 +210,21 @@ public class HandleProgress : MonoBehaviour
                 break;
             case 8:
                 Debug.Log("Case 8");
+                if (DialogueTriggerManager.inSchool)
+                {
+                    objectives[currentObjectiveIndex].isCompleted = true;
+                }
+                break;
+            case 9:
+                Debug.Log("Case 9");
+                bool objective9Complete = ((Ink.Runtime.BoolValue)dialogueManager.GetVariableState("objective9Complete")).value;
+                if (objective9Complete)
+                {
+                    objectives[currentObjectiveIndex].isCompleted = true;
+                }
+                break;
+            case 10:
+                Debug.Log("Case 9");
                 break;
         }
 

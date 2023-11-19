@@ -12,13 +12,24 @@ public class DialogueTriggerManager : MonoBehaviour
     public TextAsset Chapter_one_talking_to_mom;
     public TextAsset Chapter_one_dream_after_killing_yourself;
     public TextAsset Chapter_one_waking_up_from_second_dream;
+    public TextAsset Chapter_one_in_the_school_entering_the_crowd;
     private DialogueManager dialogueManager;
     public PlayableDirector momsWalkingFromKitchenAnimation;
+    public static bool inSchool;
 
 
     private void Awake()
     {
         dialogueManager = GameObject.Find("DialogueManager").GetComponent<DialogueManager>();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (HandleProgress.currentScene == "Chapter_one_first_time_in_school" && HandleProgress.currentObjectiveIndex == 8 && gameObject.name == "EnterSchoolTrigger")
+        {
+            inSchool = true;
+            HandleProgress.currentScene = "Chapter_one_in_the_school_entering_the_crowd";
+        }
     }
 
     private void OnTriggerStay(Collider other)
@@ -54,6 +65,12 @@ public class DialogueTriggerManager : MonoBehaviour
                 GameObject.Find(SceneManagerScript.currentCharacter).GetComponent<Animator>().SetBool("isWalk", false);
                 dialogueManager.EnterDialogueMode(Chapter_one_waking_up_from_second_dream);
                 HandleProgress.currentScene = "Chapter_one_first_time_in_school";
+            }
+            if (HandleProgress.currentScene == "Chapter_one_in_the_school_entering_the_crowd" && HandleProgress.currentObjectiveIndex == 9 && gameObject.name == "DialogueChapter_one_in_the_school_entering_the_crowd")
+            {
+                GameObject.Find(SceneManagerScript.currentCharacter).GetComponent<Animator>().SetBool("isWalk", false);
+                dialogueManager.EnterDialogueMode(Chapter_one_in_the_school_entering_the_crowd);
+                HandleProgress.currentScene = "Chapter_one_finding_name_in_list";
             }
         }
         Debug.Log("currentObjectiveIndex " + HandleProgress.currentObjectiveIndex);

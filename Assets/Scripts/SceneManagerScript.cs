@@ -60,17 +60,9 @@ public class SceneManagerScript : MonoBehaviour
         SwapCharacter = FindObjectOfType<CharacterController>().GetComponent<SwapCharacter>();
         if (scene.name == sceneToLoad)
         {
-            if (playerPosition == "BalconyToRoom")
-            {
-                spawnPoint = GameObject.Find("RoomToBalcony").transform.GetChild(0).gameObject.transform;
-            }
-            else if (playerPosition == "StairsToF2")
+            if (playerPosition == "StairsToF2")
             {
                 spawnPoint = GameObject.Find("StairsToF1").transform.GetChild(0).gameObject.transform;
-            }
-            else if (playerPosition == "RoomToBalcony")
-            {
-                spawnPoint = GameObject.Find("BalconyToRoom").transform.GetChild(0).gameObject.transform;
             }
             else if (playerPosition == "StairsToF1")
             {
@@ -79,10 +71,12 @@ public class SceneManagerScript : MonoBehaviour
             else if (playerPosition == "HomeToTown")
             {
                 spawnPoint = GameObject.Find("TownToHome").transform.GetChild(0).gameObject.transform;
+                HandleProgress.location.text = "Town";
             }
             else if (playerPosition == "TownToHome")
             {
                 spawnPoint = GameObject.Find("HomeToTown").transform.GetChild(0).gameObject.transform;
+                HandleProgress.location.text = "Home";
             }
             else if (playerPosition == "TownToSchool")
             {
