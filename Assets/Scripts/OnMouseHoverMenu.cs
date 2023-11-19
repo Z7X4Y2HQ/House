@@ -21,14 +21,20 @@ public class OnMouseHoverMenu : MonoBehaviour, IPointerEnterHandler, IPointerExi
     {
         onHover = true;
         lastHoverButton = gameObject.name;
-        animator.SetBool("isHover", true);
+        if (gameObject.name == "BookBtn" || gameObject.name == "SettingBtn" || gameObject.name == "ExitBtn")
+        {
+            animator.SetBool("isHover", true);
+        }
         StartCoroutine(ScaleUp());
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         onHover = false;
-        animator.SetBool("isHover", false);
+        if (gameObject.name == "BookBtn" || gameObject.name == "SettingBtn" || gameObject.name == "ExitBtn")
+        {
+            animator.SetBool("isHover", false);
+        }
         StartCoroutine(ScaleDown());
     }
 
