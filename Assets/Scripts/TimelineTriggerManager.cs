@@ -11,7 +11,7 @@ public class TimelineTriggerManager : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (HandleProgress.currentChapter == 1 && HandleProgress.currentScene == "Chapter_one_follow_the_voice" && HandleProgress.currentObjectiveIndex == 6)
+        if (HandleProgress.currentChapter == 1 && HandleProgress.currentObjectiveIndex == 6 && HandleProgress.currentScene == "Chapter_one_follow_the_voice")
         {
             PlayerPrefs.SetString("currentCharacter", "Takahashi_Summer_home");
             SceneManagerScript.currentCharacter = PlayerPrefs.GetString("currentCharacter");
@@ -20,5 +20,10 @@ public class TimelineTriggerManager : MonoBehaviour
             timelineIsPlaying = true;
             HandleProgress.currentScene = "Chapter_one_waking_up_from_the_second_dream";
         }
+        if (HandleProgress.currentChapter == 1 && HandleProgress.currentObjectiveIndex == 10 && HandleProgress.currentScene == "Chapter_one_finding_name_in_list")
+        {
+
+        }
+
     }
 }

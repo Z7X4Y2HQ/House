@@ -16,17 +16,18 @@ public class HandleProgress : MonoBehaviour
 
     public Objective[] objectives = new Objective[]
     {
-        new Objective { description = "Press W, A, S, D to move around", isCompleted = false},
-        new Objective { description = "Pick up your phone from the table", isCompleted = false},
-        new Objective { description = "Press TAB to take out phone", isCompleted = false },
-        new Objective { description = "", isCompleted = false },
-        new Objective { description = "Find a Knife", isCompleted = false },
-        new Objective { description = "Find out what place this is", isCompleted = false },
-        new Objective { description = "Find the source of that voice", isCompleted = false },
-        new Objective { description = "Pick up your phone and change for school", isCompleted = false },
-        new Objective { description = "Go to School", isCompleted = false },
-        new Objective { description = "Check out the crowd", isCompleted = false },
-        new Objective { description = "Find your name in the class list", isCompleted = false },
+        new Objective { description = "Press W, A, S, D to move around", isCompleted = false }, // case: 0
+        new Objective { description = "Pick up your phone from the table", isCompleted = false }, // case: 1
+        new Objective { description = "Press TAB to take out phone", isCompleted = false }, // case: 2
+        new Objective { description = "", isCompleted = false }, // case: 3
+        new Objective { description = "Find a Knife", isCompleted = false }, // case: 4
+        new Objective { description = "Find out what place this is", isCompleted = false }, // case: 5
+        new Objective { description = "Find the source of that voice", isCompleted = false }, // case: 6
+        new Objective { description = "Pick up your phone and change for school", isCompleted = false }, // case: 7
+        new Objective { description = "Go to School", isCompleted = false }, // case: 8
+        new Objective { description = "Check out the crowd", isCompleted = false }, // case: 9
+        new Objective { description = "Find your name in the class list", isCompleted = false }, // case: 10
+        new Objective { description = "Ask around where the staff room is", isCompleted = false }, // case: 11
     };
 
     public static bool firstPlaythrough;
