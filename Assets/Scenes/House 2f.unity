@@ -2371,6 +2371,63 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 600, y: 50, z: 1200.0006}
   m_Center: {x: 34217.383, y: 5048, z: 569.04474}
+--- !u!1001 &417612566
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 285384830147101034, guid: 52162a4b3f41213d3994dbb74a0e2713, type: 3}
+      propertyPath: m_RootOrder
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 285384830147101034, guid: 52162a4b3f41213d3994dbb74a0e2713, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 115.3854
+      objectReference: {fileID: 0}
+    - target: {fileID: 285384830147101034, guid: 52162a4b3f41213d3994dbb74a0e2713, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.121
+      objectReference: {fileID: 0}
+    - target: {fileID: 285384830147101034, guid: 52162a4b3f41213d3994dbb74a0e2713, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.755
+      objectReference: {fileID: 0}
+    - target: {fileID: 285384830147101034, guid: 52162a4b3f41213d3994dbb74a0e2713, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 285384830147101034, guid: 52162a4b3f41213d3994dbb74a0e2713, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 285384830147101034, guid: 52162a4b3f41213d3994dbb74a0e2713, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 285384830147101034, guid: 52162a4b3f41213d3994dbb74a0e2713, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 285384830147101034, guid: 52162a4b3f41213d3994dbb74a0e2713, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 285384830147101034, guid: 52162a4b3f41213d3994dbb74a0e2713, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 285384830147101034, guid: 52162a4b3f41213d3994dbb74a0e2713, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5393965289656914104, guid: 52162a4b3f41213d3994dbb74a0e2713, type: 3}
+      propertyPath: m_Name
+      value: LockMouse
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 52162a4b3f41213d3994dbb74a0e2713, type: 3}
 --- !u!1 &441812742
 GameObject:
   m_ObjectHideFlags: 0
@@ -3721,7 +3778,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1148065759615270828, guid: 88d010f4f90f94d56a21d9b2abbd2f1e, type: 3}
       propertyPath: m_RootOrder
-      value: 30
+      value: 31
       objectReference: {fileID: 0}
     - target: {fileID: 1148065759615270828, guid: 88d010f4f90f94d56a21d9b2abbd2f1e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5214,7 +5271,7 @@ Transform:
   m_Children:
   - {fileID: 972612397}
   m_Father: {fileID: 0}
-  m_RootOrder: 31
+  m_RootOrder: 32
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &868908234
 BoxCollider:
@@ -9108,6 +9165,7 @@ MonoBehaviour:
   Chapter_one_talking_to_mom: {fileID: 0}
   Chapter_one_dream_after_killing_yourself: {fileID: 0}
   Chapter_one_waking_up_from_second_dream: {fileID: 4900000, guid: 1e779a9e900e74945a4ead0503c03002, type: 3}
+  Chapter_one_in_the_school_entering_the_crowd: {fileID: 0}
   momsWalkingFromKitchenAnimation: {fileID: 0}
 --- !u!4 &1601734455
 Transform:
@@ -10995,6 +11053,7 @@ MonoBehaviour:
   Chapter_one_talking_to_mom: {fileID: 0}
   Chapter_one_dream_after_killing_yourself: {fileID: 0}
   Chapter_one_waking_up_from_second_dream: {fileID: 0}
+  Chapter_one_in_the_school_entering_the_crowd: {fileID: 0}
   momsWalkingFromKitchenAnimation: {fileID: 0}
 --- !u!65 &2087028467
 BoxCollider:

@@ -12,9 +12,10 @@ public class PauseMenuScript : MonoBehaviour
     private GameObject player;
     PlayerInput PlayerInput;
     private PhoneManager phoneManager;
-
+    private LockMouse lockMouse;
     void Awake()
     {
+        lockMouse = GameObject.Find("LockMouse").GetComponent<LockMouse>();
         PlayerInput = new PlayerInput();
 
         if (playerInWardrobeRange.currentCloths == null)
@@ -52,14 +53,14 @@ public class PauseMenuScript : MonoBehaviour
     {
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
-        Cursor.visible = false;
+        lockMouse.Lock();
         gameIsPaused = false;
     }
     private void Pause()
     {
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
-        Cursor.visible = true;
+        lockMouse.Unlock();
         gameIsPaused = true;
     }
     public void Save()
