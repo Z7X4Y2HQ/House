@@ -42,6 +42,7 @@ public class DialogueManager : MonoBehaviour
     private bool canSkip = false;
     private bool submitSkip = false;
     public static DialogueManager instance;
+    private LockMouse lockMouse;
 
 
 
@@ -57,6 +58,7 @@ public class DialogueManager : MonoBehaviour
 
     private void Awake()
     {
+        lockMouse = GameObject.Find("LockMouse").GetComponent<LockMouse>();
         if (instance != null)
         {
             Debug.LogWarning("More than one instance of DialogueManager found!");
@@ -116,6 +118,7 @@ public class DialogueManager : MonoBehaviour
 
     public void EnterDialogueMode(TextAsset inkJSON)
     {
+        lockMouse.Unlock();
         currentStory = new Story(inkJSON.text);
         dialogueIsPlaying = true;
         dialoguePanel.SetActive(true);
@@ -135,6 +138,7 @@ public class DialogueManager : MonoBehaviour
 
     private void ExitDialogueMode()
     {
+        lockMouse.Lock();
         dialogueVariables.StopListening(currentStory);
 
         dialogueIsPlaying = false;

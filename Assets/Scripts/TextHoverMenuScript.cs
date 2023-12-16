@@ -36,7 +36,7 @@ public class TextHoverMenuScript : MonoBehaviour
         else if (OnMouseHoverMenu.lastHoverButton == "SettingBtn")
         {
             Animator animator = GameObject.Find("SettingText").GetComponent<Animator>();
-            if (OnMouseHoverMenu.onHover)
+            if (OnMouseHoverMenu.onHover && !MenuScript.clickedOnSettings)
             {
                 animator.SetBool("isHoverSetting", true);
             }
@@ -49,7 +49,7 @@ public class TextHoverMenuScript : MonoBehaviour
         else if (OnMouseHoverMenu.lastHoverButton == "BookBtn")
         {
             Animator animator = GameObject.Find("BookText").GetComponent<Animator>();
-            if (OnMouseHoverMenu.onHover)
+            if (OnMouseHoverMenu.onHover && !MenuScript.clickedOnChapters)
             {
                 animator.SetBool("isHoverBook", true);
             }

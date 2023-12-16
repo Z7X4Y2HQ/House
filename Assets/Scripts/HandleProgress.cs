@@ -75,16 +75,16 @@ public class HandleProgress : MonoBehaviour
 
     private void Start()
     {
-        if (currentObjectiveIndex == 0)
-        {
-            currentChapter = 1;
-            currentScene = "Chapter_one_first_time_in_school";
-            currentObjectiveIndex = 8;
-            StartCoroutine(UpdateObjective());
-            tutorialComplete = true;
-            pickedUpPhone = true;
-            SceneManagerScript.currentCharacter = "Takahashi_Summer_school";
-        }
+        // if (currentObjectiveIndex == 0)
+        // {
+        //     currentChapter = 1;
+        //     currentScene = "Chapter_one_first_time_in_school";
+        //     currentObjectiveIndex = 8;
+        //     StartCoroutine(UpdateObjective());
+        //     tutorialComplete = true;
+        //     pickedUpPhone = true;
+        //     SceneManagerScript.currentCharacter = "Takahashi_Summer_school";
+        // }
 
         objectiveContainerAnimator.Play("SlideInFromRightContainer");
         objectiveTextAnimator.Play("SlideInFromRightText");
