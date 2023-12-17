@@ -6,7 +6,6 @@ public class TextHoverMenuScript : MonoBehaviour
 {
     private void Update()
     {
-        Debug.Log(OnMouseHoverMenu.onHover);
         if (OnMouseHoverMenu.lastHoverButton == "PlayBtn")
         {
             Animator animator = GameObject.Find("PlayText").GetComponent<Animator>();
@@ -16,7 +15,6 @@ public class TextHoverMenuScript : MonoBehaviour
             }
             else
             {
-                Debug.Log("koi b false chl jae");
                 animator.SetBool("isHoverPlay", false);
             }
         }
@@ -29,33 +27,30 @@ public class TextHoverMenuScript : MonoBehaviour
             }
             else
             {
-                Debug.Log("koi b false chl jae");
                 animator.SetBool("isHoverContinue", false);
             }
         }
         else if (OnMouseHoverMenu.lastHoverButton == "SettingBtn")
         {
             Animator animator = GameObject.Find("SettingText").GetComponent<Animator>();
-            if (OnMouseHoverMenu.onHover && !MenuScript.clickedOnSettings)
+            if (OnMouseHoverMenu.onHover)
             {
                 animator.SetBool("isHoverSetting", true);
             }
             else
             {
-                Debug.Log("koi b false chl jae");
                 animator.SetBool("isHoverSetting", false);
             }
         }
         else if (OnMouseHoverMenu.lastHoverButton == "BookBtn")
         {
             Animator animator = GameObject.Find("BookText").GetComponent<Animator>();
-            if (OnMouseHoverMenu.onHover && !MenuScript.clickedOnChapters)
+            if (OnMouseHoverMenu.onHover)
             {
                 animator.SetBool("isHoverBook", true);
             }
             else
             {
-                Debug.Log("koi b false chl jae");
                 animator.SetBool("isHoverBook", false);
             }
         }
@@ -68,7 +63,6 @@ public class TextHoverMenuScript : MonoBehaviour
             }
             else
             {
-                Debug.Log("koi b false chl jae");
                 animator.SetBool("isHoverExit", false);
             }
         }

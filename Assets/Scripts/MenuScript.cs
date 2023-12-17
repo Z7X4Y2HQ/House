@@ -15,9 +15,9 @@ public class MenuScript : MonoBehaviour
     private GameObject currentPlayer;
     public GameObject LoadingScreen;
     public Slider slider;
-    private Animator expandedBG;
-    private Animator ArrowIconForSettings;
-    private Animator ArrowIconForBook;
+    private Animator menuExpand;
+    private Animator settingText;
+    private Animator bookText;
     private Animator SettingsExpanded;
     private Animator ChaptersExpanded;
     private Animator warningScreen;
@@ -30,6 +30,8 @@ public class MenuScript : MonoBehaviour
     private void Awake()
     {
         menu = GameObject.Find("Menu");
+        settingText = GameObject.Find("SettingText").GetComponent<Animator>();
+        bookText = GameObject.Find("BookText").GetComponent<Animator>();
         titleScreen = GameObject.Find("TitleScreen");
         menu.SetActive(false);
         titleScreen.SetActive(false);
@@ -48,6 +50,8 @@ public class MenuScript : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log("clickedOnChapters " + clickedOnChapters);
+        Debug.Log("clickedOnSettings " + clickedOnSettings);
         if (onTitleScreen)
         {
             if (Input.GetKeyDown(KeyCode.Space))
@@ -56,9 +60,7 @@ public class MenuScript : MonoBehaviour
                 titleScreen.GetComponent<Animator>().Play("TitleScreenFadeOut");
                 StartCoroutine(titleScreenDisableDelay());
                 menu.SetActive(true);
-                expandedBG = GameObject.Find("ButtonExpandedContainer").GetComponent<Animator>();
-                ArrowIconForSettings = GameObject.Find("ArrowIconForSettings").GetComponent<Animator>();
-                ArrowIconForBook = GameObject.Find("ArrowIconForBook").GetComponent<Animator>();
+                menuExpand = menu.GetComponent<Animator>();
                 SettingsExpanded = GameObject.Find("SettingsExpanded").GetComponent<Animator>();
                 ChaptersExpanded = GameObject.Find("ChaptersExpanded").GetComponent<Animator>();
                 SettingsExpanded.gameObject.SetActive(false);
@@ -140,14 +142,14 @@ public class MenuScript : MonoBehaviour
         if (clickedOnSettings)
         {
             clickedOnSettings = false;
-            ArrowIconForSettings.Play("SettingsArrowSlideOut");
-            ArrowIconForBook.Play("BookArrowSlideIn");
+            bookText.Play("BookMoveUp");
+            settingText.Play("SettingsMoveDown");
             StartCoroutine(DelayExpandedMenuTextEnable());
         }
         else if (!clickedOnSettings)
         {
-            expandedBG.Play("SettingsExpandedAnimationSlideIn");
-            ArrowIconForBook.Play("BookArrowSlideIn");
+            menuExpand.Play("OptionExpandedNewSlideIn");
+            bookText.Play("BookMoveUp");
             StartCoroutine(DelayExpandedMenuText());
         }
     }
@@ -158,14 +160,14 @@ public class MenuScript : MonoBehaviour
         if (clickedOnChapters)
         {
             clickedOnChapters = false;
-            ArrowIconForBook.Play("BookArrowSlideOut");
-            ArrowIconForSettings.Play("SettingsArrowSlideIn");
+            bookText.Play("BookMoveDown");
+            settingText.Play("SettingsMoveUp");
             StartCoroutine(DelayExpandedMenuTextEnable());
         }
         else if (!clickedOnChapters)
         {
-            expandedBG.Play("SettingsExpandedAnimationSlideIn");
-            ArrowIconForSettings.Play("SettingsArrowSlideIn");
+            menuExpand.Play("OptionExpandedNewSlideIn");
+            settingText.Play("SettingsMoveUp");
             StartCoroutine(DelayExpandedMenuText());
         }
     }
@@ -175,16 +177,16 @@ public class MenuScript : MonoBehaviour
         if (clickedOnSettings)
         {
             clickedOnSettings = false;
-            ArrowIconForSettings.Play("SettingsArrowSlideOut");
-            SettingsExpanded.Play("SettingsMenuTextFadeOut");
+            settingText.Play("SettingsMoveDown");
+            SettingsExpanded.Play("SettingsOptionsTextFadeOut");
         }
         else if (clickedOnChapters)
         {
             clickedOnChapters = false;
-            ArrowIconForBook.Play("BookArrowSlideOut");
-            ChaptersExpanded.Play("ChapterMenuTextFadeOut");
+            bookText.Play("BookMoveDown");
+            ChaptersExpanded.Play("ChaptersOptionsTextFadeOut");
         }
-        expandedBG.Play("SettingsExpandedAnimationSlideOut");
+        menuExpand.Play("OptionExpandedNewSlideOut");
     }
 
     private IEnumerator DelayExpandedMenuText()
@@ -193,12 +195,12 @@ public class MenuScript : MonoBehaviour
         if (clickedOnSettings)
         {
             SettingsExpanded.gameObject.SetActive(true);
-            SettingsExpanded.Play("SettingsMenuTextFadeIn");
+            SettingsExpanded.Play("SettingsOptionsTextFadeIn");
         }
         else if (clickedOnChapters)
         {
             ChaptersExpanded.gameObject.SetActive(true);
-            ChaptersExpanded.Play("ChapterMenuTextFadeIn");
+            ChaptersExpanded.Play("ChaptersOptionsTextFadeIn");
         }
 
     }
@@ -208,16 +210,16 @@ public class MenuScript : MonoBehaviour
         if (clickedOnChapters)
         {
             ChaptersExpanded.gameObject.SetActive(true);
-            ChaptersExpanded.Play("ChapterMenuTextFadeIn");
-            SettingsExpanded.Play("SettingsMenuTextFadeOut");
+            ChaptersExpanded.Play("ChaptersOptionsTextFadeIn");
+            SettingsExpanded.Play("SettingsOptionsTextFadeOut");
             yield return new WaitForSeconds(0.33f);
             SettingsExpanded.gameObject.SetActive(false);
         }
         else if (clickedOnSettings)
         {
             SettingsExpanded.gameObject.SetActive(true);
-            SettingsExpanded.Play("SettingsMenuTextFadeIn");
-            ChaptersExpanded.Play("ChapterMenuTextFadeOut");
+            SettingsExpanded.Play("SettingsOptionsTextFadeIn");
+            ChaptersExpanded.Play("ChaptersOptionsTextFadeOut");
             yield return new WaitForSeconds(0.33f);
             ChaptersExpanded.gameObject.SetActive(false);
         }
