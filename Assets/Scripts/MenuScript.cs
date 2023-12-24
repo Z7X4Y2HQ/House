@@ -50,6 +50,7 @@ public class MenuScript : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log(Input.anyKeyDown);
         Debug.Log("clickedOnChapters " + clickedOnChapters);
         Debug.Log("clickedOnSettings " + clickedOnSettings);
         if (onTitleScreen)
