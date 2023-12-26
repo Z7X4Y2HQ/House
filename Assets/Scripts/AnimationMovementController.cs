@@ -49,6 +49,7 @@ public class AnimationMovementController : MonoBehaviour
             primaryCamera = GameObject.Find("Third person Camera").GetComponent<CinemachineFreeLook>();
             primaryCamera.LookAt = transform;
             primaryCamera.Follow = transform;
+            primaryCamera.m_YAxis.m_InvertInput = MenuScript.invertAxis;
         }
 
         handleGravity();

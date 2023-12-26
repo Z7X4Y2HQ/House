@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.Playables;
 
 public class HandleTimeline : MonoBehaviour
@@ -18,6 +19,12 @@ public class HandleTimeline : MonoBehaviour
     private bool timelinePaused = true;
     public static bool killedYourself = false;
     public static bool objective6Complete = false;
+    public GameObject skipFade;
+
+    private void Start()
+    {
+        skipFade.SetActive(false);
+    }
     private void Update()
     {
         if (HandleProgress.currentChapter == 1 && HandleProgress.currentScene == "Chapter_one_first_dream")
@@ -65,6 +72,10 @@ public class HandleTimeline : MonoBehaviour
                 {
                     ResumeTimeline();
                 }
+            }
+            if (Input.GetKeyDown(KeyCode.Tab))
+            {
+                StartCoroutine(SkipTimelineFade());
             }
             if (timeline.state == PlayState.Playing)
             {
@@ -128,6 +139,20 @@ public class HandleTimeline : MonoBehaviour
         timeline.playableGraph.GetRootPlayable(0).SetSpeed(1.0f);
         timelinePaused = true;
         StartCoroutine(setPlayFalse());
+    }
+
+    void SkipTimeline()
+    {
+        timeline.time = timeline.duration;
+        skipFade.SetActive(false);
+    }
+
+    IEnumerator SkipTimelineFade()
+    {
+        skipFade.SetActive(true);
+        skipFade.GetComponent<Animator>().Play("SkipTimelineFade");
+        yield return new WaitForSeconds(2f);
+        SkipTimeline();
     }
 
     IEnumerator setPauseFalse()

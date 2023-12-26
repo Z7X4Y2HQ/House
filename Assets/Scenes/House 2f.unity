@@ -6779,6 +6779,11 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 35.29297, y: 700, z: 40.135376}
   m_Center: {x: 34429.15, y: 4673, z: 1068.7097}
+--- !u!1 &1786641031 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5565672365650826135, guid: be1476c39ee9b2743ad08547af96cf14, type: 3}
+  m_PrefabInstance: {fileID: 565346222}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1861782385
 GameObject:
   m_ObjectHideFlags: 0
@@ -12781,6 +12786,7 @@ MonoBehaviour:
   dateTimeText: {fileID: 565346227}
   playIcon: {fileID: 6133778345302623042}
   pauseIcon: {fileID: 6133778345302623041}
+  skipFade: {fileID: 1786641031}
 --- !u!1 &3867328333779518854
 GameObject:
   m_ObjectHideFlags: 0

@@ -2997,6 +2997,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &79328791 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5565672365650826135, guid: be1476c39ee9b2743ad08547af96cf14, type: 3}
+  m_PrefabInstance: {fileID: 1341951027}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &79515144
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15232,7 +15237,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 541850907}
-  m_LocalRotation: {x: 0.5653812, y: -0.0041785156, z: 0.0028642265, w: 0.8248142}
+  m_LocalRotation: {x: -0.03553672, y: -0.005993905, z: -0.0002131422, w: 0.99935037}
   m_LocalPosition: {x: -114.667854, y: 1.2767274, z: -68.06015}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -34864,7 +34869,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1187008787}
-  m_LocalRotation: {x: -0.2604502, y: 0.6621799, z: -0.6507222, w: -0.2650362}
+  m_LocalRotation: {x: -0.0075388653, y: 0.992432, z: -0.0827646, w: -0.090398684}
   m_LocalPosition: {x: -112.88229, y: 0.01591897, z: 5.381034}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -37668,6 +37673,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1791716793492433457, guid: be1476c39ee9b2743ad08547af96cf14, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2684431406676550260, guid: be1476c39ee9b2743ad08547af96cf14, type: 3}
       propertyPath: m_Name
       value: Canvas
@@ -37755,6 +37764,30 @@ PrefabInstance:
     - target: {fileID: 2684431406676550264, guid: be1476c39ee9b2743ad08547af96cf14, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2684431406871350033, guid: be1476c39ee9b2743ad08547af96cf14, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3344327315585998242, guid: be1476c39ee9b2743ad08547af96cf14, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5565672365650826135, guid: be1476c39ee9b2743ad08547af96cf14, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5856240263684826640, guid: be1476c39ee9b2743ad08547af96cf14, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8770965847487325677, guid: be1476c39ee9b2743ad08547af96cf14, type: 3}
+      propertyPath: m_Name
+      value: PhoneUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 8770965847487325678, guid: be1476c39ee9b2743ad08547af96cf14, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be1476c39ee9b2743ad08547af96cf14, type: 3}
@@ -40338,6 +40371,7 @@ MonoBehaviour:
   dateTimeText: {fileID: 1341951028}
   playIcon: {fileID: 954194557}
   pauseIcon: {fileID: 954194558}
+  skipFade: {fileID: 79328791}
 --- !u!4 &1451191437
 Transform:
   m_ObjectHideFlags: 0
@@ -54701,7 +54735,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1989833562}
-  m_LocalRotation: {x: 0.22606651, y: 0.060074236, z: -0.013969723, w: 0.97215736}
+  m_LocalRotation: {x: 0.2475289, y: 0.06569379, z: -0.016824665, w: 0.9665044}
   m_LocalPosition: {x: -130.2854, y: 79.879, z: -117.345}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
