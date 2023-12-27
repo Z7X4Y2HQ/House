@@ -1379,10 +1379,10 @@ MonoBehaviour:
   LoadingScreen: {fileID: 629601722}
   slider: {fileID: 1452999265}
   audioSlider: {fileID: 1492398871}
-  resLabelText: {fileID: 892719375}
   FSTog: {fileID: 347564223}
   VSyncTog: {fileID: 1862607966}
   InvertAxisTog: {fileID: 211927662}
+  resLabelText: {fileID: 892719375}
   resolutions:
   - horizontal: 1920
     vertical: 1080
@@ -1390,6 +1390,10 @@ MonoBehaviour:
     vertical: 900
   - horizontal: 1280
     vertical: 720
+  - horizontal: 1152
+    vertical: 648
+  - horizontal: 1024
+    vertical: 576
 --- !u!114 &227658671
 MonoBehaviour:
   m_ObjectHideFlags: 0

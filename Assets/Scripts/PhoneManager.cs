@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class PhoneManager : MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class PhoneManager : MonoBehaviour
     {
         if (HandleProgress.pickedUpPhone)
         {
-            if (!phoneOut && Input.GetKeyDown(KeyCode.Tab) && !PauseMenuScript.gameIsPaused && !DialogueManager.dialogueIsPlaying)
+            if (!phoneOut && Input.GetKeyDown(KeyCode.Tab) && !PauseMenuScript.gameIsPaused && !DialogueManager.dialogueIsPlaying && HandleTimeline.timeline.state != PlayState.Playing)
             {
                 if (GameObject.FindWithTag("Takahashi_Summer_home") != null)
                 {

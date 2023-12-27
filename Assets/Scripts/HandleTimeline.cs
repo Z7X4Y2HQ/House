@@ -73,7 +73,7 @@ public class HandleTimeline : MonoBehaviour
                     ResumeTimeline();
                 }
             }
-            if (Input.GetKeyDown(KeyCode.Tab))
+            if (Input.GetKeyDown(KeyCode.Tab) && timeline.state == PlayState.Playing)
             {
                 StartCoroutine(SkipTimelineFade());
             }

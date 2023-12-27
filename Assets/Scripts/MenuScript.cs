@@ -5,6 +5,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 public class MenuScript : MonoBehaviour
 {
@@ -36,14 +38,15 @@ public class MenuScript : MonoBehaviour
     public static bool clickedOnGameplay;
     public static bool invertAxis;
     public GameObject audioSlider;
+    public Toggle FSTog, VSyncTog, InvertAxisTog;
     private bool foundRes = false;
     public TMP_Text resLabelText;
-    public Toggle FSTog, VSyncTog, InvertAxisTog;
     private int selectedRes;
     public List<Resolution> resolutions = new List<Resolution>();
 
     private void Awake()
     {
+        UniversalRenderPipelineAsset urpAsset = GraphicsSettings.renderPipelineAsset as UniversalRenderPipelineAsset;
         menu = GameObject.Find("Menu");
         BGMusic = GameObject.Find("BGMusic").GetComponent<AudioSource>();
         settingText = GameObject.Find("SettingText").GetComponent<Animator>();
@@ -80,6 +83,7 @@ public class MenuScript : MonoBehaviour
                 UpdateResLabel();
             }
         }
+
     }
 
     private void Update()
@@ -316,7 +320,7 @@ public class MenuScript : MonoBehaviour
         {
             QualitySettings.vSyncCount = 0;
         }
-        Screen.SetResolution(resolutions[selectedRes].horizontal, resolutions[selectedRes].vertical, FSTog);
+        Screen.SetResolution(resolutions[selectedRes].horizontal, resolutions[selectedRes].vertical, FSTog.isOn);
     }
 
     public void Back()
@@ -451,6 +455,11 @@ public class MenuScript : MonoBehaviour
     private IEnumerator ExpandOnPlay()
     {
         menu.GetComponent<Animator>().Play("MainMenuExpandOnPlay");
+        if (clickedOnSettings) SettingsExpanded.Play("SettingsOptionsTextFadeOut");
+        if (clickedOnChapters) ChaptersExpanded.Play("ChaptersOptionsTextFadeOut");
+        if (clickedOnVideo) VideoExpanded.Play("VideoExpandedFadeOut");
+        if (clickedOnAudio) AudioExpanded.Play("AudioExpandedFadeOut");
+        if (clickedOnGameplay) GameplayExpanded.Play("GameplayExpandedFadeOut");
         yield return new WaitForSeconds(1.3f);
         StartCoroutine(LoadAsynchronously("Dream"));
         HandleProgress.currentChapter = 1;
@@ -499,4 +508,14 @@ public class MenuScript : MonoBehaviour
 public class Resolution
 {
     public int horizontal, vertical;
+}
+[System.Serializable]
+public class AntiAliasing
+{
+    public string value;
+}
+[System.Serializable]
+public class Shadow
+{
+    public string value;
 }

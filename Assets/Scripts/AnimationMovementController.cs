@@ -49,7 +49,7 @@ public class AnimationMovementController : MonoBehaviour
             primaryCamera = GameObject.Find("Third person Camera").GetComponent<CinemachineFreeLook>();
             primaryCamera.LookAt = transform;
             primaryCamera.Follow = transform;
-            primaryCamera.m_YAxis.m_InvertInput = MenuScript.invertAxis;
+            primaryCamera.m_YAxis.m_InvertInput = intToBool(PlayerPrefs.GetInt("InvertAxis"));
         }
 
         handleGravity();
@@ -122,7 +122,20 @@ public class AnimationMovementController : MonoBehaviour
             animator.SetBool(isWalkHash, false);
         }
     }
-
+    bool intToBool(int val)
+    {
+        if (val != 0)
+            return true;
+        else
+            return false;
+    }
+    int boolToInt(bool val)
+    {
+        if (val)
+            return 1;
+        else
+            return 0;
+    }
     void OnEnable()
     {
         PlayerInput.Movement.Enable();
