@@ -53,14 +53,15 @@ public class AnimationMovementController : MonoBehaviour
         }
 
         handleGravity();
-        if (!DialogueManager.dialogueIsPlaying && !phoneManager.phoneOut && !HandleTimeline.timelineIsPlaying)
+        Debug.Log("Wardrobe is open is" + SwapCharacter.isWardrobeOpen);
+        if (!DialogueManager.dialogueIsPlaying && !phoneManager.phoneOut && !HandleTimeline.timelineIsPlaying && !SwapCharacter.isWardrobeOpen)
         {
             handleAnimation();
             handleRotation();
         }
         Debug.Log("Time is playing or not " + HandleTimeline.timelineIsPlaying);
 
-        if (isMovementPressed && !DialogueManager.dialogueIsPlaying && !phoneManager.phoneOut && !HandleTimeline.timelineIsPlaying)
+        if (isMovementPressed && !DialogueManager.dialogueIsPlaying && !phoneManager.phoneOut && !HandleTimeline.timelineIsPlaying && !SwapCharacter.isWardrobeOpen)
         {
             characterController.Move(moveDirection * Time.deltaTime * 1.5f);
         }

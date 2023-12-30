@@ -5166,6 +5166,10 @@ PrefabInstance:
       propertyPath: phoneUI
       value: 
       objectReference: {fileID: 1306290714292388474}
+    - target: {fileID: 2579630978115722711, guid: 23fa69fbdf0fb46b8a2d7fec49f12fae, type: 3}
+      propertyPath: pauseMenuScript
+      value: 
+      objectReference: {fileID: 450691840775073801}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 23fa69fbdf0fb46b8a2d7fec49f12fae, type: 3}
 --- !u!1 &1043037464
@@ -11753,6 +11757,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5565672365650826135, guid: be1476c39ee9b2743ad08547af96cf14, type: 3}
   m_PrefabInstance: {fileID: 450691840775073797}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &450691840775073801 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2684431406676550267, guid: be1476c39ee9b2743ad08547af96cf14, type: 3}
+  m_PrefabInstance: {fileID: 450691840775073797}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69ed0331724ff514db1894b8922bcbdc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!33 &467100274585536283
 MeshFilter:
   m_ObjectHideFlags: 0

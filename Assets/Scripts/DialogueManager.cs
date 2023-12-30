@@ -29,12 +29,7 @@ public class DialogueManager : MonoBehaviour
     private PlayableDirector timeline;
 
     [Header("Hide UI")]
-    public GameObject objectiveText;
-    public GameObject objectiveContainer;
-    public GameObject locationText;
-    public GameObject locationContainer;
-    public GameObject dateTimeText;
-    public GameObject dateTimeContainer;
+    private GameObject HUD;
 
     private Story currentStory;
     public static bool dialogueIsPlaying;
@@ -64,7 +59,7 @@ public class DialogueManager : MonoBehaviour
             Debug.LogWarning("More than one instance of DialogueManager found!");
         }
         instance = this;
-
+        HUD = GameObject.Find("HUD");
         dialogueVariables = new DialogueVariables(loadGlobalsJSON);
     }
 
@@ -126,12 +121,7 @@ public class DialogueManager : MonoBehaviour
         dialogueVariables.StartListening(currentStory);
 
         displayNameText.text = "???";
-        objectiveText.SetActive(false);
-        objectiveContainer.SetActive(false);
-        locationText.SetActive(false);
-        locationContainer.SetActive(false);
-        dateTimeText.SetActive(false);
-        dateTimeContainer.SetActive(false);
+        HUD.SetActive(false);
 
         ContinueStory();
     }
@@ -145,12 +135,7 @@ public class DialogueManager : MonoBehaviour
         dialoguePanel.SetActive(false);
         hideChoices();
         dialogueText.text = "";
-        objectiveText.SetActive(true);
-        objectiveContainer.SetActive(true);
-        locationText.SetActive(true);
-        locationContainer.SetActive(true);
-        dateTimeText.SetActive(true);
-        dateTimeContainer.SetActive(true);
+        HUD.SetActive(true);
     }
 
     private void hideChoices()

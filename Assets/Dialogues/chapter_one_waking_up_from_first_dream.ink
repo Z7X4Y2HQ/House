@@ -19,3 +19,4 @@ A knife!
 ~ objective3Complete = true
 ~ location = "Home"
 ~ time = "2nd April, 2018"
+~ currentObjective = 4

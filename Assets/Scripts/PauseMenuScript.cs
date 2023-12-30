@@ -30,6 +30,8 @@ public class PauseMenuScript : MonoBehaviour
     public Toggle InvertTog, FSTog, VSyncTog;
     private CinemachineFreeLook primaryCamera;
     private bool foundRes = false;
+    private SwapCharacter swapCharacter;
+
 
     public TMP_Text resLabelText;
     private int selectedRes;
@@ -100,25 +102,41 @@ public class PauseMenuScript : MonoBehaviour
             {
                 phoneManager.putBackPhone();
             }
+            else if (SwapCharacter.isWardrobeOpen)
+            {
+                swapCharacter = FindObjectOfType<CharacterController>().GetComponent<SwapCharacter>();
+                swapCharacter.CloseWardrobe();
+            }
             else
             {
                 if (gameIsPaused)
                 {
                     Resume();
-                    HUD.SetActive(true);
                 }
                 else
                 {
                     Pause();
-                    HUD.SetActive(false);
                 }
             }
 
         }
     }
 
+    public void PhoneSettings()
+    {
+        Settings();
+        HUD.SetActive(false);
+        phoneManager.phoneUI.gameObject.SetActive(false);
+        pauseMenuUI.SetActive(true);
+        Time.timeScale = 0f;
+        lockMouse.Unlock();
+        gameIsPaused = true;
+    }
+
     public void Resume()
     {
+        HUD.SetActive(true);
+        phoneManager.phoneUI.gameObject.SetActive(true);
         pauseMenuUI.SetActive(false);
         isSettingOpen = false;
         isVideoOpen = false;
@@ -129,8 +147,10 @@ public class PauseMenuScript : MonoBehaviour
         lockMouse.Lock();
         gameIsPaused = false;
     }
-    private void Pause()
+    public void Pause()
     {
+        HUD.SetActive(false);
+        phoneManager.phoneUI.gameObject.SetActive(false);
         pauseMenuUI.SetActive(true);
         pauseMenu.SetActive(true);
         VideoMenu.SetActive(false);
@@ -159,6 +179,43 @@ public class PauseMenuScript : MonoBehaviour
         PlayerPrefs.SetInt("pickedUpKnife", boolToInt(HandleProgress.pickedUpKnife));
         PlayerPrefs.SetInt("readyForSchool", boolToInt(HandleProgress.readyForSchool));
 
+    }
+
+    public void WardrobeHome()
+    {
+        if (playerInWardrobeRange.currentCloths == "Takahashi_Summer_home")
+        {
+            StartCoroutine(ChangeWardrobeBottomText());
+        }
+        else
+        {
+            swapCharacter = FindObjectOfType<CharacterController>().GetComponent<SwapCharacter>();
+            StartCoroutine(swapCharacter.SwapCloths(swapCharacter.Takahashi_Summer_home));
+            SwapCharacter.isWardrobeOpen = false;
+        }
+    }
+    public void WardrobeSchool()
+    {
+        if (playerInWardrobeRange.currentCloths == "Takahashi_Summer_school")
+        {
+            StartCoroutine(ChangeWardrobeBottomText());
+        }
+        else
+        {
+            swapCharacter = FindObjectOfType<CharacterController>().GetComponent<SwapCharacter>();
+            StartCoroutine(swapCharacter.SwapCloths(swapCharacter.Takahashi_Summer_school));
+            SwapCharacter.isWardrobeOpen = false;
+        }
+
+    }
+
+    private IEnumerator ChangeWardrobeBottomText()
+    {
+        SwapCharacter.WardrobeSameClothText.gameObject.SetActive(true);
+        SwapCharacter.WardrobeCloseText.gameObject.SetActive(false);
+        yield return new WaitForSeconds(2);
+        SwapCharacter.WardrobeSameClothText.gameObject.SetActive(false);
+        SwapCharacter.WardrobeCloseText.gameObject.SetActive(true);
     }
 
     public void Settings()

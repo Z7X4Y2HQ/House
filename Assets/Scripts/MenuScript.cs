@@ -44,6 +44,11 @@ public class MenuScript : MonoBehaviour
     private int selectedRes;
     public List<Resolution> resolutions = new List<Resolution>();
 
+    public TMP_Text chapLabelText;
+    private int selectedChap;
+    public CanvasGroup LeftChapArrow, RightChapArrow;
+    public List<Chapter> ChapterList = new List<Chapter>();
+
     private void Awake()
     {
         UniversalRenderPipelineAsset urpAsset = GraphicsSettings.renderPipelineAsset as UniversalRenderPipelineAsset;
@@ -60,7 +65,7 @@ public class MenuScript : MonoBehaviour
         BGMusic.volume = audioSlider.GetComponent<Slider>().value;
         InvertAxisTog.isOn = intToBool(PlayerPrefs.GetInt("InvertAxis"));
         invertAxis = intToBool(PlayerPrefs.GetInt("InvertAxis"));
-
+        UpdateChapLabel();
     }
 
     private void Start()
@@ -143,7 +148,6 @@ public class MenuScript : MonoBehaviour
             slider.value = progress;
             yield return null;
         }
-
     }
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
@@ -284,7 +288,6 @@ public class MenuScript : MonoBehaviour
         GameplayExpanded.Play("GameplayExpandedFadeIn");
     }
 
-
     public void LeftRes()
     {
         selectedRes--;
@@ -305,6 +308,44 @@ public class MenuScript : MonoBehaviour
         UpdateResLabel();
     }
 
+    public void LeftChap()
+    {
+        selectedChap--;
+        if (selectedChap < 0)
+        {
+            selectedChap = 0;
+        }
+        UpdateChapLabel();
+    }
+
+    public void RightChap()
+    {
+        selectedChap++;
+        if (selectedChap > ChapterList.Count - 1)
+        {
+            selectedChap = ChapterList.Count - 1;
+        }
+        UpdateChapLabel();
+    }
+
+
+    private void UpdateChapLabel()
+    {
+        chapLabelText.text = "Chapter " + ChapterList[selectedChap].value;
+        if (selectedChap == 0)
+        {
+            LeftChapArrow.alpha = 0.7f;
+        }
+        else if (selectedChap == 4)
+        {
+            RightChapArrow.alpha = 0.7f;
+        }
+        else
+        {
+            RightChapArrow.alpha = 1f;
+            LeftChapArrow.alpha = 1f;
+        }
+    }
     public void UpdateResLabel()
     {
         resLabelText.text = resolutions[selectedRes].horizontal.ToString() + "x" + resolutions[selectedRes].vertical.ToString();
@@ -518,4 +559,9 @@ public class AntiAliasing
 public class Shadow
 {
     public string value;
+}
+[System.Serializable]
+public class Chapter
+{
+    public int value;
 }

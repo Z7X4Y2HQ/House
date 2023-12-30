@@ -9,6 +9,11 @@ public class PhoneManager : MonoBehaviour
     private Animator Player;
     public bool phoneOut = false;
     public bool phoneOutFirstTime = false;
+    private LockMouse lockMouse;
+    private void Awake()
+    {
+        lockMouse = GameObject.Find("LockMouse").GetComponent<LockMouse>();
+    }
 
     private void Update()
     {
@@ -35,6 +40,7 @@ public class PhoneManager : MonoBehaviour
 
     public void takeOutPhone()
     {
+        lockMouse.Unlock();
         phoneOut = true;
         Debug.Log("phone out =  true");
         Player.Play("Taking out phone");
@@ -44,6 +50,7 @@ public class PhoneManager : MonoBehaviour
 
     public void putBackPhone()
     {
+        lockMouse.Lock();
         phoneOut = false;
         phoneOutFirstTime = true;
         Debug.Log("phone out =  false");
