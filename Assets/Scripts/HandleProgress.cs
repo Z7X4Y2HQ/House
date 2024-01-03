@@ -28,6 +28,8 @@ public class HandleProgress : MonoBehaviour
         new Objective { description = "Check out the crowd", isCompleted = false }, // case: 9
         new Objective { description = "Find your name in the class list", isCompleted = false }, // case: 10
         new Objective { description = "Ask around where the staff room is", isCompleted = false }, // case: 11
+        new Objective { description = "Talk to a Teacher About your Name in Class list", isCompleted = false }, // case: 12
+        new Objective { description = "Go straight to Class 2-A", isCompleted = false }, // case: 13
     };
 
     public static bool firstPlaythrough;
@@ -75,16 +77,16 @@ public class HandleProgress : MonoBehaviour
 
     private void Start()
     {
-        // if (currentObjectiveIndex == 0)
-        // {
-        //     currentChapter = 1;
-        //     currentScene = "Chapter_one_first_time_in_school";
-        //     currentObjectiveIndex = 8;
-        //     StartCoroutine(UpdateObjective());
-        //     tutorialComplete = true;
-        //     pickedUpPhone = true;
-        //     SceneManagerScript.currentCharacter = "Takahashi_Summer_school";
-        // }
+        if (currentObjectiveIndex == 0)
+        {
+            currentChapter = 1;
+            currentScene = "Chapter_one_talking_to_student_about_staffroom";
+            currentObjectiveIndex = 11;
+            StartCoroutine(UpdateObjective());
+            tutorialComplete = true;
+            pickedUpPhone = true;
+            SceneManagerScript.currentCharacter = "Takahashi_Summer_school";
+        }
 
         objectiveContainerAnimator.Play("SlideInFromRightContainer");
         objectiveTextAnimator.Play("SlideInFromRightText");
@@ -225,7 +227,39 @@ public class HandleProgress : MonoBehaviour
                 }
                 break;
             case 10:
-                Debug.Log("Case 9");
+                Debug.Log("Case 10");
+                bool objective10Complete = ((Ink.Runtime.BoolValue)dialogueManager.GetVariableState("objective10Complete")).value;
+                if (objective10Complete)
+                {
+                    objectives[currentObjectiveIndex].isCompleted = true;
+                }
+                break;
+            case 11:
+                Debug.Log("Case 11");
+                bool objective11Complete = ((Ink.Runtime.BoolValue)dialogueManager.GetVariableState("objective11Complete")).value;
+                if (objective11Complete)
+                {
+                    objectives[currentObjectiveIndex].isCompleted = true;
+                }
+                break;
+            case 12:
+                Debug.Log("Case 12");
+                bool objective12Complete = ((Ink.Runtime.BoolValue)dialogueManager.GetVariableState("objective12Complete")).value;
+                bool goToClass = ((Ink.Runtime.BoolValue)dialogueManager.GetVariableState("goToClass")).value;
+                if (goToClass)
+                {
+                    objectives[currentObjectiveIndex].isCompleted = true;
+                }
+                else
+                {
+                    if (objective12Complete)
+                    {
+                        objectives[currentObjectiveIndex].isCompleted = true;
+                    }
+                }
+                break;
+            case 13:
+                Debug.Log("Case 13");
                 break;
         }
 
@@ -243,6 +277,7 @@ public class HandleProgress : MonoBehaviour
     {
         objectiveTextAnimator.Play("SlideOutFromRightText");
         yield return new WaitForSeconds(1.1f);
+        objectiveTextAnimator.gameObject.SetActive(true);
         objective.text = objectives[currentObjectiveIndex].description;
         objectiveTextAnimator.Play("SlideInFromRightText");
     }

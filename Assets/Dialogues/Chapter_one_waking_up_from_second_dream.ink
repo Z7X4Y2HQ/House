@@ -1,5 +1,5 @@
 INCLUDE Globals.ink 
-I still feel what I felt in that dream… #speaker:Takahashi Tanjiro
+I still feel what I felt in that dream… #speaker:Takahashi Tanjiro #animationBool:isWalk
 Who was she? 
 Looking at her made my chest hurt so bad… 
 I wish I could puke all those emotions out. 

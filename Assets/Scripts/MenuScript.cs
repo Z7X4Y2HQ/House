@@ -24,7 +24,6 @@ public class MenuScript : MonoBehaviour
     private Animator warningScreen;
     private GameObject menu;
     private GameObject titleScreen;
-    private AudioSource BGMusic;
     private bool onTitleScreen;
     private Animator SettingsExpanded;
     private Animator ChaptersExpanded;
@@ -37,7 +36,11 @@ public class MenuScript : MonoBehaviour
     public static bool clickedOnAudio;
     public static bool clickedOnGameplay;
     public static bool invertAxis;
-    public GameObject audioSlider;
+    private AudioSource BGMusic; //music gameobject
+    public GameObject musicSlider; //slider
+    public AudioSource clickSound; //click and stuff sounds
+    public AudioSource bongSound; //bong sound
+    public GameObject masterSlider; //slider
     public Toggle FSTog, VSyncTog, InvertAxisTog;
     private bool foundRes = false;
     public TMP_Text resLabelText;
@@ -62,7 +65,10 @@ public class MenuScript : MonoBehaviour
         warningScreen = GameObject.Find("WarningScreen").GetComponent<Animator>();
         isFirstSave = PlayerPrefs.GetInt("isFirstSave");
         StartCoroutine(WarningScreen());
-        BGMusic.volume = audioSlider.GetComponent<Slider>().value;
+        clickSound.volume = masterSlider.GetComponent<Slider>().value;
+        BGMusic.volume = masterSlider.GetComponent<Slider>().value;
+        bongSound.volume = 0;
+        BGMusic.volume = musicSlider.GetComponent<Slider>().value;
         InvertAxisTog.isOn = intToBool(PlayerPrefs.GetInt("InvertAxis"));
         invertAxis = intToBool(PlayerPrefs.GetInt("InvertAxis"));
         UpdateChapLabel();
@@ -93,13 +99,11 @@ public class MenuScript : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log("Settings " + clickedOnSettings);
-        Debug.Log("Chapters " + clickedOnChapters);
-        Debug.Log("Video " + clickedOnVideo);
         if (onTitleScreen)
         {
             if (Input.anyKeyDown)
             {
+                bongSound.volume = masterSlider.GetComponent<Slider>().value;
                 onTitleScreen = false;
                 titleScreen.GetComponent<Animator>().Play("TitleScreenFadeOut");
                 StartCoroutine(titleScreenDisableDelay());
@@ -120,11 +124,13 @@ public class MenuScript : MonoBehaviour
     }
     public void NewGame()
     {
+        clickSound.Play();
         StartCoroutine(ExpandOnPlay());
     }
 
     public void Continue()
     {
+        clickSound.Play();
         if (isFirstSave == 1)
         {
             StartCoroutine(LoadAsynchronously(PlayerPrefs.GetString("lastActiveScene")));
@@ -189,6 +195,7 @@ public class MenuScript : MonoBehaviour
     }
     public void Chapters()
     {
+        clickSound.Play();
         clickedOnChapters = true;
         if (clickedOnSettings)
         {
@@ -219,6 +226,7 @@ public class MenuScript : MonoBehaviour
 
     public void Settings()
     {
+        clickSound.Play();
         clickedOnSettings = true;
         if (clickedOnChapters)
         {
@@ -249,6 +257,7 @@ public class MenuScript : MonoBehaviour
 
     public void Video()
     {
+        clickSound.Play();
         clickedOnSettings = false;
         clickedOnVideo = true;
         VideoExpanded.gameObject.SetActive(true);
@@ -259,6 +268,7 @@ public class MenuScript : MonoBehaviour
     }
     public void AudioSettings()
     {
+        clickSound.Play();
         clickedOnSettings = false;
         clickedOnAudio = true;
         AudioExpanded.gameObject.SetActive(true);
@@ -267,9 +277,29 @@ public class MenuScript : MonoBehaviour
         settingText.gameObject.GetComponent<TMP_Text>().text = "Audio";
         AudioExpanded.Play("AudioExpandedFadeIn");
     }
-    public void AudioSlider()
+    public void MasterSlider()
     {
-        BGMusic.volume = audioSlider.GetComponent<Slider>().value;
+        if (masterSlider.GetComponent<Slider>().value > musicSlider.GetComponent<Slider>().value)
+        {
+            BGMusic.volume = musicSlider.GetComponent<Slider>().value;
+        }
+        else
+        {
+            BGMusic.volume = masterSlider.GetComponent<Slider>().value;
+        }
+        clickSound.volume = masterSlider.GetComponent<Slider>().value;
+        bongSound.volume = masterSlider.GetComponent<Slider>().value;
+    }
+    public void MusicSlider()
+    {
+        if (masterSlider.GetComponent<Slider>().value < musicSlider.GetComponent<Slider>().value)
+        {
+            BGMusic.volume = masterSlider.GetComponent<Slider>().value;
+        }
+        else
+        {
+            BGMusic.volume = musicSlider.GetComponent<Slider>().value;
+        }
     }
 
     public void InvertToggle()
@@ -277,8 +307,13 @@ public class MenuScript : MonoBehaviour
         invertAxis = InvertAxisTog.isOn;
         PlayerPrefs.SetInt("InvertAxis", boolToInt(invertAxis));
     }
+    public void PlayToggleSound()
+    {
+        bongSound.Play();
+    }
     public void GameplaySettings()
     {
+        clickSound.Play();
         clickedOnSettings = false;
         clickedOnGameplay = true;
         GameplayExpanded.gameObject.SetActive(true);
@@ -290,6 +325,7 @@ public class MenuScript : MonoBehaviour
 
     public void LeftRes()
     {
+        bongSound.Play();
         selectedRes--;
         if (selectedRes < 0)
         {
@@ -300,6 +336,7 @@ public class MenuScript : MonoBehaviour
 
     public void RightRes()
     {
+        bongSound.Play();
         selectedRes++;
         if (selectedRes > resolutions.Count - 1)
         {
@@ -310,6 +347,7 @@ public class MenuScript : MonoBehaviour
 
     public void LeftChap()
     {
+        bongSound.Play();
         selectedChap--;
         if (selectedChap < 0)
         {
@@ -320,6 +358,7 @@ public class MenuScript : MonoBehaviour
 
     public void RightChap()
     {
+        bongSound.Play();
         selectedChap++;
         if (selectedChap > ChapterList.Count - 1)
         {
@@ -353,6 +392,7 @@ public class MenuScript : MonoBehaviour
 
     public void Apply()
     {
+        clickSound.Play();
         if (VSyncTog.isOn)
         {
             QualitySettings.vSyncCount = 1;
@@ -366,6 +406,7 @@ public class MenuScript : MonoBehaviour
 
     public void Back()
     {
+        clickSound.Play();
         if (clickedOnSettings)
         {
             clickedOnSettings = false;
@@ -526,6 +567,7 @@ public class MenuScript : MonoBehaviour
 
     public void Exit()
     {
+        clickSound.Play();
         Application.Quit();
         Debug.Log("Exit");
     }

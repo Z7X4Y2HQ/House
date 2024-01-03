@@ -21,6 +21,8 @@ public class AnimationMovementController : MonoBehaviour
     private float verticalVelocity = 0.0f;
     private PhoneManager phoneManager;
 
+    public AudioSource carpetWalking;
+
 
 
     void Awake()
@@ -31,6 +33,7 @@ public class AnimationMovementController : MonoBehaviour
         animator = GetComponent<Animator>();
 
         isWalkHash = Animator.StringToHash("isWalk");
+        carpetWalking.enabled = false;
 
         PlayerInput.Movement.MovePlayer.started += onMovementInput;
         PlayerInput.Movement.MovePlayer.performed += onMovementInput;
@@ -60,6 +63,15 @@ public class AnimationMovementController : MonoBehaviour
             handleRotation();
         }
         Debug.Log("Time is playing or not " + HandleTimeline.timelineIsPlaying);
+
+        if (isMovementPressed)
+        {
+            carpetWalking.enabled = true;
+        }
+        else
+        {
+            carpetWalking.enabled = false;
+        }
 
         if (isMovementPressed && !DialogueManager.dialogueIsPlaying && !phoneManager.phoneOut && !HandleTimeline.timelineIsPlaying && !SwapCharacter.isWardrobeOpen)
         {

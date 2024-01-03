@@ -199,6 +199,11 @@ public class DialogueManager : MonoBehaviour
                     {
                         GameObject.Find("Sachi - NOT FINAL").GetComponent<Animator>().SetBool(tagValue, true);
                     }
+                    else if (currentSpeaker == "Nerd Student")
+                    {
+                        GameObject.Find("Std11 (1)").GetComponent<Animator>().SetBool(tagValue, true);
+                        StartCoroutine(waitForAnimation(tagValue));
+                    }
                     break;
                 case ANIMATION_TAG:
                     if (currentSpeaker == "Takahashi Tanjiro")
@@ -238,7 +243,14 @@ public class DialogueManager : MonoBehaviour
     private IEnumerator waitForAnimation(string tagValue)
     {
         yield return new WaitForSeconds(0.1f);
-        GameObject.Find(SceneManagerScript.currentCharacter).GetComponent<Animator>().SetBool(tagValue, false);
+        if (currentSpeaker == "Takahashi Tanjiro")
+        {
+            GameObject.Find(SceneManagerScript.currentCharacter).GetComponent<Animator>().SetBool(tagValue, false);
+        }
+        else if (currentSpeaker == "Nerd Student")
+        {
+            GameObject.Find("Std11 (1)").GetComponent<Animator>().SetBool(tagValue, false);
+        }
     }
 
     private IEnumerator DisplayLine(string line)

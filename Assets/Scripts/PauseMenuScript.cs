@@ -27,6 +27,13 @@ public class PauseMenuScript : MonoBehaviour
     private bool isVideoOpen;
     private bool isAudioOpen;
     private bool isGameplayOpen;
+    public Animator objectiveContainerAnimator;
+    public Animator objectiveTextAnimator;
+    public Animator locationContainerAnimator;
+    public Animator locationTextAnimator;
+    public Animator dateTimeContainerAnimator;
+    public Animator dateTimeTextAnimator;
+    public GameObject CheckWardrobe;
     public Toggle InvertTog, FSTog, VSyncTog;
     private CinemachineFreeLook primaryCamera;
     private bool foundRes = false;
@@ -83,6 +90,7 @@ public class PauseMenuScript : MonoBehaviour
         {
             MSAALabelText.text = "8x";
         }
+
         primaryCamera = GameObject.Find("Third person Camera").GetComponent<CinemachineFreeLook>();
         InvertTog.isOn = intToBool(PlayerPrefs.GetInt("InvertAxis"));
         lockMouse = GameObject.Find("LockMouse").GetComponent<LockMouse>();
@@ -125,7 +133,17 @@ public class PauseMenuScript : MonoBehaviour
     public void PhoneSettings()
     {
         Settings();
-        HUD.SetActive(false);
+        phoneManager.putBackPhone();
+        if (HandleProgress.tutorialComplete)
+        {
+            HUD.SetActive(false);
+        }
+        else
+        {
+            CheckWardrobe.SetActive(false);
+            objectiveContainerAnimator.gameObject.SetActive(false);
+            objectiveTextAnimator.gameObject.SetActive(false);
+        }
         phoneManager.phoneUI.gameObject.SetActive(false);
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
@@ -135,7 +153,16 @@ public class PauseMenuScript : MonoBehaviour
 
     public void Resume()
     {
-        HUD.SetActive(true);
+        if (HandleProgress.tutorialComplete)
+        {
+            HUD.SetActive(true);
+        }
+        else
+        {
+            HUD.SetActive(true);
+            objectiveContainerAnimator.gameObject.SetActive(true);
+            objectiveTextAnimator.gameObject.SetActive(true);
+        }
         phoneManager.phoneUI.gameObject.SetActive(true);
         pauseMenuUI.SetActive(false);
         isSettingOpen = false;
@@ -149,7 +176,17 @@ public class PauseMenuScript : MonoBehaviour
     }
     public void Pause()
     {
-        HUD.SetActive(false);
+        if (HandleProgress.tutorialComplete)
+        {
+            HUD.SetActive(false);
+        }
+        else
+        {
+            HUD.SetActive(false);
+            CheckWardrobe.SetActive(false);
+            objectiveContainerAnimator.gameObject.SetActive(false);
+            objectiveTextAnimator.gameObject.SetActive(false);
+        }
         phoneManager.phoneUI.gameObject.SetActive(false);
         pauseMenuUI.SetActive(true);
         pauseMenu.SetActive(true);

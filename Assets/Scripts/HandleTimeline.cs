@@ -8,6 +8,7 @@ public class HandleTimeline : MonoBehaviour
     public static PlayableDirector timeline;
     public static bool timelineIsPlaying = false;
     public GameObject phone;
+    private GameObject HUD;
     public GameObject objectiveContainer;
     public GameObject objectiveText;
     public GameObject locationContainer;
@@ -23,6 +24,7 @@ public class HandleTimeline : MonoBehaviour
 
     private void Start()
     {
+        HUD = GameObject.Find("HUD");
         skipFade.SetActive(false);
     }
     private void Update()
@@ -88,6 +90,7 @@ public class HandleTimeline : MonoBehaviour
                 locationText.SetActive(false);
                 dateTimeContainer.SetActive(false);
                 dateTimeText.SetActive(false);
+                // HUD.SetActive(false);
             }
             else
             {

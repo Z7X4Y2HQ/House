@@ -13,6 +13,8 @@ public class DialogueTriggerManager : MonoBehaviour
     public TextAsset Chapter_one_dream_after_killing_yourself;
     public TextAsset Chapter_one_waking_up_from_second_dream;
     public TextAsset Chapter_one_in_the_school_entering_the_crowd;
+    public TextAsset Chapter_one_finding_name_in_list;
+    public TextAsset Chapter_one_talking_to_student_about_staffroom;
     private DialogueManager dialogueManager;
     public PlayableDirector momsWalkingFromKitchenAnimation;
     public static bool inSchool;
@@ -71,6 +73,18 @@ public class DialogueTriggerManager : MonoBehaviour
                 GameObject.Find(SceneManagerScript.currentCharacter).GetComponent<Animator>().SetBool("isWalk", false);
                 dialogueManager.EnterDialogueMode(Chapter_one_in_the_school_entering_the_crowd);
                 HandleProgress.currentScene = "Chapter_one_finding_name_in_list";
+            }
+            if (HandleProgress.currentScene == "Chapter_one_finding_name_in_list" && HandleProgress.currentObjectiveIndex == 10 && gameObject.name == "DialogueChapter_one_finding_name_in_list")
+            {
+                GameObject.Find(SceneManagerScript.currentCharacter).GetComponent<Animator>().SetBool("isWalk", false);
+                dialogueManager.EnterDialogueMode(Chapter_one_finding_name_in_list);
+                HandleProgress.currentScene = "Chapter_one_talking_to_student_about_staffroom";
+            }
+            if (HandleProgress.currentScene == "Chapter_one_talking_to_student_about_staffroom" && HandleProgress.currentObjectiveIndex == 11 && gameObject.name == "DialogueChapter_one_talking_to_student_about_staffroom")
+            {
+                GameObject.Find(SceneManagerScript.currentCharacter).GetComponent<Animator>().SetBool("isWalk", false);
+                dialogueManager.EnterDialogueMode(Chapter_one_talking_to_student_about_staffroom);
+                HandleProgress.currentScene = "Chapter_one_going_into_school";
             }
         }
         Debug.Log("currentObjectiveIndex " + HandleProgress.currentObjectiveIndex);

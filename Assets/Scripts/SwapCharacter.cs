@@ -4,6 +4,7 @@ using UnityEngine;
 using Cinemachine;
 using Unity.Mathematics;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 
 public class SwapCharacter : MonoBehaviour
@@ -27,13 +28,16 @@ public class SwapCharacter : MonoBehaviour
     {
         pauseMenuScript = GameObject.Find("Canvas").GetComponent<PauseMenuScript>();
         animator = GameObject.Find("LevelLoader").GetComponentInChildren<Animator>();
-        wardrobeCamera = GameObject.Find("WardrobeCamera");
+        HUD = GameObject.Find("HUD");
+        lockMouse = GameObject.Find("LockMouse").GetComponent<LockMouse>();
         wardrobeClothsUI = GameObject.Find("WardrobeClothsUI");
         WardrobeCloseText = wardrobeClothsUI.transform.GetChild(1).gameObject;
         WardrobeSameClothText = wardrobeClothsUI.transform.GetChild(3).gameObject;
-        HUD = GameObject.Find("HUD");
-        lockMouse = GameObject.Find("LockMouse").GetComponent<LockMouse>();
-        wardrobeCamera.SetActive(false);
+        if (SceneManager.GetActiveScene().name == "House 2f")
+        {
+            wardrobeCamera = GameObject.Find("WardrobeCamera");
+            wardrobeCamera.SetActive(false);
+        }
         wardrobeClothsUI.SetActive(false);
         dialogueManager = GameObject.Find("DialogueManager").GetComponent<DialogueManager>();
     }
@@ -42,8 +46,7 @@ public class SwapCharacter : MonoBehaviour
     {
         if (playerInWardrobeRange.changeClothes)
         {
-            // if (Input.GetKeyDown(KeyCode.E) && !isWardrobeOpen && HandleProgress.currentObjectiveIndex > 6)
-            if (Input.GetKeyDown(KeyCode.E) && !isWardrobeOpen)
+            if (Input.GetKeyDown(KeyCode.E) && !isWardrobeOpen && HandleProgress.currentObjectiveIndex > 6)
             {
                 OpenWardrobe();
             }

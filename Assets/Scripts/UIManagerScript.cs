@@ -9,11 +9,13 @@ public class UIManagerScript : MonoBehaviour
     public GameObject CheckWardrobe;
     public string locationName;
     public TextMeshProUGUI locationText;
+    public static bool playerInRange;
 
     void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent<CharacterController>(out CharacterController controller))
         {
+            playerInRange = true;
             if (gameObject.name == "Wardrobe" && HandleProgress.currentObjectiveIndex < 6)
             {
                 CheckWardrobe.SetActive(true);
@@ -44,6 +46,7 @@ public class UIManagerScript : MonoBehaviour
     {
         if (other.TryGetComponent<CharacterController>(out CharacterController controller))
         {
+            playerInRange = false;
             InteractPanel.SetActive(false);
             CheckWardrobe.SetActive(false);
             locationText.text = "";
