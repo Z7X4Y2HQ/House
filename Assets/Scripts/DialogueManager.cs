@@ -204,6 +204,11 @@ public class DialogueManager : MonoBehaviour
                         GameObject.Find("Std11 (1)").GetComponent<Animator>().SetBool(tagValue, true);
                         StartCoroutine(waitForAnimation(tagValue));
                     }
+                    else if (currentSpeaker == "Young Teacher")
+                    {
+                        GameObject.Find("Teacher").GetComponent<Animator>().SetBool(tagValue, true);
+                        StartCoroutine(waitForAnimation(tagValue));
+                    }
                     break;
                 case ANIMATION_TAG:
                     if (currentSpeaker == "Takahashi Tanjiro")
@@ -250,6 +255,10 @@ public class DialogueManager : MonoBehaviour
         else if (currentSpeaker == "Nerd Student")
         {
             GameObject.Find("Std11 (1)").GetComponent<Animator>().SetBool(tagValue, false);
+        }
+        else if (currentSpeaker == "Young Teacher")
+        {
+            GameObject.Find("Teacher").GetComponent<Animator>().SetBool(tagValue, false);
         }
     }
 

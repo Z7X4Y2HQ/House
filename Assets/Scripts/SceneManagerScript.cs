@@ -86,6 +86,14 @@ public class SceneManagerScript : MonoBehaviour
             {
                 spawnPoint = GameObject.Find("TownToSchool").transform.GetChild(0).gameObject.transform;
             }
+            else if (playerPosition == "SchoolToHallway")
+            {
+                spawnPoint = GameObject.Find("HallwayToSchool").transform.GetChild(0).gameObject.transform;
+            }
+            else if (playerPosition == "HallwayToSchool")
+            {
+                spawnPoint = GameObject.Find("SchoolToHallway").transform.GetChild(0).gameObject.transform;
+            }
 
             if (currentCharacter == currentCharacterInHierarchy)
             {

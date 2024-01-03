@@ -15,6 +15,9 @@ public class DialogueTriggerManager : MonoBehaviour
     public TextAsset Chapter_one_in_the_school_entering_the_crowd;
     public TextAsset Chapter_one_finding_name_in_list;
     public TextAsset Chapter_one_talking_to_student_about_staffroom;
+    public TextAsset Chapter_one_standing_in_the_hallway;
+    public TextAsset Chapter_one_standing_in_staffroom_door;
+    public TextAsset Chapter_one_talking_to_teacher_about_list;
     private DialogueManager dialogueManager;
     public PlayableDirector momsWalkingFromKitchenAnimation;
     public static bool inSchool;
@@ -84,8 +87,26 @@ public class DialogueTriggerManager : MonoBehaviour
             {
                 GameObject.Find(SceneManagerScript.currentCharacter).GetComponent<Animator>().SetBool("isWalk", false);
                 dialogueManager.EnterDialogueMode(Chapter_one_talking_to_student_about_staffroom);
-                HandleProgress.currentScene = "Chapter_one_going_into_school";
+                HandleProgress.currentScene = "Chapter_one_going_into_staffroom";
             }
+            if (HandleProgress.currentScene == "Chapter_one_going_into_staffroom" && HandleProgress.currentObjectiveIndex == 12 && gameObject.name == "DialogueChapter_one_standing_in_staffroom_door")
+            {
+                GameObject.Find(SceneManagerScript.currentCharacter).GetComponent<Animator>().SetBool("isWalk", false);
+                dialogueManager.EnterDialogueMode(Chapter_one_standing_in_staffroom_door);
+                HandleProgress.currentScene = "Chapter_one_about_to_talk_to_teacher";
+            }
+            if (HandleProgress.currentScene == "Chapter_one_about_to_talk_to_teacher" && HandleProgress.currentObjectiveIndex == 12 && gameObject.name == "DialogueChapter_one_talking_to_teacher_about_list")
+            {
+                GameObject.Find(SceneManagerScript.currentCharacter).GetComponent<Animator>().SetBool("isWalk", false);
+                dialogueManager.EnterDialogueMode(Chapter_one_talking_to_teacher_about_list);
+                HandleProgress.currentScene = "Chapter_one_going_into_class";
+            }
+            if (HandleProgress.currentScene == "Chapter_one_standing_in_the_school_hallway" && HandleProgress.currentObjectiveIndex == 13 && gameObject.name == "DialogueChapter_one_standing_in_the_hallway")
+            {
+                dialogueManager.EnterDialogueMode(Chapter_one_standing_in_the_hallway);
+                HandleProgress.currentScene = "Chapter_one_going_into_class";
+            }
+
         }
         Debug.Log("currentObjectiveIndex " + HandleProgress.currentObjectiveIndex);
     }

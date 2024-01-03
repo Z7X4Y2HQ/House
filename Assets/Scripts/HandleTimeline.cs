@@ -21,11 +21,13 @@ public class HandleTimeline : MonoBehaviour
     public static bool killedYourself = false;
     public static bool objective6Complete = false;
     public GameObject skipFade;
+    private DialogueManager dialogueManager;
 
     private void Start()
     {
         HUD = GameObject.Find("HUD");
         skipFade.SetActive(false);
+        dialogueManager = GameObject.Find("DialogueManager").GetComponent<DialogueManager>();
     }
     private void Update()
     {
@@ -59,6 +61,14 @@ public class HandleTimeline : MonoBehaviour
             timeline.Play();
             HandleProgress.currentScene = "Chapter_one_second_dream_after_effects";
             objective6Complete = true;
+        }
+        else if (HandleProgress.currentChapter == 1 && HandleProgress.currentScene == "Chapter_one_going_into_staffroom" && HandleProgress.currentObjectiveIndex == 12)
+        {
+            bool goToClass = ((Ink.Runtime.BoolValue)dialogueManager.GetVariableState("goToClass")).value;
+            if (goToClass)
+            {
+                StartCoroutine(setPositionForTimeline2());
+            }
         }
         // timeline = GameObject.Find("Dream after killing youself Timeline").GetComponent<PlayableDirector>();
 
@@ -128,6 +138,20 @@ public class HandleTimeline : MonoBehaviour
         timeline = GameObject.Find("Kill Yourself TIimeline").GetComponent<PlayableDirector>();
         timeline.Play();
         HandleProgress.currentScene = "Chapter_one_kill_yourself";
+    }
+
+    IEnumerator setPositionForTimeline2()
+    {
+        CharacterController characterController = FindObjectOfType<CharacterController>();
+        characterController.enabled = false;
+
+        characterController.gameObject.transform.position = new Vector3(-127.420998f, 0.848999977f, -29.1480007f);
+        characterController.gameObject.transform.rotation = Quaternion.Euler(0, -180, 0);
+        characterController.enabled = true;
+        yield return new WaitForSeconds(0.2f);
+        timeline = GameObject.Find("Walking into school in confusion Timeline").GetComponent<PlayableDirector>();
+        timeline.Play();
+        HandleProgress.currentScene = "Chapter_one_going_into_staffroom";
     }
 
     void PauseTimeline()

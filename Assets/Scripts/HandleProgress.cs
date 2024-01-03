@@ -77,16 +77,16 @@ public class HandleProgress : MonoBehaviour
 
     private void Start()
     {
-        if (currentObjectiveIndex == 0)
-        {
-            currentChapter = 1;
-            currentScene = "Chapter_one_talking_to_student_about_staffroom";
-            currentObjectiveIndex = 11;
-            StartCoroutine(UpdateObjective());
-            tutorialComplete = true;
-            pickedUpPhone = true;
-            SceneManagerScript.currentCharacter = "Takahashi_Summer_school";
-        }
+        // if (currentObjectiveIndex == 0)
+        // {
+        //     currentChapter = 1;
+        //     currentScene = "Chapter_one_about_to_talk_to_teacher";
+        //     currentObjectiveIndex = 12;
+        //     StartCoroutine(UpdateObjective());
+        //     tutorialComplete = true;
+        //     pickedUpPhone = true;
+        // }
+        // SceneManagerScript.currentCharacter = "Takahashi_Summer_school";
 
         objectiveContainerAnimator.Play("SlideInFromRightContainer");
         objectiveTextAnimator.Play("SlideInFromRightText");
@@ -246,13 +246,13 @@ public class HandleProgress : MonoBehaviour
                 Debug.Log("Case 12");
                 bool objective12Complete = ((Ink.Runtime.BoolValue)dialogueManager.GetVariableState("objective12Complete")).value;
                 bool goToClass = ((Ink.Runtime.BoolValue)dialogueManager.GetVariableState("goToClass")).value;
-                if (goToClass)
+                if (goToClass) //Timeline play krni
                 {
                     objectives[currentObjectiveIndex].isCompleted = true;
                 }
                 else
                 {
-                    if (objective12Complete)
+                    if (objective12Complete) // Talk to a Teacher
                     {
                         objectives[currentObjectiveIndex].isCompleted = true;
                     }
@@ -260,6 +260,10 @@ public class HandleProgress : MonoBehaviour
                 break;
             case 13:
                 Debug.Log("Case 13");
+                string locationText13 = ((Ink.Runtime.StringValue)dialogueManager.GetVariableState("location")).value;
+                string time13 = ((Ink.Runtime.StringValue)dialogueManager.GetVariableState("time")).value;
+                location.text = locationText13;
+                dateTime.text = time13;
                 break;
         }
 

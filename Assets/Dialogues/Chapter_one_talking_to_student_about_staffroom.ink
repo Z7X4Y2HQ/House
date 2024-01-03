@@ -20,9 +20,10 @@ Not funny dude, April fools was yesterday. #speaker:Takahashi Tanjiro #speaker:N
 …Today IS 1st April #speaker:Nerd Student 
 [What's he talking about? it is clearly...] #speaker:Takahashi Tanjiro #animationBool:isPhoneOut
 [What... 1st April 2019… 2019… No way in hell this could be true… no way…]
-“…2019… 
+…2019… #speaker:Takahashi Tanjiro #animationBool:isPhoneIn
 Ah… Takahashi, are you okay? You look pale.
 I ah… I’m sorry, I just didn’t sleep well.
+.
 ~objective11Complete = true
 ~goToClass = true
 -> END

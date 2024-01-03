@@ -24,5 +24,10 @@ public class ChangeSceneInTimeline : MonoBehaviour
             HandleProgress.currentScene = "Chapter_one_going_to_school_after_the_second_dream";
             SceneManager.LoadScene("House 2f");
         }
+        else if (HandleProgress.currentChapter == 1 && HandleProgress.currentScene == "Chapter_one_going_into_staffroom")
+        {
+            HandleProgress.currentScene = "Chapter_one_standing_in_the_school_hallway";
+            SceneManager.LoadScene("Hallway");
+        }
     }
 }
