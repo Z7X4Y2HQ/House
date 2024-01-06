@@ -1,6 +1,6 @@
 INCLUDE Globals.ink 
 ~ objective5Complete = false
-The last thing I remember, I went to bed. Am I dreaming?#speaker:Takahashi Tanjiro #animationBool:isWalk
+The last thing I remember, I went to bed. Am I dreaming?#speaker:Takahashi thinking #animationBool:isWalk
 As far as I can see, there’s nothing here… just white.
 It’s just too unreal.
 It must be a dream. 
@@ -17,7 +17,7 @@ If it’s not a dream, then what the hell is this place.
 “WHERE THE HELL AM I”
 I shout in the hope of finding some kind of response or something but all I get back is my echo.
 I cover my ears and close my eyes to keep myself sane but
-“AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA”
+“AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA” #speaker:Takahashi Tanjiro
 How did it get to this? I just went to sleep didn’t I-
 “Takahashi… Goodbye!”#speaker:Female Voice
 ~ objective5Complete = true

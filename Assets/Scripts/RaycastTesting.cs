@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class RaycastTesting : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class RaycastTesting : MonoBehaviour
     private int InteractableLayer;
     public float radius = 0.5f;
     public bool isInteracting = false;
+    public GameObject phone;
     private HandleProgress handleProgress;
 
     void Awake()
@@ -24,6 +26,10 @@ public class RaycastTesting : MonoBehaviour
         InteractableLayer = LayerMask.NameToLayer("Interactable");
         handleProgress = GameObject.Find("HandleHUD").GetComponent<HandleProgress>();
         layerMask = 1 << InteractableLayer;
+        // if (HandleProgress.pickedUpPhone && SceneManager.GetActiveScene().name == "House 2f")
+        // {
+        //     phone.SetActive(false);
+        // }
     }
 
     void Update()

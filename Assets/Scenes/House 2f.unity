@@ -3727,9 +3727,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InteractPanel: {fileID: 565346244}
-  CheckWardrobe: {fileID: 0}
+  CheckWardrobe: {fileID: 566705351}
+  openDoor: {fileID: 1977542612}
   locationName: To Go Downstairs
   locationText: {fileID: 565346223}
+  doorText: {fileID: 247552184}
 --- !u!64 &892639267
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6357,6 +6359,10 @@ MonoBehaviour:
   Chapter_one_in_the_school_entering_the_crowd: {fileID: 0}
   Chapter_one_finding_name_in_list: {fileID: 0}
   Chapter_one_talking_to_student_about_staffroom: {fileID: 0}
+  Chapter_one_standing_in_the_hallway: {fileID: 0}
+  Chapter_one_standing_in_staffroom_door: {fileID: 0}
+  Chapter_one_talking_to_teacher_about_list: {fileID: 0}
+  Chapter_one_walking_out_of_staffroom: {fileID: 0}
   momsWalkingFromKitchenAnimation: {fileID: 0}
 --- !u!4 &1601734455
 Transform:
@@ -8000,6 +8006,10 @@ MonoBehaviour:
   Chapter_one_in_the_school_entering_the_crowd: {fileID: 0}
   Chapter_one_finding_name_in_list: {fileID: 0}
   Chapter_one_talking_to_student_about_staffroom: {fileID: 0}
+  Chapter_one_standing_in_the_hallway: {fileID: 0}
+  Chapter_one_standing_in_staffroom_door: {fileID: 0}
+  Chapter_one_talking_to_teacher_about_list: {fileID: 0}
+  Chapter_one_walking_out_of_staffroom: {fileID: 0}
   momsWalkingFromKitchenAnimation: {fileID: 0}
 --- !u!65 &2087028467
 BoxCollider:
@@ -16084,6 +16094,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RaycastTesting
       objectReference: {fileID: 0}
+    - target: {fileID: 2877080048990556817, guid: 8536c251cc9204b8ab9d6645135908af, type: 3}
+      propertyPath: phone
+      value: 
+      objectReference: {fileID: 1964698695794861763}
     - target: {fileID: 2877080048990556846, guid: 8536c251cc9204b8ab9d6645135908af, type: 3}
       propertyPath: m_RootOrder
       value: 28
@@ -19555,8 +19569,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InteractPanel: {fileID: 1977542612}
   CheckWardrobe: {fileID: 566705351}
+  openDoor: {fileID: 1977542612}
   locationName: Open Wardrobe
   locationText: {fileID: 247552184}
+  doorText: {fileID: 247552184}
 --- !u!114 &7540866739350822350
 MonoBehaviour:
   m_ObjectHideFlags: 0

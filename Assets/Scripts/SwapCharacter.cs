@@ -30,6 +30,10 @@ public class SwapCharacter : MonoBehaviour
         animator = GameObject.Find("LevelLoader").GetComponentInChildren<Animator>();
         HUD = GameObject.Find("HUD");
         lockMouse = GameObject.Find("LockMouse").GetComponent<LockMouse>();
+        dialogueManager = GameObject.Find("DialogueManager").GetComponent<DialogueManager>();
+    }
+    private void Start()
+    {
         wardrobeClothsUI = GameObject.Find("WardrobeClothsUI");
         WardrobeCloseText = wardrobeClothsUI.transform.GetChild(1).gameObject;
         WardrobeSameClothText = wardrobeClothsUI.transform.GetChild(3).gameObject;
@@ -38,8 +42,10 @@ public class SwapCharacter : MonoBehaviour
             wardrobeCamera = GameObject.Find("WardrobeCamera");
             wardrobeCamera.SetActive(false);
         }
-        wardrobeClothsUI.SetActive(false);
-        dialogueManager = GameObject.Find("DialogueManager").GetComponent<DialogueManager>();
+        if (wardrobeClothsUI != null && WardrobeCloseText != null && WardrobeSameClothText != null)
+        {
+            wardrobeClothsUI.SetActive(false);
+        }
     }
 
     void Update()
@@ -48,6 +54,7 @@ public class SwapCharacter : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E) && !isWardrobeOpen && HandleProgress.currentObjectiveIndex > 6)
             {
+                GameObject.FindWithTag(SceneManagerScript.currentCharacter).GetComponent<Animator>().SetBool("isWalk", false);
                 OpenWardrobe();
             }
             if (Input.GetKeyDown(KeyCode.F) && !isWardrobeOpen && !DialogueManager.dialogueIsPlaying)

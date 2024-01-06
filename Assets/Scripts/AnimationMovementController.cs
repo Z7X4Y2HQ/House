@@ -20,10 +20,7 @@ public class AnimationMovementController : MonoBehaviour
     public float gravity = 9.8f;
     private float verticalVelocity = 0.0f;
     private PhoneManager phoneManager;
-
     public AudioSource carpetWalking;
-
-
 
     void Awake()
     {
@@ -42,6 +39,7 @@ public class AnimationMovementController : MonoBehaviour
 
     void Update()
     {
+        SceneManagerScript.currentCharacter = gameObject.tag;
         if (camera == null)
         {
             camera = GameObject.Find("Main Camera").transform;
@@ -64,7 +62,7 @@ public class AnimationMovementController : MonoBehaviour
         }
         Debug.Log("Time is playing or not " + HandleTimeline.timelineIsPlaying);
 
-        if (isMovementPressed)
+        if (isMovementPressed && !DialogueManager.dialogueIsPlaying && !phoneManager.phoneOut && !HandleTimeline.timelineIsPlaying && !SwapCharacter.isWardrobeOpen)
         {
             carpetWalking.enabled = true;
         }

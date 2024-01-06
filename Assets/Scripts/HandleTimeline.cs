@@ -71,10 +71,10 @@ public class HandleTimeline : MonoBehaviour
             }
         }
         // timeline = GameObject.Find("Dream after killing youself Timeline").GetComponent<PlayableDirector>();
-
+        Debug.Log("is timeline playing is " + timelineIsPlaying);
         if (timeline != null)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space) && timelineIsPlaying)
             {
                 if (timelinePaused)
                 {

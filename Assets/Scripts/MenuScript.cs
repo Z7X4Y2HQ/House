@@ -41,6 +41,8 @@ public class MenuScript : MonoBehaviour
     public AudioSource clickSound; //click and stuff sounds
     public AudioSource bongSound; //bong sound
     public GameObject masterSlider; //slider
+    public GameObject resetPopUp;
+    private bool isPopUpOpen;
     public Toggle FSTog, VSyncTog, InvertAxisTog;
     private bool foundRes = false;
     public TMP_Text resLabelText;
@@ -124,8 +126,33 @@ public class MenuScript : MonoBehaviour
     }
     public void NewGame()
     {
+        if (!isPopUpOpen)
+        {
+            isPopUpOpen = true;
+            if (isFirstSave == 1)
+            {
+                resetPopUp.SetActive(true);
+            }
+            else
+            {
+                clickSound.Play();
+                StartCoroutine(ExpandOnPlay());
+            }
+        }
+    }
+
+    public void ResetYes()
+    {
         clickSound.Play();
         StartCoroutine(ExpandOnPlay());
+        isFirstSave = 0;
+        resetPopUp.SetActive(false);
+
+    }
+    public void ResetNo()
+    {
+        resetPopUp.SetActive(false);
+        isPopUpOpen = false;
     }
 
     public void Continue()
@@ -133,8 +160,7 @@ public class MenuScript : MonoBehaviour
         clickSound.Play();
         if (isFirstSave == 1)
         {
-            StartCoroutine(LoadAsynchronously(PlayerPrefs.GetString("lastActiveScene")));
-            SceneManager.sceneLoaded += OnSceneLoaded;
+            StartCoroutine(ExpandOnContinue());
         }
         else
         {
@@ -188,8 +214,14 @@ public class MenuScript : MonoBehaviour
         HandleProgress.pickedUpPhone = intToBool(PlayerPrefs.GetInt("pickedUpPhone"));
         HandleProgress.pickedUpKnife = intToBool(PlayerPrefs.GetInt("pickedUpKnife"));
         HandleProgress.readyForSchool = intToBool(PlayerPrefs.GetInt("readyForSchool"));
+        HandleProgress.locationText = PlayerPrefs.GetString("currentLocation");
+        HandleProgress.time = PlayerPrefs.GetString("currentDateTime");
 
-
+        if (SceneManager.GetActiveScene().name == "Dream" && HandleProgress.currentObjectiveIndex == 6)
+        {
+            Transform sachi = GameObject.Find("Sachi - NOT FINAL").transform;
+            sachi.position = new Vector3(0, 0, -18.06f);
+        }
 
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
@@ -536,6 +568,8 @@ public class MenuScript : MonoBehaviour
 
     private IEnumerator ExpandOnPlay()
     {
+        PlayerPrefs.DeleteAll();
+
         menu.GetComponent<Animator>().Play("MainMenuExpandOnPlay");
         if (clickedOnSettings) SettingsExpanded.Play("SettingsOptionsTextFadeOut");
         if (clickedOnChapters) ChaptersExpanded.Play("ChaptersOptionsTextFadeOut");
@@ -549,6 +583,18 @@ public class MenuScript : MonoBehaviour
         HandleProgress.currentScene = "Chapter_one_first_dream";
         HandleProgress.firstPlaythrough = true;
         PlayerPrefs.SetString("currentCharacter", "Takahashi_Summer_home");
+    }
+    private IEnumerator ExpandOnContinue()
+    {
+        menu.GetComponent<Animator>().Play("MainMenuExpandOnPlay");
+        if (clickedOnSettings) SettingsExpanded.Play("SettingsOptionsTextFadeOut");
+        if (clickedOnChapters) ChaptersExpanded.Play("ChaptersOptionsTextFadeOut");
+        if (clickedOnVideo) VideoExpanded.Play("VideoExpandedFadeOut");
+        if (clickedOnAudio) AudioExpanded.Play("AudioExpandedFadeOut");
+        if (clickedOnGameplay) GameplayExpanded.Play("GameplayExpandedFadeOut");
+        yield return new WaitForSeconds(1.3f);
+        StartCoroutine(LoadAsynchronously(PlayerPrefs.GetString("lastActiveScene")));
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     private IEnumerator titleScreenDisableDelay()

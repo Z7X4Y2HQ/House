@@ -85,6 +85,7 @@ public class DialogueManager : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log("is dialogue playing is " + dialogueIsPlaying);
         if (PlayerManager.currentCollidingNPCName != null && Input.GetKeyDown(KeyCode.F) && !dialogueIsPlaying)
         {
             Debug.Log(PlayerManager.currentCollidingNPCName);
@@ -183,15 +184,19 @@ public class DialogueManager : MonoBehaviour
                     displayNameText.text = tagValue;
                     break;
                 case ANIMATION_BOOL_TAG:
-                    if (currentSpeaker == "Takahashi Tanjiro")
+                    if (currentSpeaker == "Takahashi Tanjiro" || currentSpeaker == "Takahashi thinking")
                     {
                         if (tagValue == "isWalk")
                         {
-                            GameObject.Find(SceneManagerScript.currentCharacter).GetComponent<Animator>().SetBool(tagValue, false);
+                            GameObject.FindWithTag(SceneManagerScript.currentCharacter).GetComponent<Animator>().SetBool(tagValue, false);
                         }
                         else
                         {
-                            GameObject.Find(SceneManagerScript.currentCharacter).GetComponent<Animator>().SetBool(tagValue, true);
+                            if (tagValue == "isPhoneIn")
+                            {
+                                GameObject.FindWithTag(SceneManagerScript.currentCharacter).GetComponent<Animator>().SetBool("isPhoneUse", false);
+                            }
+                            GameObject.FindWithTag(SceneManagerScript.currentCharacter).GetComponent<Animator>().SetBool(tagValue, true);
                             StartCoroutine(waitForAnimation(tagValue));
                         }
                     }
@@ -213,7 +218,7 @@ public class DialogueManager : MonoBehaviour
                 case ANIMATION_TAG:
                     if (currentSpeaker == "Takahashi Tanjiro")
                     {
-                        GameObject.Find(SceneManagerScript.currentCharacter).GetComponent<Animator>().Play(tagValue);
+                        GameObject.FindWithTag(SceneManagerScript.currentCharacter).GetComponent<Animator>().Play(tagValue);
                     }
                     else if (currentSpeaker == "Sachi")
                     {
@@ -247,10 +252,17 @@ public class DialogueManager : MonoBehaviour
 
     private IEnumerator waitForAnimation(string tagValue)
     {
-        yield return new WaitForSeconds(0.1f);
-        if (currentSpeaker == "Takahashi Tanjiro")
+        if (tagValue == "isPhoneUse")
         {
-            GameObject.Find(SceneManagerScript.currentCharacter).GetComponent<Animator>().SetBool(tagValue, false);
+            yield return new WaitForSeconds(999f);
+        }
+        else
+        {
+            yield return new WaitForSeconds(0.1f);
+        }
+        if (currentSpeaker == "Takahashi Tanjiro" || currentSpeaker == "Takahashi thinking")
+        {
+            GameObject.FindWithTag(SceneManagerScript.currentCharacter).GetComponent<Animator>().SetBool(tagValue, false);
         }
         else if (currentSpeaker == "Nerd Student")
         {
@@ -330,11 +342,11 @@ public class DialogueManager : MonoBehaviour
         return variableValue;
     }
 
-    public void OnApplicationQuit()
-    {
-        if (dialogueVariables != null)
-        {
-            dialogueVariables.SaveVariables();
-        }
-    }
+    // public void OnApplicationQuit()
+    // {
+    //     if (dialogueVariables != null)
+    //     {
+    //         dialogueVariables.SaveVariables();
+    //     }
+    // }
 }

@@ -55,9 +55,9 @@ public class SceneManagerScript : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        currentCharacter = PlayerPrefs.GetString("currentCharacter");
         currentCharacterInHierarchy = FindObjectOfType<CharacterController>().gameObject.tag;
         SwapCharacter = FindObjectOfType<CharacterController>().GetComponent<SwapCharacter>();
+
         if (scene.name == sceneToLoad)
         {
             if (playerPosition == "StairsToF2")
@@ -106,13 +106,13 @@ public class SceneManagerScript : MonoBehaviour
                 {
                     Debug.Log(2);
                     SwapCharacter.Swap(SwapCharacter.Takahashi_Summer_home);
-                    player = GameObject.Find("Takahashi_Summer_home(Clone)");
+                    player = GameObject.FindWithTag("Takahashi_Summer_home");
                 }
                 else if (currentCharacter == "Takahashi_Summer_school")
                 {
                     Debug.Log(3);
                     SwapCharacter.Swap(SwapCharacter.Takahashi_Summer_school);
-                    player = GameObject.Find("Takahashi_Summer_school(Clone)");
+                    player = GameObject.FindWithTag("Takahashi_Summer_school");
                 }
             }
 

@@ -20,8 +20,6 @@ public class playerInWardrobeRange : MonoBehaviour
     {
         if (other.TryGetComponent<CharacterController>(out CharacterController controller))
         {
-            SceneManagerScript.currentCharacter = other.gameObject.tag;
-            PlayerPrefs.SetString("currentCharacter", other.gameObject.tag);
             currentCloths = other.gameObject.tag;
             changeClothes = true;
         }
@@ -31,8 +29,6 @@ public class playerInWardrobeRange : MonoBehaviour
     {
         if (other.TryGetComponent<CharacterController>(out CharacterController controller))
         {
-            PlayerPrefs.SetString("currentCharacter", other.gameObject.tag);
-            SceneManagerScript.currentCharacter = other.gameObject.tag;
             currentCloths = other.gameObject.tag;
             changeClothes = false;
         }

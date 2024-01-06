@@ -19,7 +19,7 @@ public class PhoneManager : MonoBehaviour
     {
         if (HandleProgress.pickedUpPhone)
         {
-            if (!phoneOut && Input.GetKeyDown(KeyCode.Tab) && !PauseMenuScript.gameIsPaused && !DialogueManager.dialogueIsPlaying && HandleTimeline.timeline.state != PlayState.Playing)
+            if (!phoneOut && Input.GetKeyDown(KeyCode.Tab) && !PauseMenuScript.gameIsPaused && !DialogueManager.dialogueIsPlaying && !HandleTimeline.timelineIsPlaying)
             {
                 if (GameObject.FindWithTag("Takahashi_Summer_home") != null)
                 {

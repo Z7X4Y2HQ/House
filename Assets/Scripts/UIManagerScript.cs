@@ -7,8 +7,10 @@ public class UIManagerScript : MonoBehaviour
 {
     public GameObject InteractPanel;
     public GameObject CheckWardrobe;
+    public GameObject openDoor;
     public string locationName;
     public TextMeshProUGUI locationText;
+    public TextMeshProUGUI doorText;
     public static bool playerInRange;
 
     void OnTriggerEnter(Collider other)
@@ -16,7 +18,12 @@ public class UIManagerScript : MonoBehaviour
         if (other.TryGetComponent<CharacterController>(out CharacterController controller))
         {
             playerInRange = true;
-            if (gameObject.name == "Wardrobe" && HandleProgress.currentObjectiveIndex < 6)
+            if (gameObject.name == "Door Trigger")
+            {
+                openDoor.SetActive(true);
+                doorText.text = "Interact with Door";
+            }
+            else if (gameObject.name == "Wardrobe" && HandleProgress.currentObjectiveIndex < 6)
             {
                 CheckWardrobe.SetActive(true);
                 InteractPanel.SetActive(false);
@@ -42,14 +49,23 @@ public class UIManagerScript : MonoBehaviour
         }
     }
 
+
+    public void WalkOutOfWardrobe()
+    {
+        playerInRange = false;
+        InteractPanel.SetActive(false);
+        CheckWardrobe.SetActive(false);
+        openDoor.SetActive(false);
+        locationText.text = "";
+        doorText.text = "Open Wardrobe";
+    }
+
+
     void OnTriggerExit(Collider other)
     {
         if (other.TryGetComponent<CharacterController>(out CharacterController controller))
         {
-            playerInRange = false;
-            InteractPanel.SetActive(false);
-            CheckWardrobe.SetActive(false);
-            locationText.text = "";
+            WalkOutOfWardrobe();
         }
     }
 }

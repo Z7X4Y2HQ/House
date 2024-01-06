@@ -51,10 +51,19 @@ public class PauseMenuScript : MonoBehaviour
     private int selectedShadow;
     public List<Shadow> ShadowList = new List<Shadow>();
     private UniversalRenderPipelineAsset urpAsset;
+    private DialogueVariables dialogueVariables;
+    [SerializeField] private TextAsset loadGlobalsJSON;
+
+    private UIManagerScript uIManagerScript;
 
 
     void Awake()
     {
+        if (SceneManager.GetActiveScene().name == "House 2f")
+        {
+            uIManagerScript = GameObject.Find("Wardrobe").GetComponent<UIManagerScript>();
+        }
+        dialogueVariables = new DialogueVariables(loadGlobalsJSON);
         urpAsset = GraphicsSettings.renderPipelineAsset as UniversalRenderPipelineAsset;
         FSTog.isOn = Screen.fullScreen;
         if (QualitySettings.vSyncCount == 0)
@@ -114,6 +123,9 @@ public class PauseMenuScript : MonoBehaviour
             {
                 swapCharacter = FindObjectOfType<CharacterController>().GetComponent<SwapCharacter>();
                 swapCharacter.CloseWardrobe();
+                SwapCharacter.isWardrobeOpen = false;
+                playerInWardrobeRange.changeClothes = false;
+                uIManagerScript.WalkOutOfWardrobe();
             }
             else
             {
@@ -215,7 +227,9 @@ public class PauseMenuScript : MonoBehaviour
         PlayerPrefs.SetInt("pickedUpPhone", boolToInt(HandleProgress.pickedUpPhone));
         PlayerPrefs.SetInt("pickedUpKnife", boolToInt(HandleProgress.pickedUpKnife));
         PlayerPrefs.SetInt("readyForSchool", boolToInt(HandleProgress.readyForSchool));
-
+        PlayerPrefs.SetString("currentLocation", HandleProgress.location.text);
+        PlayerPrefs.SetString("currentDateTime", HandleProgress.dateTime.text);
+        dialogueVariables.SaveVariables();
     }
 
     public void WardrobeHome()
@@ -229,6 +243,8 @@ public class PauseMenuScript : MonoBehaviour
             swapCharacter = FindObjectOfType<CharacterController>().GetComponent<SwapCharacter>();
             StartCoroutine(swapCharacter.SwapCloths(swapCharacter.Takahashi_Summer_home));
             SwapCharacter.isWardrobeOpen = false;
+            playerInWardrobeRange.changeClothes = false;
+            uIManagerScript.WalkOutOfWardrobe();
         }
     }
     public void WardrobeSchool()
@@ -236,12 +252,15 @@ public class PauseMenuScript : MonoBehaviour
         if (playerInWardrobeRange.currentCloths == "Takahashi_Summer_school")
         {
             StartCoroutine(ChangeWardrobeBottomText());
+            playerInWardrobeRange.changeClothes = false;
         }
         else
         {
             swapCharacter = FindObjectOfType<CharacterController>().GetComponent<SwapCharacter>();
             StartCoroutine(swapCharacter.SwapCloths(swapCharacter.Takahashi_Summer_school));
             SwapCharacter.isWardrobeOpen = false;
+            playerInWardrobeRange.changeClothes = false;
+            uIManagerScript.WalkOutOfWardrobe();
         }
 
     }

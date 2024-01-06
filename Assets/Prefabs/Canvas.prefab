@@ -7126,6 +7126,7 @@ MonoBehaviour:
   - value: Medium
   - value: High
   - value: Very High
+  loadGlobalsJSON: {fileID: 4900000, guid: d13c14fab75224e709394d6913b29fa0, type: 3}
 --- !u!1 &2684431406871350030
 GameObject:
   m_ObjectHideFlags: 0
@@ -11809,6 +11810,18 @@ PrefabInstance:
     - target: {fileID: 6270319834245562683, guid: 45bbd7dcfbd6944e09b7058c089a173d, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6270319834268856969, guid: 45bbd7dcfbd6944e09b7058c089a173d, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1612.477
+      objectReference: {fileID: 0}
+    - target: {fileID: 6270319834268856969, guid: 45bbd7dcfbd6944e09b7058c089a173d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -724.92487
+      objectReference: {fileID: 0}
+    - target: {fileID: 6270319834268856974, guid: 45bbd7dcfbd6944e09b7058c089a173d, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6270319834369999520, guid: 45bbd7dcfbd6944e09b7058c089a173d, type: 3}
       propertyPath: m_AnchoredPosition.x

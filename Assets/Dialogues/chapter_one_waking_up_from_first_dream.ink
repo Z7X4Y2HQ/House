@@ -1,5 +1,5 @@
 INCLUDE Globals.ink 
-How many years did I get to live without restarting? 16? 17 … #speaker:Takahashi Tanjiro #animationBool:isWalk
+How many years did I get to live without restarting? 16? 17 … #speaker:Takahashi thinking #animationBool:isWalk
 What now?
 I met Sachi and my memories of her came rushing back to me.
 How absurd can it be?

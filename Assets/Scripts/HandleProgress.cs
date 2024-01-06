@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class HandleProgress : MonoBehaviour
@@ -45,6 +46,9 @@ public class HandleProgress : MonoBehaviour
     public static bool pickedUpPhone = false;
     public static bool pickedUpKnife = false;
     public static bool readyForSchool = false;
+    public static string locationText;
+    public static string time;
+
 
     private float duration = 0.8f;
 
@@ -80,7 +84,7 @@ public class HandleProgress : MonoBehaviour
         // if (currentObjectiveIndex == 0)
         // {
         //     currentChapter = 1;
-        //     currentScene = "Chapter_one_about_to_talk_to_teacher";
+        //     currentScene = "Chapter_one_walking_out_of_staffroom";
         //     currentObjectiveIndex = 12;
         //     StartCoroutine(UpdateObjective());
         //     tutorialComplete = true;
@@ -108,6 +112,28 @@ public class HandleProgress : MonoBehaviour
 
     private void Update()
     {
+        if (SceneManager.GetActiveScene().name == "House 1f" || SceneManager.GetActiveScene().name == "House 2f")
+        {
+            location.text = "Home";
+        }
+        else if (SceneManager.GetActiveScene().name == "Town")
+        {
+            location.text = "Town";
+        }
+        else if (SceneManager.GetActiveScene().name == "School")
+        {
+            location.text = "Town";
+        }
+        else if (SceneManager.GetActiveScene().name == "Hallway")
+        {
+            location.text = "School";
+        }
+        if (SceneManager.GetActiveScene().name != "Dream")
+        {
+            dateTime.text = time;
+        }
+
+        Debug.Log(SceneManagerScript.currentCharacter);
         if (!PauseMenuScript.gameIsPaused || currentObjectiveIndex != 0)
         {
             if (Input.GetKeyDown(KeyCode.W))
@@ -150,14 +176,12 @@ public class HandleProgress : MonoBehaviour
                 break;
             case 3: //
                 bool objective3Complete = ((Ink.Runtime.BoolValue)dialogueManager.GetVariableState("objective3Complete")).value;
-                string locationText = ((Ink.Runtime.StringValue)dialogueManager.GetVariableState("location")).value;
-                string time = ((Ink.Runtime.StringValue)dialogueManager.GetVariableState("time")).value;
+                locationText = ((Ink.Runtime.StringValue)dialogueManager.GetVariableState("location")).value;
+                time = ((Ink.Runtime.StringValue)dialogueManager.GetVariableState("time")).value;
                 if (objective3Complete)
                 {
                     location.text = locationText;
                     dateTime.text = time;
-                    PlayerPrefs.SetString("currentLocation", locationText);
-                    PlayerPrefs.SetString("currentDateTime", time);
                     locationContainerAnimator.gameObject.SetActive(true);
                     locationTextAnimator.gameObject.SetActive(true);
                     locationContainerAnimator.Play("SlideInFromRightContainer");
@@ -204,6 +228,7 @@ public class HandleProgress : MonoBehaviour
             case 7:
                 Debug.Log("Case 7");
                 Debug.Log(currentObjectiveIndex);
+                time = "2nd April, 2018";
                 Debug.Log(SceneManagerScript.currentCharacter);
                 if (pickedUpPhone && SceneManagerScript.currentCharacter == "Takahashi_Summer_school")
                 {
@@ -260,10 +285,10 @@ public class HandleProgress : MonoBehaviour
                 break;
             case 13:
                 Debug.Log("Case 13");
-                string locationText13 = ((Ink.Runtime.StringValue)dialogueManager.GetVariableState("location")).value;
-                string time13 = ((Ink.Runtime.StringValue)dialogueManager.GetVariableState("time")).value;
-                location.text = locationText13;
-                dateTime.text = time13;
+                locationText = ((Ink.Runtime.StringValue)dialogueManager.GetVariableState("location")).value;
+                time = ((Ink.Runtime.StringValue)dialogueManager.GetVariableState("time")).value;
+                location.text = locationText;
+                dateTime.text = time;
                 break;
         }
 

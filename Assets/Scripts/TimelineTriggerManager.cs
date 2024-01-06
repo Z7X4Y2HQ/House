@@ -13,8 +13,8 @@ public class TimelineTriggerManager : MonoBehaviour
     {
         if (HandleProgress.currentChapter == 1 && HandleProgress.currentObjectiveIndex == 6 && HandleProgress.currentScene == "Chapter_one_follow_the_voice")
         {
-            PlayerPrefs.SetString("currentCharacter", "Takahashi_Summer_home");
-            SceneManagerScript.currentCharacter = PlayerPrefs.GetString("currentCharacter");
+            // PlayerPrefs.SetString("currentCharacter", "Takahashi_Summer_home");
+            // SceneManagerScript.currentCharacter = PlayerPrefs.GetString("currentCharacter");
             HandleTimeline.timeline = GameObject.Find("Talking to the female voice Timeline").GetComponent<PlayableDirector>();
             HandleTimeline.timeline.Play();
             timelineIsPlaying = true;
