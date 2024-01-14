@@ -71,6 +71,13 @@ public class RaycastTesting : MonoBehaviour
 
                         }
                     }
+                    else if (hit.collider.gameObject.name == "Chair")
+                    {
+                        if (HandleProgress.currentObjectiveIndex == 14)
+                        {
+                            HandleProgress.isSit14 = true;
+                        }
+                    }
                 }
 
             }

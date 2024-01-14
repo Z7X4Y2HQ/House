@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using Ink.Runtime;
 using UnityEngine.Playables;
-using UnityEditor.SearchService;
 
 
 public class DialogueTriggerManager : MonoBehaviour
@@ -20,6 +19,8 @@ public class DialogueTriggerManager : MonoBehaviour
     public TextAsset Chapter_one_standing_in_staffroom_door;
     public TextAsset Chapter_one_talking_to_teacher_about_list;
     public TextAsset Chapter_one_walking_out_of_staffroom;
+    public TextAsset Chapter_one_walking_into_classroom;
+    public TextAsset Chapter_one_making_up_a_stupid_lie;
     private DialogueManager dialogueManager;
     public PlayableDirector momsWalkingFromKitchenAnimation;
     public static bool inSchool;
@@ -113,6 +114,19 @@ public class DialogueTriggerManager : MonoBehaviour
                 dialogueManager.EnterDialogueMode(Chapter_one_standing_in_the_hallway);
                 HandleProgress.currentScene = "Chapter_one_going_into_class";
                 HandleTimeline.timelineIsPlaying = false;
+            }
+            if (HandleProgress.currentScene == "Chapter_one_going_into_class" && HandleProgress.currentObjectiveIndex == 13 && gameObject.name == "DialogueChapter_one_walking_into_classroom")
+            {
+                GameObject.FindWithTag(SceneManagerScript.currentCharacter).GetComponent<Animator>().SetBool("isWalk", false);
+                dialogueManager.EnterDialogueMode(Chapter_one_walking_into_classroom);
+                HandleProgress.currentScene = "Chapter_one_finding_a_seat_to_sit";
+            }
+            if (HandleProgress.currentScene == "Chapter_one_making_up_a_stupid_lie" && HandleProgress.currentObjectiveIndex == 14 && gameObject.name == "DialogueChapter_one_making_up_a_stupid_lie")
+            {
+                GameObject.Find("Eiji").GetComponent<Animator>().SetBool("isStanding", true);
+                GameObject.FindWithTag(SceneManagerScript.currentCharacter).GetComponent<Animator>().SetBool("isWalk", false);
+                dialogueManager.EnterDialogueMode(Chapter_one_making_up_a_stupid_lie);
+                HandleProgress.currentScene = "Chapter_one_final_scene";
             }
 
         }

@@ -50,6 +50,7 @@ public class DialogueManager : MonoBehaviour
 
     private Coroutine displayLineCoroutine;
     private DialogueVariables dialogueVariables;
+    private PhoneManager phoneManager;
 
     private void Awake()
     {
@@ -61,6 +62,7 @@ public class DialogueManager : MonoBehaviour
         instance = this;
         HUD = GameObject.Find("HUD");
         dialogueVariables = new DialogueVariables(loadGlobalsJSON);
+        phoneManager = GameObject.Find("PhoneManager").GetComponent<PhoneManager>();
     }
 
     public static DialogueManager GetInstance()
@@ -115,6 +117,10 @@ public class DialogueManager : MonoBehaviour
     public void EnterDialogueMode(TextAsset inkJSON)
     {
         lockMouse.Unlock();
+        if (phoneManager.phoneOut)
+        {
+            phoneManager.putBackPhone();
+        }
         currentStory = new Story(inkJSON.text);
         dialogueIsPlaying = true;
         dialoguePanel.SetActive(true);

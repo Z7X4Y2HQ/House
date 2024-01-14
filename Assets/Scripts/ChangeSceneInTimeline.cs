@@ -43,6 +43,10 @@ public class ChangeSceneInTimeline : MonoBehaviour
             HandleProgress.currentScene = "Chapter_one_standing_in_the_school_hallway";
             StartCoroutine(LoadAsynchronously("Hallway"));
         }
+        else if (HandleProgress.currentChapter == 1 && HandleProgress.currentScene == "Chapter_one_making_up_a_stupid_lie")
+        {
+            GameObject.Find("Eiji").GetComponent<Animator>().SetBool("isStanding", true);
+        }
     }
     IEnumerator LoadAsynchronously(string SceneName)
     {

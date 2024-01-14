@@ -40555,6 +40555,7 @@ MonoBehaviour:
   playIcon: {fileID: 954194557}
   pauseIcon: {fileID: 954194558}
   skipFade: {fileID: 79328791}
+  skipText: {fileID: 1888371519}
 --- !u!4 &1451191437
 Transform:
   m_ObjectHideFlags: 0
@@ -51819,6 +51820,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b7a152e360ca8475385fa1b24f53554d, type: 3}
+--- !u!1 &1888371519 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 585885944819869147, guid: 5af46d1a3577849019d7cd52d0c2f56a, type: 3}
+  m_PrefabInstance: {fileID: 4403566281691053067}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1894945997
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -31,6 +31,7 @@ public class HandleProgress : MonoBehaviour
         new Objective { description = "Ask around where the staff room is", isCompleted = false }, // case: 11
         new Objective { description = "Talk to a Teacher About your Name in Class list", isCompleted = false }, // case: 12
         new Objective { description = "Go straight to Class 2-A", isCompleted = false }, // case: 13
+        new Objective { description = "Find a chair to sit down", isCompleted = false }, // case: 14
     };
 
     public static bool firstPlaythrough;
@@ -46,6 +47,7 @@ public class HandleProgress : MonoBehaviour
     public static bool pickedUpPhone = false;
     public static bool pickedUpKnife = false;
     public static bool readyForSchool = false;
+    public static bool isSit14 = false;
     public static string locationText;
     public static string time;
 
@@ -81,16 +83,16 @@ public class HandleProgress : MonoBehaviour
 
     private void Start()
     {
-        // if (currentObjectiveIndex == 0)
-        // {
-        //     currentChapter = 1;
-        //     currentScene = "Chapter_one_walking_out_of_staffroom";
-        //     currentObjectiveIndex = 12;
-        //     StartCoroutine(UpdateObjective());
-        //     tutorialComplete = true;
-        //     pickedUpPhone = true;
-        // }
-        // SceneManagerScript.currentCharacter = "Takahashi_Summer_school";
+        if (currentObjectiveIndex == 0)
+        {
+            currentChapter = 1;
+            currentScene = "Chapter_one_finding_a_seat_to_sit";
+            currentObjectiveIndex = 14;
+            StartCoroutine(UpdateObjective());
+            tutorialComplete = true;
+            pickedUpPhone = true;
+        }
+        SceneManagerScript.currentCharacter = "Takahashi_Summer_school";
 
         objectiveContainerAnimator.Play("SlideInFromRightContainer");
         objectiveTextAnimator.Play("SlideInFromRightText");
@@ -289,6 +291,14 @@ public class HandleProgress : MonoBehaviour
                 time = ((Ink.Runtime.StringValue)dialogueManager.GetVariableState("time")).value;
                 location.text = locationText;
                 dateTime.text = time;
+                bool objective13Complete = ((Ink.Runtime.BoolValue)dialogueManager.GetVariableState("objective13Complete")).value;
+                if (objective13Complete)
+                {
+                    objectives[currentObjectiveIndex].isCompleted = true;
+                }
+                break;
+            case 14:
+                Debug.Log("Case 14");
                 break;
         }
 

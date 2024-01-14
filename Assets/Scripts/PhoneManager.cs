@@ -10,6 +10,7 @@ public class PhoneManager : MonoBehaviour
     public bool phoneOut = false;
     public bool phoneOutFirstTime = false;
     private LockMouse lockMouse;
+    private Animator animator;
     private void Awake()
     {
         lockMouse = GameObject.Find("LockMouse").GetComponent<LockMouse>();
@@ -17,6 +18,7 @@ public class PhoneManager : MonoBehaviour
 
     private void Update()
     {
+        animator = GameObject.Find(SceneManagerScript.currentCharacter).GetComponent<Animator>();
         if (HandleProgress.pickedUpPhone)
         {
             if (!phoneOut && Input.GetKeyDown(KeyCode.Tab) && !PauseMenuScript.gameIsPaused && !DialogueManager.dialogueIsPlaying && !HandleTimeline.timelineIsPlaying)
@@ -40,6 +42,7 @@ public class PhoneManager : MonoBehaviour
 
     public void takeOutPhone()
     {
+        animator.SetLayerWeight(2, Mathf.MoveTowards(0, 1, 35 * Time.deltaTime));
         lockMouse.Unlock();
         phoneOut = true;
         Debug.Log("phone out =  true");
@@ -50,12 +53,20 @@ public class PhoneManager : MonoBehaviour
 
     public void putBackPhone()
     {
+        animator.SetLayerWeight(2, Mathf.MoveTowards(1, 0, 20 * Time.deltaTime));
         lockMouse.Lock();
         phoneOut = false;
         phoneOutFirstTime = true;
         Debug.Log("phone out =  false");
         Player.Play("Putting phone back");
         phoneUI.Play("Phone slide down");
+        StartCoroutine(SetWeightToZero());
+    }
+
+    private IEnumerator SetWeightToZero()
+    {
+        yield return new WaitForSeconds(3.5f);
+        animator.SetLayerWeight(2, 0);
     }
 
     private IEnumerator phoneAnimation()

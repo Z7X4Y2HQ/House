@@ -21,6 +21,7 @@ public class HandleTimeline : MonoBehaviour
     public static bool killedYourself = false;
     public static bool objective6Complete = false;
     public GameObject skipFade;
+    public GameObject skipText;
     private DialogueManager dialogueManager;
 
     private void Start()
@@ -28,6 +29,7 @@ public class HandleTimeline : MonoBehaviour
         HUD = GameObject.Find("HUD");
         skipFade.SetActive(false);
         dialogueManager = GameObject.Find("DialogueManager").GetComponent<DialogueManager>();
+        skipText.SetActive(false);
     }
     private void Update()
     {
@@ -70,6 +72,10 @@ public class HandleTimeline : MonoBehaviour
                 StartCoroutine(setPositionForTimeline2());
             }
         }
+        else if (HandleProgress.currentChapter == 1 && HandleProgress.isSit14 && HandleProgress.currentScene == "Chapter_one_finding_a_seat_to_sit" && HandleProgress.currentObjectiveIndex == 14)
+        {
+            StartCoroutine(setPositionForTimeline3());
+        }
         // timeline = GameObject.Find("Dream after killing youself Timeline").GetComponent<PlayableDirector>();
         Debug.Log("is timeline playing is " + timelineIsPlaying);
         if (timeline != null)
@@ -100,6 +106,10 @@ public class HandleTimeline : MonoBehaviour
                 locationText.SetActive(false);
                 dateTimeContainer.SetActive(false);
                 dateTimeText.SetActive(false);
+                if (Input.anyKeyDown && !Input.GetKeyDown(KeyCode.Space) && !Input.GetKeyDown(KeyCode.Tab))
+                {
+                    StartCoroutine(SkipTimelineText());
+                }
                 // HUD.SetActive(false);
             }
             else
@@ -154,6 +164,20 @@ public class HandleTimeline : MonoBehaviour
         HandleProgress.currentScene = "Chapter_one_going_into_staffroom";
     }
 
+    IEnumerator setPositionForTimeline3()
+    {
+        CharacterController characterController = FindObjectOfType<CharacterController>();
+        characterController.enabled = false;
+
+        characterController.gameObject.transform.position = new Vector3(63.82971f, 0.004999876f, -4.566812f);
+        characterController.gameObject.transform.rotation = Quaternion.Euler(-0.014f, 147.49f, 0.042f);
+        characterController.enabled = true;
+        yield return new WaitForSeconds(0.2f);
+        timeline = GameObject.Find("Meeting your friends for the first time Timeline").GetComponent<PlayableDirector>();
+        timeline.Play();
+        HandleProgress.currentScene = "Chapter_one_making_up_a_stupid_lie";
+    }
+
     void PauseTimeline()
     {
         timeline.playableGraph.GetRootPlayable(0).SetSpeed(0.0f);
@@ -172,6 +196,12 @@ public class HandleTimeline : MonoBehaviour
     {
         timeline.time = timeline.duration;
         skipFade.SetActive(false);
+    }
+    IEnumerator SkipTimelineText()
+    {
+        skipText.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        skipText.SetActive(false);
     }
 
     IEnumerator SkipTimelineFade()
