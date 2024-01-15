@@ -220,6 +220,16 @@ public class DialogueManager : MonoBehaviour
                         GameObject.Find("Teacher").GetComponent<Animator>().SetBool(tagValue, true);
                         StartCoroutine(waitForAnimation(tagValue));
                     }
+                    else if (currentSpeaker == "Eiji Kintaro")
+                    {
+                        GameObject.Find("Eiji").GetComponent<Animator>().SetBool(tagValue, true);
+                        StartCoroutine(waitForAnimation(tagValue));
+                    }
+                    else if (currentSpeaker == "Aoi Sakamoto")
+                    {
+                        GameObject.Find("Aoi").GetComponent<Animator>().SetBool(tagValue, true);
+                        StartCoroutine(waitForAnimation(tagValue));
+                    }
                     break;
                 case ANIMATION_TAG:
                     if (currentSpeaker == "Takahashi Tanjiro")
@@ -277,6 +287,14 @@ public class DialogueManager : MonoBehaviour
         else if (currentSpeaker == "Young Teacher")
         {
             GameObject.Find("Teacher").GetComponent<Animator>().SetBool(tagValue, false);
+        }
+        else if (currentSpeaker == "Eiji Kintaro")
+        {
+            GameObject.Find("Eiji").GetComponent<Animator>().SetBool(tagValue, false);
+        }
+        else if (currentSpeaker == "Aoi Sakamoto")
+        {
+            GameObject.Find("Aoi").GetComponent<Animator>().SetBool(tagValue, false);
         }
     }
 

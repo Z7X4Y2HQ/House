@@ -18,7 +18,10 @@ public class PhoneManager : MonoBehaviour
 
     private void Update()
     {
-        animator = GameObject.Find(SceneManagerScript.currentCharacter).GetComponent<Animator>();
+        if (!HandleTimeline.timelineIsPlaying)
+        {
+            animator = GameObject.FindWithTag(SceneManagerScript.currentCharacter).GetComponent<Animator>();
+        }
         if (HandleProgress.pickedUpPhone)
         {
             if (!phoneOut && Input.GetKeyDown(KeyCode.Tab) && !PauseMenuScript.gameIsPaused && !DialogueManager.dialogueIsPlaying && !HandleTimeline.timelineIsPlaying)

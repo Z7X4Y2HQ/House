@@ -40,12 +40,13 @@ public class AnimationMovementController : MonoBehaviour
     void Update()
     {
         SceneManagerScript.currentCharacter = gameObject.tag;
+        Debug.Log(SceneManagerScript.currentCharacter);
         if (camera == null)
         {
             camera = GameObject.Find("Main Camera").transform;
         }
 
-        if (primaryCamera == null)
+        if (primaryCamera == null && !HandleTimeline.timelineIsPlaying)
         {
             primaryCamera = GameObject.Find("Third person Camera").GetComponent<CinemachineFreeLook>();
             primaryCamera.LookAt = transform;

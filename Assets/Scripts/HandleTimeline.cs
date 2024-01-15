@@ -74,9 +74,14 @@ public class HandleTimeline : MonoBehaviour
         }
         else if (HandleProgress.currentChapter == 1 && HandleProgress.isSit14 && HandleProgress.currentScene == "Chapter_one_finding_a_seat_to_sit" && HandleProgress.currentObjectiveIndex == 14)
         {
+            GameObject.Find("DialogueChapter_one_making_up_a_stupid_lie").SetActive(false);
             StartCoroutine(setPositionForTimeline3());
         }
-        // timeline = GameObject.Find("Dream after killing youself Timeline").GetComponent<PlayableDirector>();
+        else if (HandleProgress.currentChapter == 1 && HandleProgress.currentScene == "Chapter_one_final_scene" && HandleProgress.currentObjectiveIndex == 15)
+        {
+            StartCoroutine(setPositionForTimeline4());
+        }
+
         Debug.Log("is timeline playing is " + timelineIsPlaying);
         if (timeline != null)
         {
@@ -106,7 +111,7 @@ public class HandleTimeline : MonoBehaviour
                 locationText.SetActive(false);
                 dateTimeContainer.SetActive(false);
                 dateTimeText.SetActive(false);
-                if (Input.anyKeyDown && !Input.GetKeyDown(KeyCode.Space) && !Input.GetKeyDown(KeyCode.Tab))
+                if (Input.anyKeyDown && !Input.GetKeyDown(KeyCode.Tab))
                 {
                     StartCoroutine(SkipTimelineText());
                 }
@@ -169,13 +174,26 @@ public class HandleTimeline : MonoBehaviour
         CharacterController characterController = FindObjectOfType<CharacterController>();
         characterController.enabled = false;
 
-        characterController.gameObject.transform.position = new Vector3(63.82971f, 0.004999876f, -4.566812f);
-        characterController.gameObject.transform.rotation = Quaternion.Euler(-0.014f, 147.49f, 0.042f);
+        characterController.gameObject.transform.position = new Vector3(63.63594f, 0.005182475f, -4.635484f);
+        characterController.gameObject.transform.rotation = Quaternion.Euler(0, 147.49f, 0f);
         characterController.enabled = true;
         yield return new WaitForSeconds(0.2f);
         timeline = GameObject.Find("Meeting your friends for the first time Timeline").GetComponent<PlayableDirector>();
         timeline.Play();
         HandleProgress.currentScene = "Chapter_one_making_up_a_stupid_lie";
+    }
+    IEnumerator setPositionForTimeline4()
+    {
+        CharacterController characterController = FindObjectOfType<CharacterController>();
+        characterController.enabled = false;
+
+        characterController.gameObject.transform.position = new Vector3(63.77341f, 0.005456753f, -4.873247f);
+        characterController.gameObject.transform.rotation = Quaternion.Euler(-0.185f, 189.077f, -0.06f);
+        characterController.enabled = true;
+        yield return new WaitForSeconds(0.2f);
+        timeline = GameObject.Find("Chapter 1 Final Scene Timeline").GetComponent<PlayableDirector>();
+        timeline.Play();
+        HandleProgress.currentScene = "Chapter_one_ending";
     }
 
     void PauseTimeline()

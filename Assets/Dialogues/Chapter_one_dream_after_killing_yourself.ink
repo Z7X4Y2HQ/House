@@ -18,7 +18,7 @@ If it’s not a dream, then what the hell is this place.
 I shout in the hope of finding some kind of response or something but all I get back is my echo.
 I cover my ears and close my eyes to keep myself sane but
 “AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA” #speaker:Takahashi Tanjiro
-How did it get to this? I just went to sleep didn’t I-
+How did it get to this? I just went to sleep didn’t I- #speaker:Takahashi thinking
 “Takahashi… Goodbye!”#speaker:Female Voice
 ~ objective5Complete = true
 ~ location = "Dream?"

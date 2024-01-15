@@ -32,6 +32,10 @@ public class HandleProgress : MonoBehaviour
         new Objective { description = "Talk to a Teacher About your Name in Class list", isCompleted = false }, // case: 12
         new Objective { description = "Go straight to Class 2-A", isCompleted = false }, // case: 13
         new Objective { description = "Find a chair to sit down", isCompleted = false }, // case: 14
+        new Objective { description = "Find a chair to sit down", isCompleted = false }, // case: 15
+        new Objective { description = "Go back home", isCompleted = false }, // case: 16
+        new Objective { description = "Go to your room", isCompleted = false }, // case: 17
+        new Objective { description = "Change and go to bed", isCompleted = false }, // case: 17
     };
 
     public static bool firstPlaythrough;
@@ -47,6 +51,8 @@ public class HandleProgress : MonoBehaviour
     public static bool pickedUpPhone = false;
     public static bool pickedUpKnife = false;
     public static bool readyForSchool = false;
+    public static bool walkedOutofSchool = false;
+    public static bool inRoom = false;
     public static bool isSit14 = false;
     public static string locationText;
     public static string time;
@@ -83,16 +89,16 @@ public class HandleProgress : MonoBehaviour
 
     private void Start()
     {
-        if (currentObjectiveIndex == 0)
-        {
-            currentChapter = 1;
-            currentScene = "Chapter_one_finding_a_seat_to_sit";
-            currentObjectiveIndex = 14;
-            StartCoroutine(UpdateObjective());
-            tutorialComplete = true;
-            pickedUpPhone = true;
-        }
-        SceneManagerScript.currentCharacter = "Takahashi_Summer_school";
+        // if (currentObjectiveIndex == 0)
+        // {
+        //     currentChapter = 1;
+        //     currentScene = "Chapter_one_end_going_up_stairs_to_sleep";
+        //     currentObjectiveIndex = 17;
+        //     StartCoroutine(UpdateObjective());
+        //     tutorialComplete = true;
+        //     pickedUpPhone = true;
+        // }
+        // SceneManagerScript.currentCharacter = "Takahashi_Summer_school";
 
         objectiveContainerAnimator.Play("SlideInFromRightContainer");
         objectiveTextAnimator.Play("SlideInFromRightText");
@@ -299,6 +305,40 @@ public class HandleProgress : MonoBehaviour
                 break;
             case 14:
                 Debug.Log("Case 14");
+                bool objective14Complete = ((Ink.Runtime.BoolValue)dialogueManager.GetVariableState("objective14Complete")).value;
+                if (objective14Complete)
+                {
+                    objectives[currentObjectiveIndex].isCompleted = true;
+                }
+                break;
+            case 15:
+                Debug.Log("Case 15");
+                if (walkedOutofSchool)
+                {
+                    objectives[currentObjectiveIndex].isCompleted = true;
+                }
+                break;
+            case 16:
+                Debug.Log("Case 16");
+                if (SceneManager.GetActiveScene().name == "House 1f")
+                {
+                    objective.text = "Let your mom know you're home";
+                }
+                bool objective16Complete = ((Ink.Runtime.BoolValue)dialogueManager.GetVariableState("objective16Complete")).value;
+                if (objective16Complete)
+                {
+                    objectives[currentObjectiveIndex].isCompleted = true;
+                }
+                break;
+            case 17:
+                Debug.Log("Case 17");
+                if (inRoom)
+                {
+                    objectives[currentObjectiveIndex].isCompleted = true;
+                }
+                break;
+            case 18:
+                Debug.Log("Case 18");
                 break;
         }
 

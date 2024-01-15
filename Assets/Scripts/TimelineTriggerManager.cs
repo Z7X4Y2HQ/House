@@ -20,9 +20,9 @@ public class TimelineTriggerManager : MonoBehaviour
             timelineIsPlaying = true;
             HandleProgress.currentScene = "Chapter_one_waking_up_from_the_second_dream";
         }
-        if (HandleProgress.currentChapter == 1 && HandleProgress.currentObjectiveIndex == 10 && HandleProgress.currentScene == "Chapter_one_finding_name_in_list")
+        if (HandleProgress.currentChapter == 1 && HandleProgress.currentObjectiveIndex == 17 && HandleProgress.currentScene == "Chapter_one_end_going_up_stairs_to_sleep")
         {
-
+            HandleProgress.inRoom = true;
         }
 
     }

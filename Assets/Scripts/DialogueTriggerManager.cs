@@ -21,6 +21,9 @@ public class DialogueTriggerManager : MonoBehaviour
     public TextAsset Chapter_one_walking_out_of_staffroom;
     public TextAsset Chapter_one_walking_into_classroom;
     public TextAsset Chapter_one_making_up_a_stupid_lie;
+    public TextAsset Chapter_one_end_walking_out_of_school;
+    public TextAsset Chapter_one_end_talking_to_your_mom;
+
     private DialogueManager dialogueManager;
     public PlayableDirector momsWalkingFromKitchenAnimation;
     public static bool inSchool;
@@ -128,6 +131,18 @@ public class DialogueTriggerManager : MonoBehaviour
                 dialogueManager.EnterDialogueMode(Chapter_one_making_up_a_stupid_lie);
                 HandleProgress.currentScene = "Chapter_one_final_scene";
             }
+            if (HandleProgress.currentScene == "Chapter_one_end_walking_out_of_school" && HandleProgress.currentObjectiveIndex == 16 && gameObject.name == "DialogueChapter_one_end_walking_out_of_school")
+            {
+                GameObject.FindWithTag(SceneManagerScript.currentCharacter).GetComponent<Animator>().SetBool("isWalk", false);
+                dialogueManager.EnterDialogueMode(Chapter_one_end_walking_out_of_school);
+                HandleProgress.currentScene = "Chapter_one_end_in_home";
+            }
+            if (HandleProgress.currentScene == "Chapter_one_end_in_home" && HandleProgress.currentObjectiveIndex == 16 && gameObject.name == "DialogueChapter_one_end_talking_to_your_mom")
+            {
+                GameObject.FindWithTag(SceneManagerScript.currentCharacter).GetComponent<Animator>().SetBool("isWalk", false);
+                StartCoroutine(playAnimationBeforeDialogue2());
+                HandleProgress.currentScene = "Chapter_one_end_going_up_stairs_to_sleep";
+            }
 
         }
         Debug.Log("currentObjectiveIndex " + HandleProgress.currentObjectiveIndex);
@@ -142,6 +157,17 @@ public class DialogueTriggerManager : MonoBehaviour
         yield return new WaitForSeconds(4.9f);
         Debug.Log("should have finished by now");
         dialogueManager.EnterDialogueMode(Chapter_one_talking_to_mom);
+        HandleTimeline.timelineIsPlaying = false;
+    }
+    private IEnumerator playAnimationBeforeDialogue2()
+    {
+        DialogueManager.dialogueIsPlaying = true;
+        HandleTimeline.timelineIsPlaying = true;
+        momsWalkingFromKitchenAnimation.Play();
+        Debug.Log("starts here xD should be 4.9");
+        yield return new WaitForSeconds(4.9f);
+        Debug.Log("should have finished by now");
+        dialogueManager.EnterDialogueMode(Chapter_one_end_talking_to_your_mom);
         HandleTimeline.timelineIsPlaying = false;
     }
     private IEnumerator waitBeforeStartingDialogue()

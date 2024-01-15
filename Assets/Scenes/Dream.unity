@@ -12792,6 +12792,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6691897542582531834, guid: 592b67a19805f47bb8f1f00f72b2901a, type: 3}
   m_PrefabInstance: {fileID: 602077141}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &404163779 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3313083924760822913, guid: 5af46d1a3577849019d7cd52d0c2f56a, type: 3}
+  m_PrefabInstance: {fileID: 4403566281691053067}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &407659468 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 676674664039691907, guid: 5649728a1e1f64dc5a38e1b20e5aaf96, type: 3}
@@ -15005,6 +15010,8 @@ PlayableDirector:
     value: {fileID: 5823887763901974137}
   - key: {fileID: 3432431242623748590, guid: 4c8366801c4cc42fa8aa975297fde106, type: 2}
     value: {fileID: 1931436810}
+  - key: {fileID: -2408442074213167800, guid: 4c8366801c4cc42fa8aa975297fde106, type: 2}
+    value: {fileID: 404163779}
   m_ExposedReferences:
     m_References:
     - ebbde7751787d4a12aa59cd7f035e19e: {fileID: 1980217298}
@@ -15237,7 +15244,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 541850907}
-  m_LocalRotation: {x: -0.03553672, y: -0.005993905, z: -0.0002131422, w: 0.99935037}
+  m_LocalRotation: {x: -0.041215632, y: -0.0050618015, z: -0.00020880545, w: 0.99913746}
   m_LocalPosition: {x: -114.667854, y: 1.2767274, z: -68.06015}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -35048,7 +35055,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1187008787}
-  m_LocalRotation: {x: -0.0075388653, y: 0.992432, z: -0.0827646, w: -0.090398684}
+  m_LocalRotation: {x: -0.10452868, y: 0.8909084, z: -0.2611614, w: -0.3565821}
   m_LocalPosition: {x: -112.88229, y: 0.01591897, z: 5.381034}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -52671,6 +52678,10 @@ MonoBehaviour:
   Chapter_one_standing_in_staffroom_door: {fileID: 0}
   Chapter_one_talking_to_teacher_about_list: {fileID: 0}
   Chapter_one_walking_out_of_staffroom: {fileID: 0}
+  Chapter_one_walking_into_classroom: {fileID: 0}
+  Chapter_one_making_up_a_stupid_lie: {fileID: 0}
+  Chapter_one_end_walking_out_of_school: {fileID: 0}
+  Chapter_one_end_talking_to_your_mom: {fileID: 0}
   momsWalkingFromKitchenAnimation: {fileID: 0}
 --- !u!65 &1898922393
 BoxCollider:
@@ -54930,7 +54941,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1989833562}
-  m_LocalRotation: {x: 0.2475289, y: 0.06569379, z: -0.016824665, w: 0.9665044}
+  m_LocalRotation: {x: 0.22592998, y: 0.060076203, z: -0.013961293, w: 0.9721891}
   m_LocalPosition: {x: -130.2854, y: 79.879, z: -117.345}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -55659,6 +55670,7 @@ MonoBehaviour:
   LoadingScreen: {fileID: 1157573748}
   slider: {fileID: 4399655700743911558}
   sliderBG: {fileID: 0}
+  DialogueChapter_one_making_up_a_stupid_lie: {fileID: 0}
 --- !u!1 &2015438304
 GameObject:
   m_ObjectHideFlags: 0
@@ -63613,7 +63625,12 @@ Animator:
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
-  m_WarningMessage: 
+  m_WarningMessage: "\nBinding warning: Some generic clip(s) animate transforms that
+    are already bound by a Humanoid avatar. These transforms can only be changed
+    by Humanoid clips.\n\tTransform 'J_Bip_R_Ring2'\n\tTransform 'J_Bip_L_Index3'\n\tTransform
+    'J_Bip_R_Ring3'\n\tTransform 'J_Bip_R_UpperLeg'\n\tTransform 'J_Bip_C_UpperChest'\n\tTransform
+    'J_Bip_R_Middle3'\n\tTransform 'J_Bip_R_LowerArm'\n\tTransform 'J_Bip_L_Middle2'\n\tTransform
+    'J_Bip_L_ToeBase'\n\tTransform 'J_Bip_R_Index3'\n\tand more ..."
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0

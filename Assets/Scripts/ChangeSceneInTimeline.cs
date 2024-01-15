@@ -11,13 +11,13 @@ public class ChangeSceneInTimeline : MonoBehaviour
     public Slider slider;
     public Image sliderBG;
     private TMP_Text Tips;
+    public GameObject DialogueChapter_one_making_up_a_stupid_lie;
 
     private void Start()
     {
         LoadingScreen.gameObject.SetActive(false);
         Tips = LoadingScreen.gameObject.transform.GetChild(1).GetComponent<TMP_Text>();
         sliderBG = slider.transform.GetChild(0).GetComponent<Image>();
-
     }
     private void Update()
     {
@@ -45,7 +45,14 @@ public class ChangeSceneInTimeline : MonoBehaviour
         }
         else if (HandleProgress.currentChapter == 1 && HandleProgress.currentScene == "Chapter_one_making_up_a_stupid_lie")
         {
+            DialogueChapter_one_making_up_a_stupid_lie.SetActive(true);
             GameObject.Find("Eiji").GetComponent<Animator>().SetBool("isStanding", true);
+        }
+        else if (HandleProgress.currentChapter == 1 && HandleProgress.currentScene == "Chapter_one_ending")
+        {
+            HandleProgress.walkedOutofSchool = true;
+            HandleProgress.currentScene = "Chapter_one_end_walking_out_of_school";
+            StartCoroutine(LoadAsynchronously("School"));
         }
     }
     IEnumerator LoadAsynchronously(string SceneName)
