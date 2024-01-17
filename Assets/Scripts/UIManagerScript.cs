@@ -59,8 +59,6 @@ public class UIManagerScript : MonoBehaviour
         locationText.text = "";
         doorText.text = "Open Wardrobe";
     }
-
-
     void OnTriggerExit(Collider other)
     {
         if (other.TryGetComponent<CharacterController>(out CharacterController controller))

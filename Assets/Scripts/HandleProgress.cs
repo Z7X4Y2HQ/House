@@ -35,7 +35,8 @@ public class HandleProgress : MonoBehaviour
         new Objective { description = "Find a chair to sit down", isCompleted = false }, // case: 15
         new Objective { description = "Go back home", isCompleted = false }, // case: 16
         new Objective { description = "Go to your room", isCompleted = false }, // case: 17
-        new Objective { description = "Change and go to bed", isCompleted = false }, // case: 17
+        new Objective { description = "Change and go to bed", isCompleted = false }, // case: 18
+        new Objective { description = "Confront Aoi", isCompleted = false }, // case: 19
     };
 
     public static bool firstPlaythrough;
@@ -338,7 +339,14 @@ public class HandleProgress : MonoBehaviour
                 }
                 break;
             case 18:
-                Debug.Log("Case 18");
+                bool objective18Complete = ((Ink.Runtime.BoolValue)dialogueManager.GetVariableState("objective18Complete")).value;
+                if (objective18Complete)
+                {
+                    objectives[currentObjectiveIndex].isCompleted = true;
+                }
+                break;
+            case 19:
+
                 break;
         }
 

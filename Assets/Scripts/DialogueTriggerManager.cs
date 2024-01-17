@@ -23,6 +23,7 @@ public class DialogueTriggerManager : MonoBehaviour
     public TextAsset Chapter_one_making_up_a_stupid_lie;
     public TextAsset Chapter_one_end_walking_out_of_school;
     public TextAsset Chapter_one_end_talking_to_your_mom;
+    public TextAsset Chapter_two_waking_up_after_week;
 
     private DialogueManager dialogueManager;
     public PlayableDirector momsWalkingFromKitchenAnimation;
@@ -142,6 +143,12 @@ public class DialogueTriggerManager : MonoBehaviour
                 GameObject.FindWithTag(SceneManagerScript.currentCharacter).GetComponent<Animator>().SetBool("isWalk", false);
                 StartCoroutine(playAnimationBeforeDialogue2());
                 HandleProgress.currentScene = "Chapter_one_end_going_up_stairs_to_sleep";
+            }
+            if (HandleProgress.currentScene == "Chapter_two_waking_up_after_a_week" && HandleProgress.currentObjectiveIndex == 18 && gameObject.name == "DialogueChapter_two_waking_up_after_week")
+            {
+                GameObject.FindWithTag(SceneManagerScript.currentCharacter).GetComponent<Animator>().SetBool("isWalk", false);
+                dialogueManager.EnterDialogueMode(Chapter_two_waking_up_after_week);
+                HandleProgress.currentScene = "Chapter_two_going_to_school_after_week";
             }
 
         }

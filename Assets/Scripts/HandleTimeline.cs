@@ -196,6 +196,7 @@ public class HandleTimeline : MonoBehaviour
         HandleProgress.currentScene = "Chapter_one_ending";
     }
 
+
     void PauseTimeline()
     {
         timeline.playableGraph.GetRootPlayable(0).SetSpeed(0.0f);
