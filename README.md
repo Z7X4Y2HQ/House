@@ -30,31 +30,31 @@ Stuff related to my Project
 - [ ] ~~fade in or something better when switching between vcams~~
 - [ ] ~~Dialogue system (saves and progress and stuff)~~
 ## Stuff Missing From The Game
-- [ ] Add sounds to game
-- [ ] Update chapter menu when 5 chapters complete
-- [ ] add map to phone
-- [ ] Interact E icon on knife and phone
-- [ ] Add more tips text
-- [ ] Add skip icon in timeline
-- [ ] Tell player press tab to skip
-- [ ] Add big ass Skipped a Beat text after 2 min cutscene
-- [ ] Add NPCs and cars moving around
-- [ ] Gif on loading bar
-- [ ] Add resolution scale
-- [ ] Add game saved indicator
-- [ ] Fix phone date and time
-- [ ] Fix phone on table when scene reloads
-- [ ] disable sound when using phone, or in dialogue or timeline is playing
-- [ ] Add warning bg Image Zoom in
-- [ ] Add Escape and Enter button on warning popup
-- [ ] Save graphics settings on save
-- [ ] Make glass windows grounded layer
-- [ ] Add shadow render distance if possible
-- [ ] Fix settings not updating on new scene
-- [ ] Change Input.GetKey to new input method
-- [ ] Add controller support
-- [ ] Fix dialogue issues
-- [ ] Add more choices
+- Add sounds to game
+- Update chapter menu when 5 chapters complete
+- add map to phone
+- Interact E icon on knife and phone
+- Add more tips text
+- Add skip icon in timeline
+- Tell player press tab to skip
+- Add big ass Skipped a Beat text after 2 min cutscene
+- Add NPCs and cars moving around
+- Gif on loading bar
+- Add resolution scale
+- Add game saved indicator
+- Fix phone date and time
+- Fix phone on table when scene reloads
+- disable sound when using phone, or in dialogue or timeline is playing
+- Add warning bg Image Zoom in
+- Add Escape and Enter button on warning popup
+- Save graphics settings on save
+- Make glass windows grounded layer
+- Add shadow render distance if possible
+- Fix settings not updating on new scene
+- Change Input.GetKey to new input method
+- Add controller support
+- Fix dialogue issues
+- Add more choices
 # Links
 
 ## For Blender:
