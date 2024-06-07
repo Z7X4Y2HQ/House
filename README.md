@@ -29,14 +29,42 @@ Stuff related to my Project
 - [ ] ~~Adjust character animation speed and character movement speed~~
 - [ ] ~~fade in or something better when switching between vcams~~
 - [ ] ~~Dialogue system (saves and progress and stuff)~~
+## Stuff Missing From The Game
+- [ ] Add sounds to game
+- [ ] Update chapter menu when 5 chapters complete
+- [ ] add map to phone
+- [ ] Interact E icon on knife and phone
+- [ ] Add more tips text
+- [ ] Add skip icon in timeline
+- [ ] Tell player press tab to skip
+- [ ] Add big ass Skipped a Beat text after 2 min cutscene
+- [ ] Add NPCs and cars moving around
+- [ ] Gif on loading bar
+- [ ] Add resolution scale
+- [ ] Add game saved indicator
+- [ ] Fix phone date and time
+- [ ] Fix phone on table when scene reloads
+- [ ] disable sound when using phone, or in dialogue or timeline is playing
+- [ ] Add warning bg Image Zoom in
+- [ ] Add Escape and Enter button on warning popup
+- [ ] Save graphics settings on save
+- [ ] Make glass windows grounded layer
+- [ ] Add shadow render distance if possible
+- [ ] Fix settings not updating on new scene
+- [ ] Change Input.GetKey to new input method
+- [ ] Add controller support
+- [ ] Fix dialogue issues
+- [ ] Add more choices
 # Links
 
 ## For Blender:
 [1st - overview of tools and UI](https://www.youtube.com/playlist?list=PLa1F2ddGya_-UvuAqHAksYnB0qL9yWDO6)  
 [2nd - Donut tutorial](https://www.youtube.com/playlist?list=PLjEaoINr3zgFX8ZsChQVQsuDSjEqdWMAD)  
-[3rd - Chair Tutorial](https://www.youtube.com/playlist?list=PLjEaoINr3zgEL9UjPTLWQhLFAK7wVaRMR)
+[3rd - Chair Tutorial](https://www.youtube.com/playlist?list=PLjEaoINr3zgEL9UjPTLWQhLFAK7wVaRMR)  
+I never continued Blender so i don't know much about where to properly learn Blender from but this is surely a great Start.
 ## For Unity:
 [Basic Tutorial](https://www.youtube.com/playlist?list=PLFt_AvWsXl0fnA91TcmkRyhhixX9CO3Lw)  
+[Unity Documentation](https://docs.unity3d.com/Manual/UnityManual.html)  
 [Dialogue system (Yarn Spinner)](https://www.youtube.com/watch?v=549J0eHE88k)  
 [Animation System](https://www.youtube.com/playlist?list=PLwyUzJb_FNeTQwyGujWRLqnfKpV-cj-eO)  
 [URP Unity](https://www.youtube.com/playlist?list=PLX2vGYjWbI0QRLkvupULwSZCPkLyHs-UX)  
