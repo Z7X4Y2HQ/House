@@ -20,6 +20,17 @@
 - [Assumptions and Constraints](#14-assumptions-and-constraints)
 - [Project Scope](#15-project-scope)
 - [Todos](#todos)
+- [Stuff Missing From The Game](#StuffMissingFromTheGame)
+- [Links](#links)
+  - [Blender](#blender)
+  - [Unity](#unity)
+  - [YouTube Playlist(Has random videos relating to project)](#random)
+  - [Vroid](#vroid)
+  - [AI](#ai)
+  - [Unity](#animation)
+  - [Character Animations](#unity)
+- [Cinematic Cutscene Unity Tutorials](#CinematicCutsceneUnityTutorials)
+- [Miscellaneous Links(Repos and shit with too many links)](#other)
 
 ---
 
@@ -100,9 +111,9 @@ The game starts with the scene of Takahashi waking up from a bizarre dream and g
 <a id="1121-dialogue-tree"></a>
 - **Dialogue Tree**
   - Here you’ll have multiple options to choose from to reply, such as:
-    - a. I was just thirsty.
-    - b. I don’t want to go to school.
-    - c. I will, I just needed a knife.
+    - I was just thirsty.
+    - I don’t want to go to school.
+    - I will, I just needed a knife.
 
   Just like this dialogue, there will be numerous other conversations throughout the game that the player can engage in, and the choices they make during these interactions will have a significant impact on both the player's character and    the non-player characters around them. These choices may influence the game's story, character relationships, and potentially lead to different outcomes and endings, making each playthrough a unique and engaging experience.
 
@@ -202,6 +213,8 @@ A narrative-driven experience with interactive dialogue trees and choices that a
 - [ ] ~~Adjust character animation speed and character movement speed~~
 - [ ] ~~fade in or something better when switching between vcams~~
 - [ ] ~~Dialogue system (saves and progress and stuff)~~
+
+<a id="StuffMissingFromTheGame"></a>
 ## Stuff Missing From The Game
 - Add sounds to game
 - Update chapter menu when 5 chapters complete
@@ -228,13 +241,15 @@ A narrative-driven experience with interactive dialogue trees and choices that a
 - Add controller support
 - Fix dialogue issues
 - Add more choices
+<a id="links"></a>
 # Links
-
+<a id="blender"></a>
 ## For Blender:
 [1st - overview of tools and UI](https://www.youtube.com/playlist?list=PLa1F2ddGya_-UvuAqHAksYnB0qL9yWDO6)  
 [2nd - Donut tutorial](https://www.youtube.com/playlist?list=PLjEaoINr3zgFX8ZsChQVQsuDSjEqdWMAD)  
 [3rd - Chair Tutorial](https://www.youtube.com/playlist?list=PLjEaoINr3zgEL9UjPTLWQhLFAK7wVaRMR)  
 I never continued Blender so i don't know much about where to properly learn Blender from but this is surely a great Start.
+<a id="unity"></a>
 ## For Unity:
 [Basic Tutorial](https://www.youtube.com/playlist?list=PLFt_AvWsXl0fnA91TcmkRyhhixX9CO3Lw)  
 [Unity Documentation](https://docs.unity3d.com/Manual/UnityManual.html)  
@@ -244,17 +259,22 @@ I never continued Blender so i don't know much about where to properly learn Ble
 [Better graphics with URP](https://blog.unity.com/technology/learn-how-to-bring-your-game-graphics-to-life)  
 [Unity Optimization tips](https://www.reddit.com/r/Unity3D/comments/njrqhu/big_thread_of_optimization_tips/)  
 [Cutscenes Tutorial](https://create.unity.com/road-to-realtime?utm_source=youtube&utm_medium=social&utm_campaign=film_global_generalpromo_2021-03-24_road-to-real-time)  
+<a id="random"></a>
 ## Random Vids might be useful for FYP
 [Playlist Link](https://www.youtube.com/playlist?list=PLj1U1ZglvjcqwqYPofElz42grSNw3-ipN)  
+<a id="vroid"></a>
 ## Vroid  
 [Channel related to Vroid with unity shit](https://youtube.com/@ReForgeMode)  
 [Vroid Tutorial links](https://docs.google.com/document/d/1QqNhGyAEmmKGAf_x9WpfdSYcfBJ6BCEcU8CHdkIurQw/edit)  
+<a id="ai"></a>
 ## Ai  
 [Text to speech](https://fmhy.pages.dev/ai/#text-to-speech)  
 [getimg.ai](https://getimg.ai/)  
+<a id="animation"></a>
 ## Animation
 [Mixamo](https://www.mixamo.com/)  
 [AccuRig](https://actorcore.reallusion.com/3d-motion) (haven't used it yet)  
+<a id="CinematicCutsceneUnityTutorials"></a>
 ## Cinematic Cutscene Unity Tutorials  
 [Previsualization](https://resources.unity.com/media-entertainment-content/road-to-real-time-previsualization)  
 [Timeline for Animated Storytelling](https://resources.unity.com/media-entertainment-content/timeline-for-animated-storytelling)  
@@ -269,7 +289,8 @@ I never continued Blender so i don't know much about where to properly learn Ble
 [Lighting](https://resources.unity.com/media-entertainment-content/road-to-real-time-lighting)  
 [VFX Graph](https://resources.unity.com/media-entertainment-content/road-to-real-time-vfx-graph)  
 [Post-processing](https://resources.unity.com/media-entertainment-content/road-to-real-time-post-processing)  
-[Audio](https://resources.unity.com/media-entertainment-content/media-entertainmentroad-to-real-time-audio)  
+[Audio](https://resources.unity.com/media-entertainment-content/media-entertainmentroad-to-real-time-audio)
+<a id="other"></a>
 # Other Links (Repos and shit with too many links)
 [https://github.com/ellisonleao/magictools](https://github.com/ellisonleao/magictools)  
 [https://github.com/rafaskb/awesome-libgdx](https://github.com/rafaskb/awesome-libgdx)  
