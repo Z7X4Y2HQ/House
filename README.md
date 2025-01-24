@@ -3,7 +3,7 @@
 # Table of Contents
 
 - [Introduction](#11-introduction)
-  - [Narrative Elements](#1111-story-setting)
+  - [Narrative Elements](#1111-story)
     - [Story Setting](#1111-story-setting)
     - [World Setting](#1112-world-setting)
     - [Plot](#1113-plot)
@@ -45,8 +45,9 @@ When a character talks to an NPC, they will have different choices. Depending on
 
 ---
 
-<a id="1111-story-setting"></a>
+<a id="1111-story"></a>
 ### Narrative Elements
+<a id="1111-story-setting"></a>
 - **Story Setting**
   -  The story setting of *Skipped a Beat* is a high school in Japan, specifically during Takahashi's second year. The school serves as the primary location where most of the events in the story take place, including the classrooms, corridors, and school grounds.
 
